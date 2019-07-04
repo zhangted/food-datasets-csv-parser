@@ -2,7 +2,7 @@ const fs = require('fs')
 const csv = require('csv-parser') // @TODO does it work? I'm not sure
 const path = require('path')
 
-var { writeFile } = require('../../writeFile')
+var { writeFile } = require('../writeFile')
 
 let results = []
 let data = []
