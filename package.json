@@ -16,7 +16,8 @@
     "code-fix": "standard --fix",
     "format": "prettier",
     "play": "node ./src/play/play.js",
-    "build:babel": "babel src -d dist"
+    "build:babel": "babel src -d dist",
+    "parse:FoodComposition":"node ./runner/parseFoodComposition"
     
   },
   "description": "module to use static JSON files with groceristar projects",
