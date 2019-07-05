@@ -40,7 +40,7 @@
     "coveralls": "3.0.4",
     "jest": "24.8.0",
     "regenerator-runtime": "0.13.2",
-    "rollup": "1.16.5",
+    "rollup": "1.16.6",
     "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.0.1",
     "rollup-plugin-node-builtins": "2.1.2",
