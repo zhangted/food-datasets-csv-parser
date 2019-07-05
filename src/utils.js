@@ -19,9 +19,18 @@ async function checkFilePath (path) {
   }
 }
 
-
 /* global describe, it, expect */
 
+/**
+ * isDirectory()
+ * @param {string} folderNamePath
+ *  */
+function isDirectory(folderNamePath) {
+    if (fs.existsSync(folderNamePath)) {
+        return false
+    }
+    return true
+}
 
 /**
  * For readAllFiles()
@@ -134,12 +143,13 @@ const jsonSchemaTest = (file, example, schema) => {
 }
 // checkFilePath('./generator/utils1.js') using method checkFilePath
 
-module.exports = {
+module.exports =  {
   checkFilePath,
   __generateId,
-    __generateDate,
-    jsonFileNotEmptyTest,
-    jsonSchemaTest,
-    getFileInfo,
-    readAllFiles
+  __generateDate,
+  jsonFileNotEmptyTest,
+  jsonSchemaTest,
+  getFileInfo,
+  readAllFiles,
+  isDirectory
 }
