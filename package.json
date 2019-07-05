@@ -18,7 +18,7 @@
     "play": "node ./src/play/play.js",
     "build:babel": "babel src -d dist",
     "parse:FoodComposition": "node ./runner/parseFoodComposition",
-    "debug:FoodComposition": "node ./debug/parseFoodComposition"
+    "debug:FoodComposition": "npm run build && node ./debug/parseFoodComposition"
   },
   "description": "module to use static JSON files with groceristar projects",
   "main": "dist/index.cjs",
