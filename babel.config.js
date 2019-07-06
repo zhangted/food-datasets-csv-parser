@@ -1,14 +1,12 @@
 'use strict'
 
+// @TODO do we need path variable here?
 const path = require('path')
 
 const presets = [
   ['@babel/preset-env', {
     'modules': false
   }]
-  // {
-  //
-  // }
 ]
 // Add this to working tests
 const env = {

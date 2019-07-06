@@ -10,16 +10,15 @@ import pkg from './package.json'
 // https://gitlab.com/IvanSanchez/rollup-plugin-file-as-blob
 
 const extensions = [
-    '.js',
-  ]
+    '.js'
+]
 
-const name = 'StaticDataWrapper'
+const name = 'FoodDatasetsCSVParser'
 
 const external = [
     'fs',
-    'path',
-    'uuid'
-  ]
+    'path'
+]
 
 export default {
   input: './src/index.js',
@@ -29,13 +28,9 @@ export default {
   external: external,
 
   plugins: [
-    replace({
-      include: ['node_modules/uuid/**'],
-      delimiters: ['', ''],
-      values: {
-        'crypto.randomBytes': 'require(\'randombytes\')'
-      }
-    }),
+
+    replace({}),
+
     // Allows node_modules resolution
     resolve({
       extensions,
@@ -56,7 +51,6 @@ export default {
         'node_modules/**',
         // '/src/data/__tests__',
         'src/settings.json'
-        // '/src/data/json-tests'
       ]
       // exclude: 'node_modules/**'
       // presets: presets,

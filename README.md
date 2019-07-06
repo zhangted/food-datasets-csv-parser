@@ -7,3 +7,4 @@
 
 - index.js as main point
 - test coverage
+- remove standard
