@@ -134,8 +134,6 @@ function makeFolder(path, file) {
         }, 1000)
     }
  }
-// execute function
-// splitObject()
 
 /**
  * fixFileName()
