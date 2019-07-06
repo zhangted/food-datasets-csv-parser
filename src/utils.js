@@ -1,6 +1,4 @@
 const pathExists = require('path-exists')
-const uuidv1 = require('uuid/v1')
-const dayjs = require('dayjs')
 const fs = require('fs')
 const PATH = require('path')
 
