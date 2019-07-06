@@ -1,10 +1,3 @@
-// @TODO here we'll store all necessary methods that we can use at different places.
-
-// i think we should have here methods like
-// __generateId
-// __generateId
-// getFileKey - i don't like the name
-
 const pathExists = require('path-exists')
 const uuidv1 = require('uuid/v1')
 const dayjs = require('dayjs')
