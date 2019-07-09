@@ -110,8 +110,8 @@ function getFileInfo(path, flag = 0, fileName = 'undefined') {
 
 module.exports =  {
   checkFilePath,
-  jsonFileNotEmptyTest,
-  jsonSchemaTest,
+  // jsonFileNotEmptyTest,
+  // jsonSchemaTest,
   getFileInfo,
   readAllFiles,
   isDirectory
