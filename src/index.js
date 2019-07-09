@@ -8,8 +8,10 @@ const {
 // splitJsonIntoFiles
 // csvToJson
 // parseDirectoryFiles
+
+// @TODO i don't like this name, because if we use it outside - it's very long
 const {
-  parseDirectoryFiles // @TODO i don't like this name, because if we use it outside - it's very long
+  parseDirectoryFiles
 } = require('./csvParser')
 
 module.exports = {

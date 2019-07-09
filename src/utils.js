@@ -106,12 +106,9 @@ function getFileInfo(path, flag = 0, fileName = 'undefined') {
     // return list of files
     return getList(path)
 }
-// checkFilePath('./generator/utils1.js') using method checkFilePath
 
 module.exports =  {
   checkFilePath,
-  // jsonFileNotEmptyTest,
-  // jsonSchemaTest,
   getFileInfo,
   readAllFiles,
   isDirectory

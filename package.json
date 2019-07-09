@@ -1,14 +1,12 @@
 {
   "name": "@groceristar/food-dataset-csv-parser",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "license": "MIT",
   "scripts": {
     "bundle": "rollup -c",
     "dev": "rollup -c -w",
     "build": "npm run clean && npm run bundle",
-    "#prepare": "yarn clean",
     "clean": "shx rm -rf ./coverage && shx rm -rf ./dist",
-    "zprepublish": "yarn clean && yarn code-fix && yarn build",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
@@ -16,7 +14,7 @@
     "code-fix": "echo 'ESlint fix me me!'",
     "format": "prettier",
     "play": "node ./src/play/play.js",
-    "build:babel": "babel src -d dist",
+    "build:babel": "yarn clean && babel src -d dist",
     "parse:FoodComposition": "node ./runner/parseFoodComposition",
     "debug:FoodComposition": "npm run build && node ./debug/parseFoodComposition"
   },
