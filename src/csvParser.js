@@ -1,6 +1,9 @@
 var writeInFile = require('./writeFile')
+
+// @TODO is this a duplicate?
 const fs = require('fs')
 const filesystem = require('fs')
+
 const csv = require('csv-parser')
 const path = require('path')
 
@@ -8,6 +11,7 @@ const maxEntries = 10000
 let result = []
 let folderName, numberOfFiles
 
+// @TODO change the name
 const fileWriter = (i, fileName, start, stop) => {
   var data = result.slice(start, stop)
 
@@ -34,6 +38,7 @@ const splitJsonIntoFiles = (fileName) => {
   }
 }
 
+// This is our main method here, right?
 const csvToJson = (directory, file, headers) => {
 
   // @TODO can this be a separated method?
@@ -67,6 +72,7 @@ const csvToJson = (directory, file, headers) => {
     })
 }
 
+// @TODO should be moved to fileSystem.js file
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
   filesystem.readdir(directoryPath, function (err, files) {

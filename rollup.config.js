@@ -10,14 +10,14 @@ import pkg from './package.json'
 // https://gitlab.com/IvanSanchez/rollup-plugin-file-as-blob
 
 const extensions = [
-    '.js'
+  '.js'
 ]
 
 const name = 'FoodDatasetsCSVParser'
 
 const external = [
-    'fs',
-    'path'
+  'fs',
+  'path'
 ]
 
 export default {
