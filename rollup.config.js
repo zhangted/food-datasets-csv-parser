@@ -19,7 +19,8 @@ const name = 'FoodDatasetsCSVParser'
 
 const external = [
   'fs',
-  'path'
+  'path',
+  'csv-parser'
 ]
 
 let plugins = [

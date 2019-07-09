@@ -1,6 +1,6 @@
 {
   "name": "@groceristar/food-dataset-csv-parser",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "license": "MIT",
   "scripts": {
     "bundle": "rollup -c",

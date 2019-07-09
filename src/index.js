@@ -12,7 +12,7 @@ const {
 // @TODO i don't like this name, because if we use it outside - it's very long
 const {
   parseDirectoryFiles
-} = require('./csvParser')
+} = require('./CCCSVParser') // @TODO i use this name, because rollup was confused. later we'll change it
 
 module.exports = {
   parseFoodComposition,
