@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "lts/*"
+  - "node"
+  - 12
+
+install:
+  - npm install
+
+before_script: 
+  #- npm run lint
+
+script:
+  - npm test
+  - npm run build
+
+# we need to move coveralls from fetch and run it here as well
+#after_success: npm run coveralls
+
+
+branches:
+  only:
+    - master
