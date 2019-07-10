@@ -692,7 +692,7 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@groceristar/static-data-generator@^0.1.1":
+"@groceristar/static-data-generator@0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@groceristar/static-data-generator/-/static-data-generator-0.1.1.tgz#94397ed20d79aa87e291de0df041e4cb48dd0051"
   integrity sha512-DrrSbY2VGQU1PnQfMfgVAOLjKkkjhozb7fcog7JDgTOLHvRCYoAPA4ZrQNmg2tsel09Ia0mR/gNYqziULvstSw==
