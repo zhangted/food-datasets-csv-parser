@@ -27,7 +27,7 @@
   "main": "dist/index.cjs",
   "module": "dist/index.es.js",
   "browser": "dist/index.iife.js",
-  "repository": "https://github.com/GroceriStar/xxx",
+  "repository": "https://github.com/GroceriStar/food-datasets-csv-parser",
   "author": "Arthur Tkachenko",
   "private": false,
   "release": {
@@ -37,8 +37,7 @@
     "@babel/cli": "7.5.0",
     "@babel/core": "7.5.4",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
-    "@babel/preset-env": "7.5.4",
-    "@groceristar/static-data-generator": "0.1.1",
+    "@babel/preset-env": "7.5.4",    
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "24.8.0",
     "babel-plugin-module-resolver": "3.2.0",
@@ -64,7 +63,8 @@
   "dependencies": {
     "csv-parser": "^2.3.0",
     "lodash": "^4.17.11",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "@groceristar/static-data-generator": "0.1.1"
   },
   "files": [
     "dist"

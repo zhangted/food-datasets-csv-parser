@@ -3,16 +3,26 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/1ec3613f4b74a3742e18/maintainability)](https://codeclimate.com/github/GroceriStar/food-datasets-csv-parser/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1ec3613f4b74a3742e18/test_coverage)](https://codeclimate.com/github/GroceriStar/food-datasets-csv-parser/test_coverage)
 
-- ESLint
+
 - Husky
 - Lint-Staged
 - Travis CI
 
 - index.js as main point
 - test coverage
-- remove standard
 
 
+
+#### scripts for testing few of our parsers - old, very old and new one
+Note: I didn't test them here. And i also think that projects should evolve in order to get able to use csv_parser as separated entity correctly.
+
+```
+"csv:fc"    - FoodComposition,
+"csv:usfa1" - USFA/Derivation_Code_Description
+"csv:usfa2" - USFA/Nutrition
+"csv:usfa3" - USFA/Product
+"csv:usfa4" - USFA/ServingSize
+```
 
 ## Quick Start
 Several quick start options are available:
