@@ -1,3 +1,5 @@
+// @TODO soon we'll replace it carefully with similar code from generator that was perfected and clean up
+https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
 var writeInFile = require('./writeFile')
 
 // @TODO is this a duplicate?
@@ -18,7 +20,11 @@ const fileWriter = (i, fileName, start, stop) => {
   // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  writeInFile.writeFile(path.join(__dirname, `/projects/USFA/${folderName}/${fileName}${i}.json`), data)
+  writeInFile.writeFile(path.join(
+    __dirname,
+    `/projects/USFA/${folderName}/${fileName}${i}.json`),
+    data
+  )
 }
 
 const splitJsonIntoFiles = (fileName) => {
@@ -50,8 +56,15 @@ const csvToJson = (directory, file, headers) => {
 
   const results = []
 
+
+
   // @TODO it's a very long path. we can use our aliases
   // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
+
+  // @TODO can we also path a variable that combine `${directory}/${file}` together?
+  // i mean maybe we can pass into csvToJson one argument instead of two?
+
+  // @TODO I still think that it will be a good task to move out this long `thing` into separated method
   fs.createReadStream(
     path.resolve(__dirname, `${directory}/${file}`)
   )

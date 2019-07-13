@@ -32,6 +32,7 @@ function readAllFiles (path) {
   path = fixPath(path)
   var files = fs.readdirSync(path)
   files.forEach(file => {
+    // @TODO I don't like this long line
     const fileStat = fs.statSync(path + file).isDirectory()
     if (file.slice(-5) === '.json') {
       if (!fileStat) {
@@ -66,7 +67,9 @@ function getListContent (path, fileName = 'undefined') {
  */
 function fixPath (path) {
   path = PATH.resolve(__dirname, path)
-  if (path.charAt(path.length - 1) !== '/') path = path + '/'
+  if (path.charAt(path.length - 1) !== '/') {
+    path = path + '/'
+  }
   return path
 }
 
@@ -78,6 +81,7 @@ function getList (path) {
   var list = []
   var files = fs.readdirSync(path)
   files.forEach(file => {
+    // @TODO I saw a similar line at method above
     const fileStat = fs.statSync(path + file).isDirectory()
     if (!fileStat) {
       list.push(file)
@@ -99,6 +103,8 @@ function getFileInfo (path, flag = 0, fileName = 'undefined') {
       only path is given( flag=0 )--> give list of all files in directory.
     */
   path = fixPath(path)
+  
+  // @TODO can be replaced with ternary operator
   if (flag === 1) {
     // get content from file
     return getListContent(path, fileName)
