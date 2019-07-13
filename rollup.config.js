@@ -18,7 +18,8 @@ const name = 'FoodDatasetsCSVParser'
 const external = [
   'fs',
   'path',
-  'csv-parser'
+  'csv-parser',
+  '@groceristar/static-data-generator'
 ]
 
 const plugins = [
