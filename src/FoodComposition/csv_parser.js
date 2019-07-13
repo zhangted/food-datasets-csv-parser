@@ -5,8 +5,8 @@ const path = require('path')
 var { writeFile } = require('../writeFile')
 
 let results = []
-let data = []
-let writedCountries = []
+const data = []
+const writedCountries = []
 
 const countries = [
   'Finland',
@@ -19,11 +19,11 @@ const countries = [
 ]
 
 // @TODO here don't have methods as we have at USFA
-function parseFoodComposition(){
+function parseFoodComposition () {
   countries.forEach(country => {
     // @TODO it's a very long path. we can use our aliases
     // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
-  
+
     // @TODO this method is duplicate
     fs.createReadStream(
       path.join(
@@ -53,7 +53,7 @@ function parseFoodComposition(){
       })
       .on('end', function () {
         let i
-  
+
         // @TODO I don't  like this loops. Wahaj should solve it
         for (i = 0; i < 12; i++) {
           results[i]['Food class'] =
@@ -123,20 +123,20 @@ function parseFoodComposition(){
         for (i = 2463; i < results.length; i++) {
           results[i]['Food class'] = 'Water and water-based beverages'
         }
-  
+
         results = results.map(obj => ({ ...obj, country }))
-  
+
         for (i = 0; i < results.length; i++) {
           data.push(results[i])
         }
-  
+
         writedCountries.push(country)
-  
+
         writeFile(
           path.join(__dirname, `/FoodComposition - ${country}.json`),
           results
         )
-  
+
         if (writedCountries.length === countries.length) {
           writeFile(
             path.join(__dirname, `/FoodComposition.json`),
@@ -145,7 +145,6 @@ function parseFoodComposition(){
         }
       })
   })
-  
 }
 
 module.exports = {

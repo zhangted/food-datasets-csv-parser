@@ -1,3 +1,3 @@
-const {parseFoodComposition} = require('../dist/index.cjs')
+const { parseFoodComposition } = require('../dist/index.cjs')
 
 parseFoodComposition()

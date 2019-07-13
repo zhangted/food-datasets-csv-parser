@@ -5,7 +5,7 @@ const path = require('path')
 
 const presets = [
   ['@babel/preset-env', {
-    'modules': false
+    modules: false
   }]
 ]
 // Add this to working tests

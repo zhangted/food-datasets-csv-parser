@@ -9,8 +9,6 @@ import builtins from 'rollup-plugin-node-builtins'
 import babel from 'rollup-plugin-babel'
 import pkg from './package.json'
 
-
-
 const extensions = [
   '.js'
 ]
@@ -23,16 +21,13 @@ const external = [
   'csv-parser'
 ]
 
-let plugins = [
+const plugins = [
 
   // Allows node_modules resolution
   resolve({
     extensions,
-    browser: true, // fixes ERROR!!! randomBytes(16)
+    browser: true // fixes ERROR!!! randomBytes(16)
   }),
-
-
-
 
   // Allows verification of entry point and all imported files with ESLint.
   // @TODO fix and enable eslint for rollup
@@ -47,7 +42,7 @@ let plugins = [
   // Allow bundling cjs modules. Rollup doesn't understand cjs
   commonjs({
     ignore: [
-      "conditional-runtime-dependency"
+      'conditional-runtime-dependency'
     ]
   }),
 
@@ -56,15 +51,14 @@ let plugins = [
     extensions,
     include: ['src/*'],
     exclude: [
-      'node_modules/**',
+      'node_modules/**'
       // '/src/data/__tests__',
     ]
 
   }),
 
-  builtins(),
+  builtins()
 ]
-
 
 export default {
   input: './src/index.js',
@@ -75,19 +69,19 @@ export default {
   plugins,
 
   output: [{
-      file: pkg.main,
-      format: 'cjs'
-    },
-    {
-      file: pkg.module,
-      format: 'es'
-    },
-    {
-      file: pkg.browser,
-      format: 'iife',
-      name
-      // https://rollupjs.org/guide/en#output-globals-g-globals
-      // globals: {}
-    }
+    file: pkg.main,
+    format: 'cjs'
+  },
+  {
+    file: pkg.module,
+    format: 'es'
+  },
+  {
+    file: pkg.browser,
+    format: 'iife',
+    name
+    // https://rollupjs.org/guide/en#output-globals-g-globals
+    // globals: {}
+  }
   ]
 }

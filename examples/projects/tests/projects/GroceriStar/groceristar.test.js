@@ -129,5 +129,5 @@ describe('Groceristar method should return data', () => {
   notEmptyMethodOutput('getKeyArrayDepAndIng')
   notEmptyMethodOutput('ultimateGroceryList')
   notEmptyMethodOutput('getDepartmentIngredients', 'Fresh vegetables', key)
-  notEmptyMethodOutput('getGroceryDepartmentsWithIngredients', [ 'Dairy', 'Cheese' ], key)
+  notEmptyMethodOutput('getGroceryDepartmentsWithIngredients', ['Dairy', 'Cheese'], key)
 })

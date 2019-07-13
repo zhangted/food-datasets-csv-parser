@@ -9,10 +9,10 @@ const { departments, ingredients, grocery } = require('../../../src/files')
  */
 
 const getKeyArrayDepAndIng = () => {
-  let keys = []
+  const keys = []
 
-  let departments = getAllDepartmentsWithId()
-  let ingredients = getAllIngredientsWithId()
+  const departments = getAllDepartmentsWithId()
+  const ingredients = getAllIngredientsWithId()
 
   _.forEach(departments, (department) => {
     _.forEach(ingredients, (ingredient) => {
@@ -50,7 +50,7 @@ const ultimateGroceryList = () => {
 // get all departments with their ingredients in a grocery
 const getGroceryDepartmentsWithIngredients = (grocerydepartments, key) => {
   const results = []
-  let departments = getAllDepartmentsWithId()
+  const departments = getAllDepartmentsWithId()
   _.map(grocerydepartments, grocerydepartment => {
     // search for a particular grocery department in the department json to get the department object
     const department = _.filter(departments, department => {
@@ -71,7 +71,7 @@ const getGroceryDepartmentsWithIngredients = (grocerydepartments, key) => {
 // get all ingredients in a department
 const getDepartmentIngredients = (department, key) => {
   const results = []
-  let ingredients = getAllIngredientsWithId()
+  const ingredients = getAllIngredientsWithId()
   _.map(ingredients, ingredient => {
     if (_.includes(ingredient, department)) {
       const ingredientItem = [
@@ -88,19 +88,19 @@ const getDepartmentIngredients = (department, key) => {
 
 // get grocery with key
 const getAllGroceryWithId = () => {
-  let result = getResult(grocery)
+  const result = getResult(grocery)
 
   return result
 }
 
 const getAllDepartmentsWithId = () => {
-  let result = getResult(departments)
+  const result = getResult(departments)
 
   return result
 }
 //
 const getAllIngredientsWithId = () => {
-  let result = getResult(ingredients)
+  const result = getResult(ingredients)
 
   return result
 }

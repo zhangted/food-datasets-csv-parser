@@ -12,7 +12,7 @@ const schema = {
     'Milligram/100 gram': {
       type: 'string'
     },
-    'country': {
+    country: {
       type: 'string'
     }
   },
@@ -30,7 +30,7 @@ const example = {
   'Food (FoodEx2 description)': 'Artificial sweeteners (e.g., aspartam, saccharine)',
   'Microgram/100 gram': '',
   'Milligram/100 gram': '',
-  'country': 'Sweden'
+  country: 'Sweden'
 }
 
 module.exports = {

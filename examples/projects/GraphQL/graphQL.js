@@ -38,7 +38,7 @@ const getFavoritesKey = () => {
 }
 
 const getDepartmentsKey = function () {
-  let results = departments
+  const results = departments
   return results.map((item, index) => ({
     departmentId: __generateId(),
     name: item.name,

@@ -15,7 +15,7 @@ let folderName, numberOfFiles
 const fileWriter = (i, fileName, start, stop) => {
   var data = result.slice(start, stop)
 
-  //@TODO change that. it will work only for one case.
+  // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
   writeInFile.writeFile(path.join(__dirname, `/projects/USFA/${folderName}/${fileName}${i}.json`), data)
@@ -40,7 +40,6 @@ const splitJsonIntoFiles = (fileName) => {
 
 // This is our main method here, right?
 const csvToJson = (directory, file, headers) => {
-
   // @TODO can this be a separated method?
   const fileName = file.split('.')[0]
 
@@ -49,7 +48,7 @@ const csvToJson = (directory, file, headers) => {
   folderName = folder[folder.length - 1]
   // <--
 
-  let results = []
+  const results = []
 
   // @TODO it's a very long path. we can use our aliases
   // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias

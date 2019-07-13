@@ -10,8 +10,8 @@ const path = require('path')
 const { write } = require('@groceristar/static-data-generator')
 
 let results = []
-let data = []
-let writedCountries = []
+const data = []
+const writedCountries = []
 
 const countries = [
   'Finland',
