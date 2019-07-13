@@ -16,9 +16,9 @@
 
 ## Quick Start
 Several quick start options are available:
-* Clone the repo: `git clone https://github.com/GroceriStar/sd.git`
-* Install with npm: `npm install @groceristar/sd-wrapper`
-* Install with yarn: `yarn add @groceristar/sd-wrapper`
+* Clone the repo: `git clone https://github.com/GroceriStar/food-datasets-csv-parser.git`
+* Install with npm: `npm install @groceristar/food-datasets-csv-parser`
+* Install with yarn: `yarn add @groceristar/food-datasets-csv-parser`
 
 
 
@@ -53,6 +53,7 @@ Example:- combineObject('/abc/pqr/', ['id', 'img'])
 If you want to modify the json structure of splitted files and combine them again to a single file then you can call splitObject with a call back function.
 
 
+
 ### How to parse csv File(s) from a folder to to json file(s)
 Create a folder you want the generated json file(s) to be. Also create a parser.js file in the created folder.
 In csvParser.js call `ParseDirectoryFiles()` from csvParser.js with parameters `directoryPath` (the folder to read your csv file(s) from) as string, and headers (the header of the csv files ) as array of string.
@@ -65,18 +66,20 @@ ParseDirectoryFiles(directoryPath, headers)
         => filewriter(i, fileName, start, stop)
 ```
 
+
 `ParseDirectoryFiles` gets a directory path from call, and reads all files in the directory but will only pass csv files to `csvToJson(directory, file, headers)`.
 Each csv file is passed into `csvParser()``.
 
-`csvToJson` require csv-Parser modules
+
+#### `csvToJson` require csv-Parser modules
 `csvToJson ()` --get the file directory path, filename(file) and headers and generate a Json file for the csv files using the headers as keys.
 The JSON file generated is stored in variable result.
 File Name is passed is to `splitJsonFile(file)`` to keep track of the file being
 
-variable `numberOfFile` stores the number of JSON files to get from JSON stored in result. So that each JSON file has maximium entry of 10000 stored in variable maxEntries.
+- variable `numberOfFile` stores the number of JSON files to get from JSON stored in result. So that each JSON file has maximium entry of 10000 stored in variable maxEntries.
 `Filewriter` function is called inside the `splitJsonFile` function
 
-`filewriter()` – requires writeFile from sd/generator to work.
+#### `filewriter()` – requires writeFile from sd/generator to work.
 It takes in the child number of the json file( i ) ,the file name( fileName ),the interval the json stored in result should start and stop slicing. The sliced data will be written into the folder calling `parserFile` function along side file name being parsed and the child number of the file.
 
 
