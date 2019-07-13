@@ -92,7 +92,42 @@ File Name is passed is to `splitJsonFile(file)`` to keep track of the file being
 #### `filewriter()` – requires writeFile from sd/generator to work.
 It takes in the child number of the json file( i ) ,the file name( fileName ),the interval the json stored in result should start and stop slicing. The sliced data will be written into the folder calling `parserFile` function along side file name being parsed and the child number of the file.
 
-
+### `food-datasets-csv-parser/src` directory structure
+```
+.
+├── CCCSVParser.js
+├── FoodComposition
+│   ├── FoodComposition\ -\ Finland.json
+│   ├── FoodComposition\ -\ France.json
+│   ├── FoodComposition\ -\ Germany.json
+│   ├── FoodComposition\ -\ Italy.json
+│   ├── FoodComposition\ -\ Netherlands.json
+│   ├── FoodComposition\ -\ Sweden.json
+│   ├── FoodComposition\ -\ United\ Kingdom.json
+│   ├── FoodComposition.json
+│   ├── csv_parser.js
+│   └── files.js
+├── USFA
+│   ├── Derivation_Code_Description
+│   │   ├── Derivation_Code_Description1.json
+│   │   └── parser.js
+│   ├── Nutrition
+│   │   ├── Nutrient01.json
+│   │   ├── files.js
+│   │   └── parser.js
+│   ├── Product
+│   │   ├── Products01.json
+│   │   └── parser.js
+│   ├── Readme.md
+│   ├── Serving_Size
+│   │   ├── Serving_Size1.json
+│   │   └── parser.js
+│   └── files.js
+├── fileSystem.js
+├── index.js
+├── utils.js
+└── writeFile.js
+```
 
 #### Methods
 
