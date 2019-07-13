@@ -92,6 +92,9 @@ File Name is passed is to `splitJsonFile(file)`` to keep track of the file being
 #### `filewriter()` – requires writeFile from sd/generator to work.
 It takes in the child number of the json file( i ) ,the file name( fileName ),the interval the json stored in result should start and stop slicing. The sliced data will be written into the folder calling `parserFile` function along side file name being parsed and the child number of the file.
 
+### ES5 and ES6 simple differences reference
+1. [https://engineering.carsguide.com.au/es5-vs-es6-syntax-6c8350fa6998](https://engineering.carsguide.com.au/es5-vs-es6-syntax-6c8350fa6998)
+
 ### `food-datasets-csv-parser/src` directory structure
 ```
 .
