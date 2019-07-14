@@ -1,11 +1,11 @@
 // Here I want to put all methods, related to reading data, etc.
 // like
-import fs from 'fs';
+import { readdir } from 'fs';
 import csvToJson from './CCCSVParser';
 
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
-  fs.readdir(directoryPath, function (err, files) {
+  readdir(directoryPath, function (err, files) {
   // handling error
     if (err) {
       return console.log('Unable to scan directory: ' + err)

@@ -1,9 +1,9 @@
 // @TODO soon we'll replace it carefully with similar code from generator that was perfected and clean up
 //https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
-import writeInFile from './writeFile';
-import fs from 'fs';
+import { writeFile } from './writeFile';
+import { createReadStream } from 'fs';
 import csv from 'csv-parser';
-import path from 'path';
+import { resolve } from 'path';
 import { joinPath } from './utils';
 
 const maxEntries = 10000;
@@ -18,7 +18,7 @@ const fileWriter = (i, fileName, start, stop) => {
   // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  writeInFile.writeFile(combinedPath), data);
+  writeFile((combinedPath), data);
 }
 
 const splitJsonIntoFiles = (fileName) => {
@@ -52,8 +52,8 @@ const csvToJson = (directory, file, headers) => {
   // i mean maybe we can pass into csvToJson one argument instead of two?
 
   // @TODO I still think that it will be a good task to move out this long `thing` into separated method
-  fs.createReadStream(
-    path.resolve(__dirname, `${directory}/${file}`)
+  createReadStream(
+    resolve(__dirname, `${directory}/${file}`)
   )
     .pipe(
       csv({
