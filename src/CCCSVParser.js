@@ -1,9 +1,10 @@
 // @TODO soon we'll replace it carefully with similar code from generator that was perfected and clean up
-https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
+//https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
 import writeInFile from './writeFile';
 import fs from 'fs';
 import csv from 'csv-parser';
 import path from 'path';
+import { joinPath } from './utils';
 
 const maxEntries = 10000;
 let result = [];
@@ -11,49 +12,39 @@ let folderName, numberOfFiles;
 
 // @TODO change the name
 const fileWriter = (i, fileName, start, stop) => {
-  var data = result.slice(start, stop)
-
+  let data = result.slice(start, stop);
+  let jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`;
+  let combinedPath = joinPath([__dirname, jsonPath]);
   // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  writeInFile.writeFile(path.join(
-    __dirname,
-    `/projects/USFA/${folderName}/${fileName}${i}.json`),
-    data
-  )
+  writeInFile.writeFile(combinedPath), data);
 }
 
 const splitJsonIntoFiles = (fileName) => {
-  let i = 1
-
-  for (i; i <= numberOfFiles; i++) {
-    const start = (i - 1) * maxEntries
-    var stop = i * maxEntries
+  for (let i; i <= numberOfFiles; i++) {
+    const start = (i - 1) * maxEntries;
+    let stop = i * maxEntries;
 
     if (i === numberOfFiles) {
-      stop = result.length + 1
-      fileWriter(i, fileName, start, stop)
-      return
+      stop = result.length + 1;
+      fileWriter(i, fileName, start, stop);
+      return;
     }
 
-    fileWriter(i, fileName, start, stop)
+    fileWriter(i, fileName, start, stop);
   }
 }
 
 // This is our main method here, right?
 const csvToJson = (directory, file, headers) => {
   // @TODO can this be a separated method?
-  const fileName = file.split('.')[0]
+  const fileName = file.split('.')[0];
+  const results = [];
+  const folder = directory.split('/');
 
-  const folder = directory.split('/')
-
-  folderName = folder[folder.length - 1]
+  folderName = folder[folder.length - 1];
   // <--
-
-  const results = []
-
-
-
   // @TODO it's a very long path. we can use our aliases
   // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
 
@@ -80,25 +71,6 @@ const csvToJson = (directory, file, headers) => {
     })
 }
 
-// @TODO should be moved to fileSystem.js file
-const parseDirectoryFiles = (directoryPath, headers) => {
-  // passing directoryPath and callback function
-  fs.readdir(directoryPath, function (err, files) {
-  // handling error
-    if (err) {
-      return console.log('Unable to scan directory: ' + err)
-    }
-    // listing all files using forEach
-    files.forEach(function (file) {
-    // Do whatever you want to do with the file
-      console.log(file, typeof file)
-      if (file.split('.')[1] === 'csv') {
-        csvToJson(directoryPath, file, headers)
-      }
-    })
-  })
-}
-
-export {
-  parseDirectoryFiles
+export default {
+  csvToJson,
 }

@@ -1,6 +1,6 @@
-const pathExists = require('path-exists')
-const fs = require('fs')
-const PATH = require('path')
+const pathExists = require('path-exists');
+const fs = require('fs');
+const PATH = require('path');
 
 async function checkFilePath (path) {
   if (await pathExists(path)) {
@@ -103,7 +103,7 @@ function getFileInfo (path, flag = 0, fileName = 'undefined') {
       only path is given( flag=0 )--> give list of all files in directory.
     */
   path = fixPath(path)
-  
+
   // @TODO can be replaced with ternary operator
   if (flag === 1) {
     // get content from file
@@ -113,9 +113,25 @@ function getFileInfo (path, flag = 0, fileName = 'undefined') {
   return getList(path)
 }
 
+/**
+ * For joinPath()
+ * @param {Arrat} arr
+ * @param {Bool} resolve
+ */
+const joinPath = (arr, resolve=false) => {
+
+  if(resolve) {
+    return PATH.resolve(...arr);
+  }
+
+  return PATH.join(...arr);
+}
+
+
 module.exports = {
   checkFilePath,
   getFileInfo,
   readAllFiles,
-  isDirectory
+  isDirectory,
+  joinPath,
 }
