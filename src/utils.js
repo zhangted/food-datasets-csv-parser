@@ -1,6 +1,11 @@
-const pathExists = require('path-exists')
-const fs = require('fs')
-const PATH = require('path')
+const pathExists = require('path-exists');
+const {
+  existsSync,
+  readdirSync,
+  statSync,
+  readFileSync,
+} = require('fs');
+const { resolve, join } = require('path');
 
 async function checkFilePath (path) {
   if (await pathExists(path)) {
@@ -17,7 +22,7 @@ async function checkFilePath (path) {
  * @param {string} folderNamePath
  *  */
 function isDirectory (folderNamePath) {
-  if (fs.existsSync(folderNamePath)) {
+  if (existsSync(folderNamePath)) {
     return false
   }
   return true
@@ -30,13 +35,13 @@ function isDirectory (folderNamePath) {
 function readAllFiles (path) {
   var content = []
   path = fixPath(path)
-  var files = fs.readdirSync(path)
+  var files = readdirSync(path)
   files.forEach(file => {
     // @TODO I don't like this long line
-    const fileStat = fs.statSync(path + file).isDirectory()
+    const fileStat = statSync(path + file).isDirectory()
     if (file.slice(-5) === '.json') {
       if (!fileStat) {
-        var data = fs.readFileSync(path + file)
+        var data = readFileSync(path + file)
         data = JSON.parse(data)
         content.push(data)
       }
@@ -56,7 +61,7 @@ function getListContent (path, fileName = 'undefined') {
     return readAllFiles(path)
   }
   // read specified file
-  let data = fs.readFileSync(path + fileName)
+  let data = readFileSync(path + fileName)
   data = JSON.parse(data)
   return data
 }
@@ -66,7 +71,7 @@ function getListContent (path, fileName = 'undefined') {
  * @param {String} path
  */
 function fixPath (path) {
-  path = PATH.resolve(__dirname, path)
+  path = resolve(__dirname, path)
   if (path.charAt(path.length - 1) !== '/') {
     path = path + '/'
   }
@@ -79,10 +84,10 @@ function fixPath (path) {
  */
 function getList (path) {
   var list = []
-  var files = fs.readdirSync(path)
+  var files = readdirSync(path)
   files.forEach(file => {
     // @TODO I saw a similar line at method above
-    const fileStat = fs.statSync(path + file).isDirectory()
+    const fileStat = statSync(path + file).isDirectory()
     if (!fileStat) {
       list.push(file)
     }
@@ -103,7 +108,7 @@ function getFileInfo (path, flag = 0, fileName = 'undefined') {
       only path is given( flag=0 )--> give list of all files in directory.
     */
   path = fixPath(path)
-  
+
   // @TODO can be replaced with ternary operator
   if (flag === 1) {
     // get content from file
@@ -113,9 +118,25 @@ function getFileInfo (path, flag = 0, fileName = 'undefined') {
   return getList(path)
 }
 
+/**
+ * For joinPath()
+ * @param {Arrat} arr
+ * @param {Bool} resolve
+ */
+const joinPath = (arr, useResolve=false) => {
+
+  if(useResolve) {
+    return resolve(...arr);
+  }
+
+  return join(...arr);
+}
+
+
 module.exports = {
   checkFilePath,
   getFileInfo,
   readAllFiles,
-  isDirectory
+  isDirectory,
+  joinPath,
 }
