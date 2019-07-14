@@ -1,17 +1,13 @@
 // @TODO soon we'll replace it carefully with similar code from generator that was perfected and clean up
 https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
-var writeInFile = require('./writeFile')
+import writeInFile from './writeFile';
+import fs from 'fs';
+import csv from 'csv-parser';
+import path from 'path';
 
-// @TODO is this a duplicate?
-const fs = require('fs')
-const filesystem = require('fs')
-
-const csv = require('csv-parser')
-const path = require('path')
-
-const maxEntries = 10000
-let result = []
-let folderName, numberOfFiles
+const maxEntries = 10000;
+let result = [];
+let folderName, numberOfFiles;
 
 // @TODO change the name
 const fileWriter = (i, fileName, start, stop) => {
@@ -87,7 +83,7 @@ const csvToJson = (directory, file, headers) => {
 // @TODO should be moved to fileSystem.js file
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
-  filesystem.readdir(directoryPath, function (err, files) {
+  fs.readdir(directoryPath, function (err, files) {
   // handling error
     if (err) {
       return console.log('Unable to scan directory: ' + err)
@@ -103,6 +99,6 @@ const parseDirectoryFiles = (directoryPath, headers) => {
   })
 }
 
-module.exports = {
+export {
   parseDirectoryFiles
 }
