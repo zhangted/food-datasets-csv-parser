@@ -8,7 +8,7 @@ import { parseFoodComposition } from './FoodComposition/csv_parser';
 // parseDirectoryFiles
 
 // @TODO i don't like this name, because if we use it outside - it's very long
-import { parseDirectoryFiles } from './fileSystem'; // @TODO i use this name, because rollup was confused. later we'll change it
+import { parseDirectoryFiles } from './fileSystem'; 
 import csvToJson from './csvToJson';
 
 export {
