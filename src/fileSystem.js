@@ -1,7 +1,7 @@
 // Here I want to put all methods, related to reading data, etc.
 // like
 import { readdir } from 'fs';
-import csvToJson from './CCCSVParser';
+import csvToJson from './csvToJson';
 
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
