@@ -1,6 +1,4 @@
-const {
-  parseFoodComposition
-} = require('./FoodComposition/csv_parser')
+import { parseFoodComposition } from './FoodComposition/csv_parser';
 
 // @TODO soon we should move data from csvParser into index.js
 // should we export methods below as well
@@ -10,11 +8,11 @@ const {
 // parseDirectoryFiles
 
 // @TODO i don't like this name, because if we use it outside - it's very long
-const {
-  parseDirectoryFiles
-} = require('./CCCSVParser') // @TODO i use this name, because rollup was confused. later we'll change it
+import { parseDirectoryFiles } from './fileSystem'; 
+import csvToJson from './csvToJson';
 
-module.exports = {
+export {
+  csvToJson,
   parseFoodComposition,
-  parseDirectoryFiles
+  parseDirectoryFiles,
 }

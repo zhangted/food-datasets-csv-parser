@@ -120,10 +120,10 @@ function getFileInfo (path, flag = 0, fileName = 'undefined') {
 
 /**
  * For joinPath()
- * @param {Arrat} arr
+ * @param {Array} arr
  * @param {Bool} resolve
  */
-const joinPath = (arr, useResolve=false) => {
+const joinPath = (arr, useResolve = false) => {
 
   if(useResolve) {
     return resolve(...arr);
