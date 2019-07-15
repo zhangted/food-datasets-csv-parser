@@ -1,7 +1,3 @@
-const {
-  parseFoodComposition
-} = require('./FoodComposition/csv_parser')
-
 // @TODO soon we should move data from csvParser into index.js
 // should we export methods below as well
 // fileWriter
@@ -10,11 +6,81 @@ const {
 // parseDirectoryFiles
 
 // @TODO i don't like this name, because if we use it outside - it's very long
-const {
-  parseDirectoryFiles
-} = require('./CCCSVParser') // @TODO i use this name, because rollup was confused. later we'll change it
+import { parseDirectoryFiles } from './fileSystem'; // @TODO i use this name, because rollup was confused. later we'll change it
+import { parseFoodComposition } from './FoodComposition/csv_parser';
+import { writeFile } from './writeFile';
+import { createReadStream } from 'fs';
+import csv from 'csv-parser';
+import { resolve } from 'path';
+import { joinPath } from './utils';
 
-module.exports = {
+const maxEntries = 10000;
+let result = [];
+let folderName, numberOfFiles;
+
+// @TODO change the name
+const fileWriter = (i, fileName, start, stop) => {
+  let data = result.slice(start, stop);
+  let jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`;
+  let combinedPath = joinPath([__dirname, jsonPath]);
+  // @TODO change that. it will work only for one case.
+  // we can also create a method for path.join, so it wouldn't complicate our code
+  // really bad line
+  writeFile((combinedPath), data);
+}
+
+const splitJsonIntoFiles = (fileName) => {
+  for (let i; i <= numberOfFiles; i++) {
+    const start = (i - 1) * maxEntries;
+    let stop = i * maxEntries;
+
+    if (i === numberOfFiles) {
+      stop = result.length + 1;
+      fileWriter(i, fileName, start, stop);
+      return;
+    }
+
+    fileWriter(i, fileName, start, stop);
+  }
+}
+
+// This is our main method here, right?
+const csvToJson = (directory, file, headers) => {
+  // @TODO can this be a separated method?
+  const fileName = file.split('.')[0];
+  const results = [];
+  const folder = directory.split('/');
+
+  folderName = folder[folder.length - 1];
+  // <--
+  // @TODO it's a very long path. we can use our aliases
+  // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
+
+  // @TODO can we also path a variable that combine `${directory}/${file}` together?
+  // i mean maybe we can pass into csvToJson one argument instead of two?
+
+  // @TODO I still think that it will be a good task to move out this long `thing` into separated method
+  createReadStream(
+    resolve(__dirname, `${directory}/${file}`)
+  )
+    .pipe(
+      csv({
+        skipLines: 1,
+        headers: headers
+      })
+    )
+    .on('data', function (data) {
+      results.push(data)
+    })
+    .on('end', function () {
+      numberOfFiles = Math.ceil(results.length / maxEntries)
+      result = results
+      splitJsonIntoFiles(fileName)
+    })
+}
+
+export default {
+  csvToJson,
   parseFoodComposition,
-  parseDirectoryFiles
+  parseDirectoryFiles,
 }
