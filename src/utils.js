@@ -1,4 +1,3 @@
-
 import pathExists from 'path-exists';
 import {
   existsSync,
@@ -14,7 +13,8 @@ import { resolve, join } from 'path';
 /**
  * isDirectory()
  * @param {string} folderNamePath
- *  */
+ *
+ */
 const isDirectory = (folderNamePath) => {
   if (existsSync(folderNamePath)) {
     return false
@@ -100,6 +100,7 @@ const joinPath = (arr, useResolve = false) => {
     return resolve(...arr);
   }
 
+  // @TODO i assume this is an else statement? confusing ...
   return join(...arr);
 }
 

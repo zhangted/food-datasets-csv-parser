@@ -6,6 +6,12 @@ import csv from 'csv-parser'
 import { resolve } from 'path'
 import { joinPath } from './utils'
 
+
+// @TODO I don't like how this file was previously created.
+// I mean why we have this variables from the outside of our functions,
+// is there some intersections, etc.
+// I think we can improve it very easy.
+
 const maxEntries = 10000
 let result = []
 let folderName, numberOfFiles
@@ -13,13 +19,18 @@ let folderName, numberOfFiles
 // @TODO change the name
 const fileWriter = (i, fileName, start, stop) => {
   let data = result.slice(start, stop)
-  let jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`
-  let combinedPath = joinPath([__dirname, jsonPath])
+
   // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
+  let jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`
+  let combinedPath = joinPath([__dirname, jsonPath])
+  // --> if you reading it - then it's time for updating it :)
+
   writeFile(combinedPath, data)
 }
+
+// @TODO update this method later, when we'll migrate to `write` from generator
 
 const splitJsonIntoFiles = fileName => {
   for (let i; i <= numberOfFiles; i++) {
@@ -32,11 +43,14 @@ const splitJsonIntoFiles = fileName => {
       return
     }
 
+    // @TODO is this related to else statemtn? confusing ...
     fileWriter(i, fileName, start, stop)
   }
 }
 
-// This is our main method here, right?
+// @TODO This is our main method here, right?
+// I don't like the name for this method and for the whole file
+// if it's main - then let's put it into index.js
 const csvToJson = (directory, file, headers) => {
   // @TODO can this be a separated method?
   const fileName = file.split('.')[0]
