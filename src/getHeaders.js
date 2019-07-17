@@ -1,18 +1,8 @@
-const { createReadStream } = require('fs')
-const csv = require('csv-parser')
+const csv = require('csvtojson')
 
-// Pass in the path to the data from which you want to obtain the headers.
-const getHeaders = path => {
-  const results = []
-  let headers
-
-  createReadStream(path)
-    .pipe(csv())
-    .on('data', data => results.push(data))
-    .on('end', () => {
-      headers = Object.keys(results[0])
-      console.log(headers)
-    })
+const getHeaders = async path => {
+  const data = await csv().fromFile(path)
+  const headers = Object.keys(data[0])
 
   return headers
 }
