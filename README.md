@@ -2,7 +2,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/1ec3613f4b74a3742e18/maintainability)](https://codeclimate.com/github/GroceriStar/food-datasets-csv-parser/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1ec3613f4b74a3742e18/test_coverage)](https://codeclimate.com/github/GroceriStar/food-datasets-csv-parser/test_coverage)
-
+[![Build Status](https://travis-ci.org/GroceriStar/food-datasets-csv-parser.svg?branch=master)](https://travis-ci.org/GroceriStar/food-datasets-csv-parser)
 
 - Husky
 - Lint-Staged
