@@ -1,3 +1,5 @@
+/* global describe, it, expect */
+
 const pathExists = require('path-exists');
 const {
   existsSync,
@@ -15,7 +17,7 @@ async function checkFilePath (path) {
   }
 }
 
-/* global describe, it, expect */
+
 
 /**
  * isDirectory()
