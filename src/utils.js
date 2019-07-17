@@ -1,3 +1,4 @@
+
 import pathExists from 'path-exists';
 import {
   existsSync,
@@ -8,7 +9,7 @@ import {
 import { resolve, join } from 'path';
 
 
-/* global describe, it, expect */
+
 
 /**
  * isDirectory()
