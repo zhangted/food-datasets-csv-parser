@@ -1,19 +1,12 @@
-const pathExists = require('path-exists');
-const {
+import pathExists from 'path-exists';
+import {
   existsSync,
   readdirSync,
   statSync,
   readFileSync,
-} = require('fs');
-const { resolve, join } = require('path');
+} from 'fs';
+import { resolve, join } from 'path';
 
-async function checkFilePath (path) {
-  if (await pathExists(path)) {
-    console.log('Filepath ' + path + ' exist')
-  } else {
-    console.log('Filepath ' + path + ' doesn`t exist')
-  }
-}
 
 /* global describe, it, expect */
 
@@ -93,29 +86,6 @@ function getList (path) {
     }
   })
   return list
-}
-
-/**
- * For getFileInfo()
- * @param {String} path
- * @param {var} flag
- * @param {String} fileName
- */
-function getFileInfo (path, flag = 0, fileName = 'undefined') {
-  /*
-      flag = 1 --> means return content
-      if file name is given then content of that file else return content of all files.
-      only path is given( flag=0 )--> give list of all files in directory.
-    */
-  path = fixPath(path)
-
-  // @TODO can be replaced with ternary operator
-  if (flag === 1) {
-    // get content from file
-    return getListContent(path, fileName)
-  }
-  // return list of files
-  return getList(path)
 }
 
 /**
