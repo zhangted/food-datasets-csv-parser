@@ -3,11 +3,10 @@
 // https://github.com/mjeanroy/rollup-plugin-prettier
 // https://gitlab.com/IvanSanchez/rollup-plugin-file-as-blob
 
-
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import builtins from 'rollup-plugin-node-builtins'
-// import replace from 'rollup-plugin-replace';
+
 import babel from 'rollup-plugin-babel'
 import pkg from './package.json'
 // import eslint from "rollup-plugin-eslint"
@@ -26,7 +25,8 @@ const external = [
   'fs',
   'path',
   'csv-parser',
-  '@groceristar/static-data-generator'
+  '@groceristar/static-data-generator',
+  'lodash'
 ]
 
 
