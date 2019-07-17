@@ -1,8 +1,7 @@
-const fs = require('fs')
-const csv = require('csv-parser') // @TODO does it work? I'm not sure
-const path = require('path')
-
-var { writeFile } = require('../writeFile')
+import { createReadStream } from 'fs';
+import csv from 'csv-parser'; // @TODO does it work? I'm not sure
+import { join } from 'path';
+import { writeFile } from '../writeFile';
 
 let results = []
 const data = []
@@ -19,14 +18,14 @@ const countries = [
 ]
 
 // @TODO here don't have methods as we have at USFA
-function parseFoodComposition () {
+const parseFoodComposition = () => {
   countries.forEach(country => {
     // @TODO it's a very long path. we can use our aliases
     // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
 
     // @TODO this method is duplicate
-    fs.createReadStream(
-      path.join(
+    createReadStream(
+      join(
         __dirname,
         `../../../src/data/FoodComposition/Food_Composition - ${country}.csv`
       )
@@ -133,13 +132,13 @@ function parseFoodComposition () {
         writedCountries.push(country)
 
         writeFile(
-          path.join(__dirname, `/FoodComposition - ${country}.json`),
+          join(__dirname, `/FoodComposition - ${country}.json`),
           results
         )
 
         if (writedCountries.length === countries.length) {
           writeFile(
-            path.join(__dirname, `/FoodComposition.json`),
+            join(__dirname, `/FoodComposition.json`),
             data
           )
         }
@@ -147,6 +146,6 @@ function parseFoodComposition () {
   })
 }
 
-module.exports = {
+export {
   parseFoodComposition
 }
