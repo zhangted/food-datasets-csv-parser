@@ -14,7 +14,7 @@ import { resolve, join } from 'path';
  * isDirectory()
  * @param {string} folderNamePath
  *  */
-function isDirectory (folderNamePath) {
+const isDirectory = (folderNamePath) => {
   if (existsSync(folderNamePath)) {
     return false
   }
@@ -25,7 +25,7 @@ function isDirectory (folderNamePath) {
  * For readAllFiles()
  * @param {String} path
  */
-function readAllFiles (path) {
+const readAllFiles = (path) => {
   var content = []
   path = fixPath(path)
   var files = readdirSync(path)
@@ -48,7 +48,7 @@ function readAllFiles (path) {
  * @param {String} path
  * @param {String} fileName
  */
-function getListContent (path, fileName = 'undefined') {
+const getListContent = (path, fileName = 'undefined') => {
   if (fileName === 'undefined') {
     // read all files
     return readAllFiles(path)
@@ -63,7 +63,7 @@ function getListContent (path, fileName = 'undefined') {
  * fixPath()
  * @param {String} path
  */
-function fixPath (path) {
+const fixPath = (path) => {
   path = resolve(__dirname, path)
   if (path.charAt(path.length - 1) !== '/') {
     path = path + '/'
@@ -75,7 +75,7 @@ function fixPath (path) {
  * For getList()
  * @param {String} path
  */
-function getList (path) {
+const getList = (path) => {
   var list = []
   var files = readdirSync(path)
   files.forEach(file => {
@@ -103,9 +103,7 @@ const joinPath = (arr, useResolve = false) => {
 }
 
 
-module.exports = {
-  checkFilePath,
-  getFileInfo,
+export default {
   readAllFiles,
   isDirectory,
   joinPath,
