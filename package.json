@@ -36,6 +36,7 @@
   "devDependencies": {
     "@babel/cli": "7.5.0",
     "@babel/core": "7.5.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.4",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/preset-env": "7.5.4",
     "babel-core": "7.0.0-bridge.0",
@@ -61,10 +62,10 @@
     "access": "public"
   },
   "dependencies": {
+    "@groceristar/static-data-generator": "0.1.1",
     "csv-parser": "^2.3.0",
     "lodash": "^4.17.11",
-    "path": "^0.12.7",
-    "@groceristar/static-data-generator": "0.1.1"
+    "path": "^0.12.7"
   },
   "files": [
     "dist"

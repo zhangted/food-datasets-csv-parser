@@ -3,13 +3,14 @@
 // https://github.com/mjeanroy/rollup-plugin-prettier
 // https://gitlab.com/IvanSanchez/rollup-plugin-file-as-blob
 
+
 import commonjs from 'rollup-plugin-commonjs'
 import resolve from 'rollup-plugin-node-resolve'
 import builtins from 'rollup-plugin-node-builtins'
-import replace from 'rollup-plugin-replace';
+// import replace from 'rollup-plugin-replace';
 import babel from 'rollup-plugin-babel'
 import pkg from './package.json'
-import eslint from "rollup-plugin-eslint"
+// import eslint from "rollup-plugin-eslint"
 
 // not all files you want to resolve are .js files
 // Default: [ '.mjs', '.js', '.json', '.node' ]
@@ -17,17 +18,15 @@ const extensions = [
   '.js'
 ]
 
-const name = 'StaticFilesGenerator'
+const name = 'FoodDatasetsCSVParser'
 
 // packages that should be treated as external dependencies, not bundled
 // e.g. ['axios']
 const external = [
   'fs',
   'path',
-  'uuid/v1',
-  'lodash',
-  'path-exists',
-  'dayjs'
+  'csv-parser',
+  '@groceristar/static-data-generator'
 ]
 
 
@@ -57,16 +56,7 @@ const plugins = () => ([
     browser: true, // Default: false // fixes ERROR!!! randomBytes(16)
   }),
 
-  //@TODO maybe we should do it for production only? not sure
-  replace({
-    include: ['node_modules/uuid/**'],
-    delimiters: ['', ''],
-    values: {
-      'crypto.randomBytes': 'require(\'randombytes\')'
-      //   "__BUILD_DATE__": () => new Date().toISOString(),
-      //   "__VERSION__": fs.readFileSync("version", "utf8").trim()
-    }
-  }),
+
 
   // Allows verification of entry point and all imported files with ESLint.
   // @TODO fix and enable eslint for rollup
@@ -116,16 +106,7 @@ const plugins = () => ([
   // }),
 ]);
 
-// example for adding plugin for env only
-// if(process.env.NODE_ENV == "production") {
-//   console.log("[config] In production environment - minifying JS");
-//   plugins.push(terser({
-//     numWorkers: os.cpus().length,
-//     compress: {
-//       ecma: 6
-//     }
-//   }));
-// }
+
 
 
 export default {

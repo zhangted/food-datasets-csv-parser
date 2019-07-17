@@ -1,8 +1,5 @@
 'use strict'
 
-// @TODO do we need path variable here?
-const path = require('path')
-
 const presets = [
   ['@babel/preset-env', {
     modules: false
@@ -21,14 +18,16 @@ const plugins = [
     {
       root: ['./src/'],
       alias: {
-        '~': './src/data'
+        // '~': './src/data'
       }
     }
   ],
   [
     '@babel/plugin-syntax-dynamic-import'
+  ],
+  [
+    '@babel/plugin-proposal-object-rest-spread'
   ]
-  // ["@babel/proposal-object-rest-spread"]
 ]
 
 module.exports = { presets, plugins, env }
