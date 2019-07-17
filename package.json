@@ -64,7 +64,7 @@
   "dependencies": {
     "@groceristar/static-data-generator": "0.1.1",
     "csv-parser": "^2.3.0",
-    "fs": "^0.0.1-security",
+    "fs": "^0.0.2",
     "lodash": "^4.17.11",
     "path": "^0.12.7"
   },
