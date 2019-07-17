@@ -1,11 +1,10 @@
 // @TODO soon we'll replace it carefully with similar code from generator that was perfected and clean up
-//https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
+// https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
 import { writeFile } from './writeFile'
 import { createReadStream } from 'fs'
 import csv from 'csv-parser'
 import { resolve } from 'path'
 import { joinPath } from './utils'
-
 
 // @TODO I don't like how this file was previously created.
 // I mean why we have this variables from the outside of our functions,
@@ -18,13 +17,13 @@ let folderName, numberOfFiles
 
 // @TODO change the name
 const fileWriter = (i, fileName, start, stop) => {
-  let data = result.slice(start, stop)
+  const data = result.slice(start, stop)
 
   // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  let jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`
-  let combinedPath = joinPath([__dirname, jsonPath])
+  const jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`
+  const combinedPath = joinPath([__dirname, jsonPath])
   // --> if you reading it - then it's time for updating it :)
 
   writeFile(combinedPath, data)
@@ -73,10 +72,10 @@ const csvToJson = (directory, file, headers) => {
         headers: headers
       })
     )
-    .on('data', function(data) {
+    .on('data', function (data) {
       results.push(data)
     })
-    .on('end', function() {
+    .on('end', function () {
       numberOfFiles = Math.ceil(results.length / maxEntries)
       result = results
       splitJsonIntoFiles(fileName)

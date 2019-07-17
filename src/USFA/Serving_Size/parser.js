@@ -1,5 +1,5 @@
 const path = require('path')
-const { parseDirectoryFiles } = require('../../fileSystem');
+const { parseDirectoryFiles } = require('../../fileSystem')
 
 const headers = [
   'NDB_No',
