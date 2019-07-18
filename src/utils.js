@@ -1,14 +1,11 @@
-import pathExists from 'path-exists';
+import pathExists from 'path-exists'
 import {
   existsSync,
   readdirSync,
   statSync,
-  readFileSync,
-} from 'fs';
-import { resolve, join } from 'path';
-
-
-
+  readFileSync
+} from 'fs'
+import { resolve, join } from 'path'
 
 /**
  * isDirectory()
@@ -95,18 +92,16 @@ const getList = (path) => {
  * @param {Bool} resolve
  */
 const joinPath = (arr, useResolve = false) => {
-
-  if(useResolve) {
-    return resolve(...arr);
+  if (useResolve) {
+    return resolve(...arr)
   }
 
   // @TODO i assume this is an else statement? confusing ...
-  return join(...arr);
+  return join(...arr)
 }
-
 
 export default {
   readAllFiles,
   isDirectory,
-  joinPath,
+  joinPath
 }

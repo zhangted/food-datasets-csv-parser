@@ -29,7 +29,6 @@ const external = [
   'lodash'
 ]
 
-
 // list of plugins used during building process
 const plugins = () => ([
 
@@ -42,7 +41,7 @@ const plugins = () => ([
 
     // use "jsnext:main" if possible
     // – see https://github.com/rollup/rollup/wiki/jsnext:main
-    //jsnext: true, // Default: false
+    // jsnext: true, // Default: false
 
     // use "main" field or index.js, even if it's not an ES6 module
     // (needs to be converted from CommonJS to ES6
@@ -53,10 +52,8 @@ const plugins = () => ([
     // specifies alternative files to load for people bundling
     // for the browser. If that's you, use this option, otherwise
     // pkg.browser will be ignored
-    browser: true, // Default: false // fixes ERROR!!! randomBytes(16)
+    browser: true // Default: false // fixes ERROR!!! randomBytes(16)
   }),
-
-
 
   // Allows verification of entry point and all imported files with ESLint.
   // @TODO fix and enable eslint for rollup
@@ -71,7 +68,7 @@ const plugins = () => ([
   // Allow bundling cjs modules. Rollup doesn't understand cjs
   commonjs({
     ignore: [
-      "conditional-runtime-dependency"
+      'conditional-runtime-dependency'
     ]
   }),
 
@@ -89,13 +86,12 @@ const plugins = () => ([
     // solve a problem with spread operator transpilation https://github.com/rollup/rollup/issues/281
     // plugins: ['babel-plugin-transform-object-rest-spread'],
     // removes comments from output
-    comments: false,
+    comments: false
   }),
 
   // Compile TypeScript/JavaScript files
 
-
-  builtins(),
+  builtins()
   // remove flow annotations from output
   // flow(),
 
@@ -104,40 +100,37 @@ const plugins = () => ([
   //   files: ['src/*.flow'],
   //   dest: 'dist',
   // }),
-]);
-
-
-
+])
 
 export default {
   // source file / entrypoint
   input: 'src/index.js',
   // output configuration
   output: [{
-      // output file location
-      file: pkg.main,
-      // format of generated JS file, also: esm, and others are available
-      format: 'cjs'
-    },
-    {
-      // output file location
-      file: pkg.module,
-      // format of generated JS file, also: esm, and others are available
-      format: 'es',
-      // format: 'esm',
-      // add sourcemaps
-      sourcemap: true
-    },
-    {
-      // output file location
-      file: pkg.browser,
-      // format of generated JS file, also: esm, and others are available
-      format: 'iife',
-      // name visible for other scripts
-      name
-      // https://rollupjs.org/guide/en#output-globals-g-globals
-      // globals: {}
-    }
+    // output file location
+    file: pkg.main,
+    // format of generated JS file, also: esm, and others are available
+    format: 'cjs'
+  },
+  {
+    // output file location
+    file: pkg.module,
+    // format of generated JS file, also: esm, and others are available
+    format: 'es',
+    // format: 'esm',
+    // add sourcemaps
+    sourcemap: true
+  },
+  {
+    // output file location
+    file: pkg.browser,
+    // format of generated JS file, also: esm, and others are available
+    format: 'iife',
+    // name visible for other scripts
+    name
+    // https://rollupjs.org/guide/en#output-globals-g-globals
+    // globals: {}
+  }
   ],
 
   // Specify here external modules which you don't want to include in your bundle (for instance: 'lodash', 'moment' etc.)
