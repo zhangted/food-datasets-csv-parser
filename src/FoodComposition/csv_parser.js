@@ -1,7 +1,7 @@
-import { createReadStream } from 'fs';
-import csv from 'csv-parser'; // @TODO does it work? I'm not sure
-import { join } from 'path';
-import { writeFile } from '../writeFile';
+import { createReadStream } from 'fs'
+import csv from 'csv-parser' // @TODO does it work? I'm not sure
+import { join } from 'path'
+import { writeFile } from '../writeFile'
 
 let results = []
 const data = []
