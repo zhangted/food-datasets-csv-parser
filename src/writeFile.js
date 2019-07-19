@@ -1,7 +1,7 @@
 // const filePath = require('../files')
-const fs = require('fs')
-const PATH = require('path')
-const srcUtils = require('./../src/utils')
+import { writeFile, readFileSync, mkdirSync } from 'fs';
+import PATH from 'path';
+import srcUtils from './utils';
 // const { promisify } = require('util') // ?? it's utils of not *** Answer : NO. It's using for writing data in json
 // const { promisify } = require('util')
 // const _ = require('lodash')
@@ -37,7 +37,7 @@ function writeFile (path, data) {
   var dataStr = makeReadable(data)
   // dataStr = '[' + dataStr + ']'
   // console.log(dataStr)
-  fs.writeFile(path, dataStr, function (err) {
+   writeFile(path, dataStr, function (err) {
     if (err) { return console.log(err) }
     console.info(path + ' file generated successfully!')
   })
@@ -188,8 +188,8 @@ function updateContent (content, keys) {
   return content
 }
 
-module.exports = {
-  writeFile,
+export default {
+  write,
   splitObject,
   combineObject,
   makeReadable,
