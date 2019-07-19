@@ -1,10 +1,10 @@
 // @TODO soon we'll replace it carefully with similar code from generator that was perfected and clean up
 // https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
-import { writeFile } from './writeFile'
-import { createReadStream } from 'fs'
-import csv from 'csv-parser'
-import { resolve } from 'path'
-import utils from './utils'
+import { write } from '@groceristar/static-data-generator';
+import { createReadStream } from 'fs';
+import csv from 'csv-parser';
+import { resolve } from 'path';
+import utils from './utils';
 
 // @TODO I don't like how this file was previously created.
 // I mean why we have this variables from the outside of our functions,
@@ -26,7 +26,7 @@ const fileWriter = (i, fileName, start, stop) => {
   const combinedPath = utils.joinPath([__dirname, jsonPath])
   // --> if you reading it - then it's time for updating it :)
 
-  writeFile(combinedPath, data)
+  write(combinedPath, data)
 }
 
 // @TODO update this method later, when we'll migrate to `write` from generator

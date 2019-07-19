@@ -1,7 +1,7 @@
-import { createReadStream } from 'fs'
-import csv from 'csv-parser' // @TODO does it work? I'm not sure
-import { join } from 'path'
-import { writeFile } from '../writeFile'
+import { createReadStream } from 'fs';
+import csv from 'csv-parser'; // @TODO does it work? I'm not sure
+import { join } from 'path';
+import { write } from '@groceristar/static-data-generator';
 
 let results = []
 const data = []
@@ -131,13 +131,13 @@ const parseFoodComposition = () => {
 
         writedCountries.push(country)
 
-        writeFile(
+        write(
           join(__dirname, `/FoodComposition - ${country}.json`),
           results
         )
 
         if (writedCountries.length === countries.length) {
-          writeFile(
+          write(
             join(__dirname, `/FoodComposition.json`),
             data
           )
