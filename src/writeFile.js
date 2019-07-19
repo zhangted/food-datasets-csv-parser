@@ -8,31 +8,6 @@ import srcUtils from './utils';
 // const _ = require('lodash')
 
 /**
- * for makeReadable()
- * @param {Object} data a json object
- * */
-const makeReadable = (data) => {
-  var dataStr = JSON.stringify(data)
-
-  const replaceList = [
-    [/{"/g, '{ "'],
-    [/{"/g, '{ " '],
-    [/},{/g, ' },\n{'],
-    [/":/g, '": '],
-    [/,"/g, ',\n "']
-  ]
-
-  replaceList.forEach((replacer) => {
-    dataStr = dataStr.replace(replacer[0], replacer[1])
-  })
-
-  return dataStr
-}
-
-// execute function
-// writeFiles()
-
-/**
  * For fixPath()
  * @param {String} path
  */
