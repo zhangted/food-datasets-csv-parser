@@ -739,10 +739,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@groceristar/static-data-generator@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@groceristar/static-data-generator/-/static-data-generator-0.1.2.tgz#497272f76768eb75c891f6a8b64688f4df51219d"
-  integrity sha512-4fBjOrx+aRIDrt7CdT8BxvXAhX5R9J66bxgLe8+la2S3yARX3inR3vkQKAA6/xmjyO/jgycQqwaCd92dizro+A==
+"@groceristar/static-data-generator@0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@groceristar/static-data-generator/-/static-data-generator-0.1.3.tgz#84ad1c1e85f8587d3befed5c519bfd373f53a9c7"
+  integrity sha512-GG5bHKJtzdJGPJPs9NY+T5GE0dOUZt/1ONGZoAs3NsnJWeG5524aL5TX8llA8UMHsxMiE85IPvutHHKZvvGEFw==
   dependencies:
     dayjs "^1.8.13"
     lodash "^4.17.11"
