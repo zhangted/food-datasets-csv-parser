@@ -1,6 +1,6 @@
 // @TODO soon we'll replace it carefully with similar code from generator that was perfected and clean up
 // https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
-import { write } from './writeFile';
+import { write } from '@groceristar/static-data-generator';
 import { createReadStream } from 'fs';
 import csv from 'csv-parser';
 import { resolve } from 'path';
