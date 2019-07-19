@@ -1,5 +1,6 @@
 // const filePath = require('../files')
-import { writeFile, readFileSync, mkdirSync } from 'fs';
+import { readFileSync, mkdirSync } from 'fs';
+import { write } from '@groceristar/static-data-generator';
 import PATH from 'path';
 import srcUtils from './utils';
 // const { promisify } = require('util') // ?? it's utils of not *** Answer : NO. It's using for writing data in json
@@ -27,21 +28,6 @@ const makeReadable = (data) => {
 
   return dataStr
 }
-
-const write = (path, data) => new Promise((resolve) => {
-
-  const dataStr = stripSymbols(data);
-
-  writeFile(path, dataStr, (err) => {
-    if (err) {
-      console.log(err);
-      resolve(false);
-    } else {
-      console.info(`${path} file generated successfully!`);
-      resolve(true);
-    }
-  });
-});
 
 // execute function
 // writeFiles()
