@@ -9,5 +9,5 @@ import csvToJson from './csvToJson';
 export {
   csvToJson,
   parseFoodComposition,
-  parseDirectoryFiles
-}
+  parseDirectoryFiles,
+};

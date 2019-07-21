@@ -1,5 +1,5 @@
-const path = require('path')
-const { parseDirectoryFiles } = require('../../fileSystem')
+const path = require('path');
+const { parseDirectoryFiles } = require('../../fileSystem');
 
 const headers = [
   'NDB_Number',
@@ -9,11 +9,11 @@ const headers = [
   'manufacturer',
   'date_modified',
   'date_available',
-  'ingredients_english'
-]
+  'ingredients_english',
+];
 
-const directory = '../../../../sd/src/data/Product'
+const directory = '../../../../sd/src/data/Product';
 // //joining path of directory
-const directoryPath = path.join(__dirname, directory)
+const directoryPath = path.join(__dirname, directory);
 
-parseDirectoryFiles(directoryPath, headers)
+parseDirectoryFiles(directoryPath, headers);

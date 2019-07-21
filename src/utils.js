@@ -1,11 +1,11 @@
-import pathExists from 'path-exists'
+import pathExists from 'path-exists';
 import {
   existsSync,
   readdirSync,
   statSync,
-  readFileSync
-} from 'fs'
-import { resolve, join } from 'path'
+  readFileSync,
+} from 'fs';
+import { resolve, join } from 'path';
 
 /**
  * isDirectory()
@@ -14,32 +14,32 @@ import { resolve, join } from 'path'
  */
 const isDirectory = (folderNamePath) => {
   if (existsSync(folderNamePath)) {
-    return false
+    return false;
   }
-  return true
-}
+  return true;
+};
 
 /**
  * For readAllFiles()
  * @param {String} path
  */
 const readAllFiles = (path) => {
-  var content = []
-  path = fixPath(path)
-  var files = readdirSync(path)
-  files.forEach(file => {
+  const content = [];
+  path = fixPath(path);
+  const files = readdirSync(path);
+  files.forEach((file) => {
     // @TODO I don't like this long line
-    const fileStat = statSync(path + file).isDirectory()
+    const fileStat = statSync(path + file).isDirectory();
     if (file.slice(-5) === '.json') {
       if (!fileStat) {
-        var data = readFileSync(path + file)
-        data = JSON.parse(data)
-        content.push(data)
+        let data = readFileSync(path + file);
+        data = JSON.parse(data);
+        content.push(data);
       }
     }
-  })
-  return content
-}
+  });
+  return content;
+};
 
 /**
  * For getListContent()
@@ -49,42 +49,42 @@ const readAllFiles = (path) => {
 const getListContent = (path, fileName = 'undefined') => {
   if (fileName === 'undefined') {
     // read all files
-    return readAllFiles(path)
+    return readAllFiles(path);
   }
   // read specified file
-  let data = readFileSync(path + fileName)
-  data = JSON.parse(data)
-  return data
-}
+  let data = readFileSync(path + fileName);
+  data = JSON.parse(data);
+  return data;
+};
 
 /**
  * fixPath()
  * @param {String} path
  */
 const fixPath = (path) => {
-  path = resolve(__dirname, path)
+  path = resolve(__dirname, path);
   if (path.charAt(path.length - 1) !== '/') {
-    path = path + '/'
+    path += '/';
   }
-  return path
-}
+  return path;
+};
 
 /**
  * For getList()
  * @param {String} path
  */
 const getList = (path) => {
-  var list = []
-  var files = readdirSync(path)
-  files.forEach(file => {
+  const list = [];
+  const files = readdirSync(path);
+  files.forEach((file) => {
     // @TODO I saw a similar line at method above
-    const fileStat = statSync(path + file).isDirectory()
+    const fileStat = statSync(path + file).isDirectory();
     if (!fileStat) {
-      list.push(file)
+      list.push(file);
     }
-  })
-  return list
-}
+  });
+  return list;
+};
 
 /**
  * For joinPath()
@@ -93,15 +93,15 @@ const getList = (path) => {
  */
 const joinPath = (arr, useResolve = false) => {
   if (useResolve) {
-    return resolve(...arr)
+    return resolve(...arr);
   }
 
   // @TODO i assume this is an else statement? confusing ...
-  return join(...arr)
-}
+  return join(...arr);
+};
 
 export default {
   readAllFiles,
   isDirectory,
-  joinPath
-}
+  joinPath,
+};

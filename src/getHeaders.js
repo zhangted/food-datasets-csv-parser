@@ -1,10 +1,10 @@
-const csv = require('csvtojson')
+const csv = require('csvtojson');
 
-const getHeaders = async path => {
-  const data = await csv().fromFile(path)
-  const headers = Object.keys(data[0])
+const getHeaders = async (path) => {
+  const data = await csv().fromFile(path);
+  const headers = Object.keys(data[0]);
 
-  return headers
-}
+  return headers;
+};
 
-module.exports = getHeaders
+module.exports = getHeaders;
