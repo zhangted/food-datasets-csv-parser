@@ -1,4 +1,4 @@
-const csv = require('csvToJson');
+import csv from './csvToJson';
 
 const getHeaders = async (path) => {
   const data = await csv().fromFile(path);
@@ -7,4 +7,6 @@ const getHeaders = async (path) => {
   return headers;
 };
 
-module.exports = getHeaders;
+export default {
+  getHeaders
+};
