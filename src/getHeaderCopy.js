@@ -1,4 +1,4 @@
-import csv from 'csvtojson';
+import csv from './csvToJson';
 
 const getHeaders = async (path) => {
   const data = await csv().fromFile(path);
