@@ -1,4 +1,4 @@
-const csv = require('csvtojson');
+const csv = require('csvToJson');
 
 const getHeaders = async (path) => {
   const data = await csv().fromFile(path);
