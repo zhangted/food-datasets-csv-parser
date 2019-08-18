@@ -13,16 +13,34 @@
 
 
 
-#### scripts for testing few of our parsers - old, very old and new one
-Note: I didn't test them here. And i also think that projects should evolve in order to get able to use csv_parser as separated entity correctly.
 
+
+#### scripts for testing few of our parsers - old, very old and new one
+Note: I didn't test them here. And i also think that projects should evolve in order to get able to use `csv_parser` as separated entity correctly.
+
+**FoodComposition** it is our first dataset that we actually parsed before, when this module was part of [sd module](https://github.com/GroceriStar/sd/) repository codebase.
+That code was working before. It can be an example of how we calling methods from `src` folder.
+When data was parsed. It calling methods from our another module - [generator module]()
+
+You can find how we execute this script at package.json
 ```
 "csv:fc"    - FoodComposition,
+```
+
+**USFA** is a second, separated dataset that we should parse
+
+below is a list to script that executing parser for different CSV files that we have.
+```
 "csv:usfa1" - USFA/Derivation_Code_Description
 "csv:usfa2" - USFA/Nutrition
 "csv:usfa3" - USFA/Product
 "csv:usfa4" - USFA/ServingSize
 ```
+
+**FAO** is a third dataset. I think we didn't start to create a parse file for it.
+
+
+
 
 ## Quick Start
 Several quick start options are available:
