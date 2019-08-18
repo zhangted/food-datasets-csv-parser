@@ -11,16 +11,6 @@ const {
   ingredients,
   grocery
 } = require('../../../src/files.js')
-//
-// const {
-//   favorites,
-//   departments,
-//   userGrocery,
-//   items,
-//   users,
-//   ingredients,
-//   grocery
-// } = require('@files')
 
 // @TODO as we may need to be able to call this function from the
 // outside of this project - we should move this method outside
