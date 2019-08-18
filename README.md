@@ -4,19 +4,20 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/1ec3613f4b74a3742e18/test_coverage)](https://codeclimate.com/github/GroceriStar/food-datasets-csv-parser/test_coverage)
 [![Build Status](https://travis-ci.org/GroceriStar/food-datasets-csv-parser.svg?branch=master)](https://travis-ci.org/GroceriStar/food-datasets-csv-parser)
 
-- Husky
-- Lint-Staged
-- Travis CI
-
-- index.js as main point
-- test coverage
+#### Stretch goals
+- [ ] Husky
+- [ ] Lint-Staged
+- [ ] Travis CI
+- [ ] index.js as main point
+- [ ] created great test coverage
 
 
 
 
 
 #### scripts for testing few of our parsers - old, very old and new one
-Note: I didn't test them here. And i also think that projects should evolve in order to get able to use `csv_parser` as separated entity correctly.
+**Note:** I didn't test them here(at separated place).
+And i also think that projects should evolve in order to get able to use `csv_parser` as separated entity correctly.
 
 **FoodComposition** it is our first dataset that we actually parsed before, when this module was part of [sd module](https://github.com/GroceriStar/sd/) repository codebase.
 That code was working before. It can be an example of how we calling methods from `src` folder.
@@ -39,7 +40,7 @@ below is a list to script that executing parser for different CSV files that we 
 
 **FAO** is a third dataset. I think we didn't start to create a parse file for it.
 
-
+---
 
 
 ## Quick Start
@@ -110,8 +111,10 @@ File Name is passed is to `splitJsonFile(file)`` to keep track of the file being
 #### `filewriter()` – requires writeFile from sd/generator to work.
 It takes in the child number of the json file( i ) ,the file name( fileName ),the interval the json stored in result should start and stop slicing. The sliced data will be written into the folder calling `parserFile` function along side file name being parsed and the child number of the file.
 
+
 ### ES5 and ES6 simple differences reference
 1. [https://engineering.carsguide.com.au/es5-vs-es6-syntax-6c8350fa6998](https://engineering.carsguide.com.au/es5-vs-es6-syntax-6c8350fa6998)
+
 
 ### `food-datasets-csv-parser/src` directory structure
 ```
@@ -150,7 +153,7 @@ It takes in the child number of the json file( i ) ,the file name( fileName ),th
 └── writeFile.js
 ```
 
-#### Methods
+## Methods from this module
 
 #### fileWriter
 ```
@@ -195,3 +198,37 @@ It takes in the child number of the json file( i ) ,the file name( fileName ),th
 #### splitObject
 ```
 ```
+
+
+#### How to create parser for FAO dataset from scratch
+it should be a pretty similar work that we've made with FoodComposition data and USFA data as well.
+we just have a different dataset, with different headers and files,
+stored here: https://github.com/ChickenKyiv/awesome-food-db-strucutures/tree/master/FAO
+
+logic is simple - it should have a similar structure as USFA has and similar parser files logic is simple - it should have a similar structure as USFA has and similar parser files
+
+1st generation of parser scripts is related to  **Food composition** and located at [folder](https://github.com/GroceriStar/food-datasets-csv-parser/tree/master/src/FoodComposition)
+
+example of 2nd gen parser script is [here](https://github.com/GroceriStar/food-datasets-csv-parser/tree/master/src/USFA)
+
+
+> Where should I write parser for FAO?
+
+For now, use the same logic as we have at this repository,
+i.e. at `src` folder you can see now 3 folder that are our folders for storing data and parsers from different dataset.
+It's our old logic of locating files. Later we'll move all projects our from `src` folder.
+I created `projects3.0` - we'll move there our code later when it will work at least partially.
+
+> What we should do in order to create a parser, related to FAO dataset from scratch?
+
+**Keep in mind that part of these was actually completed**
+- [x] create a folder with name FAO
+- [x] copy any parser.js from USFA project
+- [x] upload to that folder csv files from https://github.com/ChickenKyiv/awesome-food-db-strucutures/tree/master/FAO
+- [ ] for each "table" - each file with exported data are actually a table from database. For each "table" you should create separated folders, like we did in USFA case.
+- [ ] for each "table" you should have a separated file parser.js that will be a script that we call for parsing each table
+- [ ] you can add a line at package.json so you'll be able to call your script(right now it wouldn't work, but soon, we'll finish other changes that will help to make this parsers work)
+
+
+
+
