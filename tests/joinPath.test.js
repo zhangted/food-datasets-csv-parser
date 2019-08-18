@@ -1,4 +1,4 @@
-import { joinPath } from './utils';
+import { joinPath } from './src/utils';
 
 describe('test for the function joinPath cases', () => {
   it('checks join path', () => {

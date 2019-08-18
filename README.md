@@ -10,7 +10,7 @@
 - [ ] Travis CI
 - [ ] index.js as main point
 - [ ] created great test coverage
-
+- [ ] Extend Travis CI script: when new module released, it should work well with our projects3.0 automatically
 
 
 
