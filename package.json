@@ -16,11 +16,11 @@
     "play": "node ./src/play/play.js",
     "parse:FoodComposition": "node ./runner/parseFoodComposition",
     "debug:FoodComposition": "npm run build && node ./debug/parseFoodComposition",
-    "csv:fc": "node ./examples/projects/FoodComposition/csv_parser",
-    "csv:usfa1": "node ./examples/projects/USFA/Derivation_Code_Description/parser",
-    "csv:usfa2": "node ./examples/projects/USFA/Nutrition/parser",
-    "csv:usfa3": "node ./examples/projects/USFA/Product/parser",
-    "csv:usfa4": "node ./examples/projects/USFA/Serving_Size/parser"
+    "csv:fc": "node ./src/FoodComposition/parser",
+    "csv:usfa1": "node ./src/USFA/Derivation_Code_Description/parser",
+    "csv:usfa2": "node ./src/USFA/Nutrition/parser",
+    "csv:usfa3": "node ./src/USFA/Product/parser",
+    "csv:usfa4": "node ./src/USFA/Serving_Size/parser"
   },
   "description": "module to use static JSON files with groceristar projects",
   "main": "dist/index.cjs",
