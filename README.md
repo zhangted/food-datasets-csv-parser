@@ -242,6 +242,4 @@ here I will need to dynamically obtain the headers from each file.
 
 For this kind of problem we created a new method, that should be tested and used.
 it's called ``getHeaders `` and located [here](https://github.com/GroceriStar/food-datasets-csv-parser/blob/master/src/getHeaders.js)
-We didn't battle-tested it. And there is a problem
-
-
+We didn't battle-tested it. So if ```getHeaders``` require changes - it's ok.
