@@ -21,7 +21,7 @@ And i also think that projects should evolve in order to get able to use `csv_pa
 
 **FoodComposition** it is our first dataset that we actually parsed before, when this module was part of [sd module](https://github.com/GroceriStar/sd/) repository codebase.
 That code was working before. It can be an example of how we calling methods from `src` folder.
-When data was parsed. It calling methods from our another module - [generator module]()
+When data was parsed. It calling methods from our another module - [generator module](https://github.com/GroceriStar/food-static-files-generator)
 
 You can find how we execute this script at package.json
 ```
@@ -57,7 +57,8 @@ Several quick start options are available:
 
 
 ## How to split json into single elements
-To split json file you will require `sd/generator/writeFile.js` . Call the function **splitObject()** with parameters `path`(as string),`filename`(as string) and a `flag`(0 or 1).
+To split json file you will require `sd/generator/writeFile.js` .
+Call the function **splitObject()** with parameters `path`(as string),`filename`(as string) and a `flag`(0 or 1).
 `Flag=0` means splitted elements are to be name after the `name` attribute and if `flag=1` then elements will be give named by a number with removed whitespaces and in lowercase to maintain uniformity.
 The splitted elements will be stored at the given `path`/`filename_elements`.
 
@@ -77,17 +78,21 @@ You can combine objects by calling function **combineObjects()** from writeFile.
 
 **combineObject(path, keys_to_be_removed)** - This will read all files in the given path and remove the keys given the list of keys_to_be_removed and saves it into a new file in the given `path` as name `<dirName>_combined.json`.
 
-Example:- combineObject('/abc/pqr/', ['id', 'img'])
+Example:- `combineObject('/abc/pqr/', ['id', 'img'])`
 
-If you want to modify the json structure of splitted files and combine them again to a single file then you can call splitObject with a call back function.
+If you want to modify the json structure of splitted files and combine them
+again to a single file then you can call splitObject with a call back function.
 
 
 
 ### How to parse csv File(s) from a folder to to json file(s)
-Create a folder you want the generated json file(s) to be. Also create a parser.js file in the created folder.
-In csvParser.js call `ParseDirectoryFiles()` from csvParser.js with parameters `directoryPath` (the folder to read your csv file(s) from) as string, and headers (the header of the csv files ) as array of string.
+Create a folder you want the generated json file(s) to be.
+Also create a parser.js file in the created folder.
+In csvParser.js call `ParseDirectoryFiles()` from csvParser.js with
+parameters `directoryPath` (the folder to read your csv file(s) from) as string,
+and headers (the header of the csv files ) as array of string.
 
-In csvParser.js
+**In csvParser.js**
 ```
 ParseDirectoryFiles(directoryPath, headers)
   => csvToJson(directory, file, headers)
@@ -96,7 +101,8 @@ ParseDirectoryFiles(directoryPath, headers)
 ```
 
 
-`ParseDirectoryFiles` gets a directory path from call, and reads all files in the directory but will only pass csv files to `csvToJson(directory, file, headers)`.
+`ParseDirectoryFiles` gets a directory path from call, and reads all files in the
+directory but will only pass csv files to `csvToJson(directory, file, headers)`.
 Each csv file is passed into `csvParser()``.
 
 
@@ -230,5 +236,12 @@ I created `projects3.0` - we'll move there our code later when it will work at l
 - [ ] you can add a line at package.json so you'll be able to call your script(right now it wouldn't work, but soon, we'll finish other changes that will help to make this parsers work)
 
 
+> It looks like these .csv files have many headers.
+Whereas in the USFA version, you could easily hardcode the headers and pass them as the second argument to parseDirectoryFiles(),
+here I will need to dynamically obtain the headers from each file.
+
+For this kind of problem we created a new method, that should be tested and used.
+it's called ``getHeaders `` and located [here](https://github.com/GroceriStar/food-datasets-csv-parser/blob/master/src/getHeaders.js)
+We didn't battle-tested it. And there is a problem
 
 
