@@ -22,7 +22,21 @@ const parseDirectoryFiles = (directoryPath, headers) => {
   });
 };
 
-export default parseDirectoryFiles
-// export {
-//   parseDirectoryFiles,
-// };
+
+/**
+ * isFolderExists prev. isDirectory()
+ * @param {string} folderNamePath
+ *
+ */
+const isFolderExists = (folderNamePath) => {
+  if (existsSync(folderNamePath)) {
+    return false;
+  }
+  return true;
+};
+
+// export default parseDirectoryFiles;
+export {
+  parseDirectoryFiles,
+  isDirectory
+};

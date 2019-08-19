@@ -1,4 +1,4 @@
-import pathExists from 'path-exists';
+// import pathExists from 'path-exists';
 import { resolve, join } from 'path';
 import {
   existsSync,
@@ -7,18 +7,6 @@ import {
   readFileSync,
 } from 'fs';
 
-
-/**
- * isDirectory()
- * @param {string} folderNamePath
- *
- */
-const isDirectory = (folderNamePath) => {
-  if (existsSync(folderNamePath)) {
-    return false;
-  }
-  return true;
-};
 
 /**
  * For readAllFiles()
@@ -46,7 +34,7 @@ const readAllFiles = (path) => {
  * For getListContent()
  * @param {String} path
  * @param {String} fileName
- */
+*/
 const getListContent = (path, fileName = 'undefined') => {
   if (fileName === 'undefined') {
     // read all files

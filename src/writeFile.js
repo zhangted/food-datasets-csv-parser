@@ -4,7 +4,7 @@ import { readFileSync, mkdirSync } from 'fs';
 // at least we can deconstruct it and only use methods inside of this library.
 import PATH from 'path';
 import { write } from '@groceristar/static-data-generator';
-import srcUtils from './utils';
+import { isDirectory } from './utils';
 // const { promisify } = require('util')
 // const _ = require('lodash')
 
@@ -55,7 +55,7 @@ const saveFile = (folderNamePath, file, fileData, flag) => {
 const makeFolder = (path, file) => {
   const folderName = `${file.slice(0, -5)}_elements`;
   const folderNamePath = path + folderName;
-  if (srcUtils.isDirectory(folderNamePath)) {
+  if (isDirectory(folderNamePath)) {
     mkdirSync(folderNamePath);
   }
   return folderNamePath;
