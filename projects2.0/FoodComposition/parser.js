@@ -1,7 +1,5 @@
-
 // @TODO hope soon to test this script with updated version
 // of this method from generator - write
-
 import { createReadStream } from 'fs';
 import csv from 'csv-parser'; // @TODO does it work? I'm not sure
 import { join } from 'path';
@@ -32,7 +30,8 @@ const parseFoodComposition = () => {
     createReadStream(
       join(
         __dirname,
-        `../../../src/data/FoodComposition/Food_Composition - ${country}.csv`,
+        `./raw/Food_Composition - ${country}.csv`,
+        // `../../../src/data/FoodComposition/Food_Composition - ${country}.csv`,
       ),
     )
       .pipe(

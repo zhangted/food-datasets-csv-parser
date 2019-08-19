@@ -1,9 +1,10 @@
 // const filePath = require('../files')
 import { readFileSync, mkdirSync } from 'fs';
-import { write } from '@groceristar/static-data-generator';
+// @TODO replace PATH constant with a normal way...
+// at least we can deconstruct it and only use methods inside of this library.
 import PATH from 'path';
+import { write } from '@groceristar/static-data-generator';
 import srcUtils from './utils';
-// const { promisify } = require('util') // ?? it's utils of not *** Answer : NO. It's using for writing data in json
 // const { promisify } = require('util')
 // const _ = require('lodash')
 

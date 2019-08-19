@@ -1,12 +1,13 @@
 // Here I want to put all methods, related to reading data, etc.
-// like
 import { readdir } from 'fs';
 import csvToJson from './csvToJson';
+
+// @TODO there was an idea to replace console.log with other ways to log thigns
 
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
   readdir(directoryPath, (err, files) => {
-  // handling error
+    // handling error
     if (err) {
       return console.log(`Unable to scan directory: ${err}`);
     }

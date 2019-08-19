@@ -13,14 +13,13 @@
     "test:cover": "jest --coverage",
     "lint": "eslint ./src --fix",
     "format": "prettier",
-    "play": "node ./src/play/play.js",
     "parse:FoodComposition": "node ./runner/parseFoodComposition",
     "debug:FoodComposition": "npm run build && node ./debug/parseFoodComposition",
-    "csv:fc": "node ./src/FoodComposition/parser",
-    "csv:usfa1": "node ./src/USFA/Derivation_Code_Description/parser",
-    "csv:usfa2": "node ./src/USFA/Nutrition/parser",
-    "csv:usfa3": "node ./src/USFA/Product/parser",
-    "csv:usfa4": "node ./src/USFA/Serving_Size/parser"
+    "csv:fc": "node ./projects2.0/FoodComposition/parser",
+    "csv:usfa1": "node ./projects2.0/USFA/Derivation_Code_Description/parser",
+    "csv:usfa2": "node ./projects2.0/USFA/Nutrition/parser",
+    "csv:usfa3": "node ./projects2.0/USFA/Product/parser",
+    "csv:usfa4": "node ./projects2.0/USFA/Serving_Size/parser"
   },
   "description": "module to use static JSON files with groceristar projects",
   "main": "dist/index.cjs",
@@ -65,7 +64,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@groceristar/static-data-generator": "0.1.10",
+    "@groceristar/static-data-generator": "^0.1.10",
     "csv-parser": "^2.3.0",
     "fs": "^0.0.2",
     "lodash": "^4.17.11",

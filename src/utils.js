@@ -1,11 +1,12 @@
 import pathExists from 'path-exists';
+import { resolve, join } from 'path';
 import {
   existsSync,
   readdirSync,
   statSync,
   readFileSync,
 } from 'fs';
-import { resolve, join } from 'path';
+
 
 /**
  * isDirectory()

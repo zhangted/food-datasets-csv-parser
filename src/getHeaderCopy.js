@@ -10,5 +10,5 @@ const getHeaders = async (path) => {
 };
 
 export default {
-  getHeaders
+  getHeaders,
 };
