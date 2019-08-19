@@ -73,12 +73,19 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run clean",
+      "pre-commit": "lint-staged && npm run clean",
       "after": "lint-staged",
       "then": "yarn precommit"
     }
   },
   "files": [
     "dist"
-  ]
+  ],
+  "lint-staged": {
+    "*.js": [
+      "npm run format",
+      "npm run lint",
+      "git add"
+    ]
+  }
 }
