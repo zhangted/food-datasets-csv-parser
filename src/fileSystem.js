@@ -1,9 +1,10 @@
 // Here I want to put all methods, related to reading data, etc.
-import { readdir } from "fs";
-import { csvToJson } from "./index";
+import { readdir, existsSync } from "fs";
+import csvToJson from "./csvToJson";
 
 // @TODO there was an idea to replace console.log with other ways to log thigns
-
+// @TODO I don't like the logic of this method.
+// i think we can rewrite it and make better.
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
   readdir(directoryPath, (err, files) => {
@@ -19,6 +20,7 @@ const parseDirectoryFiles = (directoryPath, headers) => {
         csvToJson(directoryPath, file, headers);
       }
     });
+    return true;
   });
 };
 

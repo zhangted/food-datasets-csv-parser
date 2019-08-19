@@ -1,11 +1,11 @@
-import { createReadStream } from 'fs';
-import csv from 'csv-parser';
-import { resolve } from 'path';
+import { createReadStream } from "fs";
+import csv from "csv-parser";
+import { resolve } from "path";
 // @TODO soon we'll replace it carefully
 // with similar code from generator that was perfected and clean up
 // https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
-import { write } from '@groceristar/static-data-generator';
-import utils from './utils';
+import { write } from "@groceristar/static-data-generator";
+import { joinPath } from "./utils";
 
 // @TODO I don't like how this file was previously created.
 // I mean why we have this variables from the outside of our functions,
@@ -14,8 +14,8 @@ import utils from './utils';
 
 const maxEntries = 10000;
 let result = [];
-let folderName; let
-  numberOfFiles;
+let folderName;
+let numberOfFiles;
 
 // @TODO change the name
 const fileWriter = (i, fileName, start, stop) => {
@@ -25,7 +25,7 @@ const fileWriter = (i, fileName, start, stop) => {
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
   const jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`;
-  const combinedPath = utils.joinPath([__dirname, jsonPath]);
+  const combinedPath = joinPath([__dirname, jsonPath]);
   // --> if you reading it - then it's time for updating it :)
 
   write(combinedPath, data);
@@ -33,8 +33,8 @@ const fileWriter = (i, fileName, start, stop) => {
 
 // @TODO update this method later, when we'll migrate to `write` from generator
 
-const splitJsonIntoFiles = (fileName) => {
-  for (let i; i <= numberOfFiles; i++) {
+const splitJsonIntoFiles = fileName => {
+  for (let i; i <= numberOfFiles; i = +1) {
     const start = (i - 1) * maxEntries;
     let stop = i * maxEntries;
 
@@ -54,9 +54,9 @@ const splitJsonIntoFiles = (fileName) => {
 // if it's main - then let's put it into index.js
 const csvToJson = (directory, file, headers) => {
   // @TODO can this be a separated method?
-  const fileName = file.split('.')[0];
+  const fileName = file.split(".")[0];
   const results = [];
-  const folder = directory.split('/');
+  const folder = directory.split("/");
 
   folderName = folder[folder.length - 1];
   // <--
@@ -72,19 +72,17 @@ const csvToJson = (directory, file, headers) => {
     .pipe(
       csv({
         skipLines: 1,
-        headers,
-      }),
+        headers
+      })
     )
-    .on('data', (data) => {
+    .on("data", data => {
       results.push(data);
     })
-    .on('end', () => {
+    .on("end", () => {
       numberOfFiles = Math.ceil(results.length / maxEntries);
       result = results;
       splitJsonIntoFiles(fileName);
     });
 };
 
-export default {
-  csvToJson,
-};
+export default csvToJson;
