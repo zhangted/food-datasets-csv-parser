@@ -14,7 +14,7 @@
     "test:cover": "jest --coverage",
     "jsonlint": "node jsonlint.config.js",
     "format": "prettier",
-    "generate": "xxx"
+    "parse": "node ./debug"
   },
   "description": "xxx",
   "main": "dist/index.cjs",

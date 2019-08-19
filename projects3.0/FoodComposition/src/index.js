@@ -13,7 +13,7 @@ import _ from 'lodash'
 
 import { __generateId } from '@utils'
 
-import { parseFoodComposition } from './index'
+import { parseFoodComposition } from './csv_parser'
 
 // const { resolve } from 'path'
 //
