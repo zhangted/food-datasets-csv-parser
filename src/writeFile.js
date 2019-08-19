@@ -2,22 +2,21 @@
 import { readFileSync, mkdirSync } from "fs";
 // @TODO replace PATH constant with a normal way...
 // at least we can deconstruct it and only use methods inside of this library.
-import PATH from "path";
-import { write } from "@groceristar/static-data-generator";
-import { isFolderExists } from "./utils";
+import { resolve, basename, extname, parse } from "path";
+import { write, isFolderExists } from "@groceristar/static-data-generator";
+import { readAllFiles } from "./utils";
 // const { promisify } = require('util')
-// const _ = require('lodash')
 
 /**
  * For fixPath()
  * @param {String} path
  */
 const fixPath = path => {
-  path = PATH.resolve(__dirname, path); // absolute path
-  if (path[-1] !== "/") {
-    path += "/";
+  const newPath = resolve(__dirname, path); // absolute path
+  if (newPath[-1] !== "/") {
+    newPath += "/";
   } // path correction
-  return path;
+  return newPath;
 };
 
 /**
@@ -36,6 +35,36 @@ const readData = (path, file) => {
 };
 
 /**
+ * fixFileName()
+ * @param {string} fileName
+ */
+const fixFileName = fileName => {
+  const updatedFileName = fileName.replace(/ /g, "_"); // Replace space with underscore
+  updatedFileName = fileName.toLowerCase(); // Maintain Uniformity
+  return updatedFileName;
+};
+
+/**
+ * getFileName()
+ * @param {string} file
+ * @param {Object} fileData
+ * @param {var} flag
+ * @param {var} index
+ */
+const getFileName = (file, fileData, flag, index) => {
+  let fileName;
+  if (flag === 1) {
+    // for example: 23-someJsonFile.json
+    fileName = `${index}-${file}`;
+  } else {
+    // for example: someValueOfName.json
+    fileName = `${fileData.name}.json`;
+  }
+  fileName = fixFileName(fileName);
+  return fileName;
+};
+
+/**
  * @param {String} folderNamePath
  * @param {String} file
  * @param {Object} fileData
@@ -43,7 +72,7 @@ const readData = (path, file) => {
  * */
 const saveFile = (folderNamePath, file, fileData, flag) => {
   const fileDataLength = fileData.length;
-  for (let i = 0; i < fileDataLength; i++) {
+  for (let i = 0; i < fileDataLength; i = +1) {
     const fileName = getFileName(file, fileData[i], flag, i);
     const elementPath = `${folderNamePath}/${fileName}`;
     write(elementPath, fileData[i]);
@@ -78,17 +107,17 @@ const splitObject = (fullPath, flag = 1, keys = [], callback) => {
        flag=1 ==> name according to index
        flag=0 ==> name according to "name" attribute
      */
-  const file = PATH.basename(fullPath);
-  let path = PATH.parse(fullPath).dir;
+  const file = basename(fullPath);
+  const path = parse(fullPath).dir;
 
-  if (PATH.extname(file) !== ".json") {
+  if (extname(file) !== ".json") {
     console.log("Require .json file.");
     return;
   }
 
-  path = fixPath(path);
-  const fileData = readData(path, file); // Reading data...
-  const folderNamePath = makeFolder(path, file); // new folder to save splitted files
+  const newPath = fixPath(path);
+  const fileData = readData(newPath, file); // Reading data...
+  const folderNamePath = makeFolder(newPath, file); // new folder to save splitted files
   saveFile(folderNamePath, file, fileData, flag); // saving files
 
   if (callback instanceof Function) {
@@ -99,52 +128,13 @@ const splitObject = (fullPath, flag = 1, keys = [], callback) => {
 };
 
 /**
- * fixFileName()
- * @param {string} fileName
- */
-const fixFileName = fileName => {
-  fileName = fileName.replace(/ /g, "_"); // Replace space with underscore
-  fileName = fileName.toLowerCase(); // Maintain Uniformity
-  return fileName;
-};
-
-/**
- * getFileName()
- * @param {string} file
- * @param {Object} fileData
- * @param {var} flag
- * @param {var} index
- */
-const getFileName = (file, fileData, flag, index) => {
-  let fileName;
-  if (flag === 1) fileName = `${index}-${file}`;
-  // for example: 23-someJsonFile.json
-  else fileName = `${fileData.name}.json`; // for example: someValueOfName.json
-  fileName = fixFileName(fileName);
-  return fileName;
-};
-
-/**
- * For combineObjects()
- * @param {String} path Path of folder where all splitted files are stored
- * @param {var} keys List of keys that are to be removed
- */
-const combineObject = (path, keys) => {
-  path = fixPath(path);
-  let content = srcUtils.readAllFiles(path); // read all json files
-  content = updateContent(content, keys); // modifying structure
-  const fileNamePath = `${path + PATH.basename(path)}_combined.json`; // for example: elements_combined.json
-  write(fileNamePath, content); // saving
-};
-
-/**
  * For updateContent()
  * @param {var} content
  * @param {var} keys
  */
 const updateContent = (content, keys) => {
-  content.forEach(contentElem => {
-    contentElem.forEach(obj => {
+  content.forEach(contentElement => {
+    contentElement.forEach(obj => {
       keys.forEach(key => {
         delete obj[key];
       });
@@ -153,10 +143,22 @@ const updateContent = (content, keys) => {
   return content;
 };
 
+/**
+ * For combineObjects()
+ * @param {String} path Path of folder where all splitted files are stored
+ * @param {var} keys List of keys that are to be removed
+ */
+const combineObject = (path, keys) => {
+  const newPath = fixPath(path);
+  let content = readAllFiles(newPath); // read all json files
+  content = updateContent(content, keys); // modifying structure
+  const fileNamePath = `${newPath + basename(newPath)}_combined.json`; // for example: elements_combined.json
+  write(fileNamePath, content); // saving
+};
+
 export default {
   write,
   splitObject,
   combineObject,
-  makeReadable,
   readData
 };
