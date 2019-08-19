@@ -1,25 +1,25 @@
 // here we'll connect separated json files, that related to food composition of different countries
-import {
-  FinlandDataSet,
-  FranceDataSet,
-  GermanyDataSet,
-  ItalyDataSet,
-  NetherlandsDataSet,
-  SwedenDataSet,
-  UnitedKingdomDataSet,
-  FullDataSet
-} from '@groceristar/sd-wrapper'
-
-export {
-  FinlandDataSet,
-  FranceDataSet,
-  GermanyDataSet,
-  ItalyDataSet,
-  NetherlandsDataSet,
-  SwedenDataSet,
-  UnitedKingdomDataSet,
-  FullDataSet
-}
+// import {
+//   FinlandDataSet,
+//   FranceDataSet,
+//   GermanyDataSet,
+//   ItalyDataSet,
+//   NetherlandsDataSet,
+//   SwedenDataSet,
+//   UnitedKingdomDataSet,
+//   FullDataSet
+// } from '@groceristar/sd-wrapper'
+//
+// export {
+//   FinlandDataSet,
+//   FranceDataSet,
+//   GermanyDataSet,
+//   ItalyDataSet,
+//   NetherlandsDataSet,
+//   SwedenDataSet,
+//   UnitedKingdomDataSet,
+//   FullDataSet
+// }
 
 
 // Next step, when all data maybe came not from SD but from data folder.

@@ -1,7 +1,5 @@
-// @TODO hope soon to test this script with updated version
-// of this method from generator - write
 import { createReadStream } from 'fs';
-import csv from 'csv-parser'; // @TODO does it work? I'm not sure
+import csv from 'csv-parser';
 import { join } from 'path';
 import { write } from '@groceristar/static-data-generator';
 

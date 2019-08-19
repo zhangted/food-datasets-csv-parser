@@ -1,18 +1,19 @@
 import _ from 'lodash'
 
-import {
-  FinlandDataSet,
-  FranceDataSet,
-  GermanyDataSet,
-  ItalyDataSet,
-  NetherlandsDataSet,
-  SwedenDataSet,
-  UnitedKingdomDataSet,
-  FullDataSet
-} from '@files'
+// import {
+//   FinlandDataSet,
+//   FranceDataSet,
+//   GermanyDataSet,
+//   ItalyDataSet,
+//   NetherlandsDataSet,
+//   SwedenDataSet,
+//   UnitedKingdomDataSet,
+//   FullDataSet
+// } from '@files'
 
 import { __generateId } from '@utils'
 
+import { parseFoodComposition } from './index'
 
 // const { resolve } from 'path'
 //
@@ -28,14 +29,16 @@ const displayFoodCompositionData = () => {
 
 
 
-
 export {
- FinlandDataSet,
- FranceDataSet,
- GermanyDataSet,
- ItalyDataSet,
- NetherlandsDataSet,
- SwedenDataSet,
- UnitedKingdomDataSet,
- FullDataSet
+
 }
+// export {
+//  FinlandDataSet,
+//  FranceDataSet,
+//  GermanyDataSet,
+//  ItalyDataSet,
+//  NetherlandsDataSet,
+//  SwedenDataSet,
+//  UnitedKingdomDataSet,
+//  FullDataSet
+// }
