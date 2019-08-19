@@ -26,7 +26,7 @@ const fixPath = (path) => {
 const readData = (path, file) => {
   console.log(path + file);
 
-  const data = fs.readFileSync(path + file);
+  const data = readFileSync(path + file);
   console.log(data);
 
   const fileData = JSON.parse(data);
@@ -56,7 +56,7 @@ const makeFolder = (path, file) => {
   const folderName = `${file.slice(0, -5)}_elements`;
   const folderNamePath = path + folderName;
   if (srcUtils.isDirectory(folderNamePath)) {
-    fs.mkdirSync(folderNamePath);
+    mkdirSync(folderNamePath);
   }
   return folderNamePath;
 };

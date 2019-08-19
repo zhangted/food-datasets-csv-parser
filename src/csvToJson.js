@@ -66,7 +66,8 @@ const csvToJson = (directory, file, headers) => {
   // @TODO can we also path a variable that combine `${directory}/${file}` together?
   // i mean maybe we can pass into csvToJson one argument instead of two?
 
-  // @TODO I still think that it will be a good task to move out this long `thing` into separated method
+  // @TODO I still think that it will be a good task
+  // to move out this long `thing` into separated method
   createReadStream(resolve(__dirname, `${directory}/${file}`))
     .pipe(
       csv({
