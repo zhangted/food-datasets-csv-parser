@@ -3,35 +3,32 @@
 // https://github.com/mjeanroy/rollup-plugin-prettier
 // https://gitlab.com/IvanSanchez/rollup-plugin-file-as-blob
 
-import commonjs from 'rollup-plugin-commonjs'
-import resolve from 'rollup-plugin-node-resolve'
-import builtins from 'rollup-plugin-node-builtins'
+import commonjs from "rollup-plugin-commonjs";
+import resolve from "rollup-plugin-node-resolve";
+import builtins from "rollup-plugin-node-builtins";
 
-import babel from 'rollup-plugin-babel'
-import pkg from './package.json'
+import babel from "rollup-plugin-babel";
+import pkg from "./package.json";
 // import eslint from "rollup-plugin-eslint"
 
 // not all files you want to resolve are .js files
 // Default: [ '.mjs', '.js', '.json', '.node' ]
-const extensions = [
-  '.js'
-]
+const extensions = [".js"];
 
-const name = 'FoodDatasetsCSVParser'
+const name = "FoodDatasetsCSVParser";
 
 // packages that should be treated as external dependencies, not bundled
 // e.g. ['axios']
 const external = [
-  'fs',
-  'path',
-  'csv-parser',
-  '@groceristar/static-data-generator',
-  'lodash'
-]
+  "@groceristar/static-data-generator",
+  "fs",
+  "path",
+  "csv-parser",
+  "lodash"
+];
 
 // list of plugins used during building process
-const plugins = () => ([
-
+const plugins = () => [
   // Allows node_modules resolution
   resolve({
     extensions,
@@ -39,7 +36,7 @@ const plugins = () => ([
     // the fields to scan in a package.json to determine the entry point
     // if this list contains "browser", overrides specified in "pkg.browser"
     // will be used
-    mainFields: ['module', 'main', 'browser'], // Default: ['module', 'main']
+    mainFields: ["module", "main", "browser"] // Default: ['module', 'main']
   }),
 
   // Allows verification of entry point and all imported files with ESLint.
@@ -54,17 +51,15 @@ const plugins = () => ([
 
   // Allow bundling cjs modules. Rollup doesn't understand cjs
   commonjs({
-    ignore: [
-      'conditional-runtime-dependency'
-    ]
+    ignore: ["conditional-runtime-dependency"]
   }),
 
   // use Babel to compile TypeScript/JavaScript files to ES5
   babel({
     extensions,
-    include: ['src/*'],
+    include: ["src/*"],
     // ignore node_modules/ in transpilation process
-    exclude: 'node_modules/**',
+    exclude: "node_modules/**",
     // ignore .babelrc (if defined) and use options defined here
     // babelrc: false,
     // use recommended babel-preset-env without es modules enabled
@@ -87,37 +82,38 @@ const plugins = () => ([
   //   files: ['src/*.flow'],
   //   dest: 'dist',
   // }),
-])
+];
 
 export default {
   // source file / entrypoint
-  input: 'src/index.js',
+  input: "src/index.js",
   // output configuration
-  output: [{
-    // output file location
-    file: pkg.main,
-    // format of generated JS file, also: esm, and others are available
-    format: 'cjs'
-  },
-  {
-    // output file location
-    file: pkg.module,
-    // format of generated JS file, also: esm, and others are available
-    format: 'es',
-    // format: 'esm',
-    // add sourcemaps
-    sourcemap: true
-  },
-  {
-    // output file location
-    file: pkg.browser,
-    // format of generated JS file, also: esm, and others are available
-    format: 'iife',
-    // name visible for other scripts
-    name
-    // https://rollupjs.org/guide/en#output-globals-g-globals
-    // globals: {}
-  }
+  output: [
+    {
+      // output file location
+      file: pkg.main,
+      // format of generated JS file, also: esm, and others are available
+      format: "cjs"
+    },
+    {
+      // output file location
+      file: pkg.module,
+      // format of generated JS file, also: esm, and others are available
+      format: "es",
+      // format: 'esm',
+      // add sourcemaps
+      sourcemap: true
+    },
+    {
+      // output file location
+      file: pkg.browser,
+      // format of generated JS file, also: esm, and others are available
+      format: "iife",
+      // name visible for other scripts
+      name
+      // https://rollupjs.org/guide/en#output-globals-g-globals
+      // globals: {}
+    }
   ],
 
   // Specify here external modules which you don't want to include in your bundle (for instance: 'lodash', 'moment' etc.)
@@ -126,4 +122,4 @@ export default {
 
   // build es modules or commonjs
   plugins: plugins()
-}
+};

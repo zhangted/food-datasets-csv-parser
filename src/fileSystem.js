@@ -1,6 +1,6 @@
 // Here I want to put all methods, related to reading data, etc.
-import { readdir } from 'fs';
-import { csvToJson } from './index';
+import { readdir } from "fs";
+import { csvToJson } from "./index";
 
 // @TODO there was an idea to replace console.log with other ways to log thigns
 
@@ -12,23 +12,22 @@ const parseDirectoryFiles = (directoryPath, headers) => {
       return console.log(`Unable to scan directory: ${err}`);
     }
     // listing all files using forEach
-    files.forEach((file) => {
-    // Do whatever you want to do with the file
+    files.forEach(file => {
+      // Do whatever you want to do with the file
       console.log(file, typeof file);
-      if (file.split('.')[1] === 'csv') {
+      if (file.split(".")[1] === "csv") {
         csvToJson(directoryPath, file, headers);
       }
     });
   });
 };
 
-
 /**
  * isFolderExists prev. isDirectory()
  * @param {string} folderNamePath
  *
  */
-const isFolderExists = (folderNamePath) => {
+const isFolderExists = folderNamePath => {
   if (existsSync(folderNamePath)) {
     return false;
   }
@@ -36,7 +35,4 @@ const isFolderExists = (folderNamePath) => {
 };
 
 // export default parseDirectoryFiles;
-export {
-  parseDirectoryFiles,
-  isDirectory
-};
+export { parseDirectoryFiles, isFolderExists };

@@ -1,10 +1,10 @@
 // const filePath = require('../files')
-import { readFileSync, mkdirSync } from 'fs';
+import { readFileSync, mkdirSync } from "fs";
 // @TODO replace PATH constant with a normal way...
 // at least we can deconstruct it and only use methods inside of this library.
-import PATH from 'path';
-import { write } from '@groceristar/static-data-generator';
-import { isDirectory } from './utils';
+import PATH from "path";
+import { write } from "@groceristar/static-data-generator";
+import { isFolderExists } from "./utils";
 // const { promisify } = require('util')
 // const _ = require('lodash')
 
@@ -12,9 +12,11 @@ import { isDirectory } from './utils';
  * For fixPath()
  * @param {String} path
  */
-const fixPath = (path) => {
+const fixPath = path => {
   path = PATH.resolve(__dirname, path); // absolute path
-  if (path[-1] !== '/') { path += '/'; } // path correction
+  if (path[-1] !== "/") {
+    path += "/";
+  } // path correction
   return path;
 };
 
@@ -55,7 +57,7 @@ const saveFile = (folderNamePath, file, fileData, flag) => {
 const makeFolder = (path, file) => {
   const folderName = `${file.slice(0, -5)}_elements`;
   const folderNamePath = path + folderName;
-  if (isDirectory(folderNamePath)) {
+  if (isFolderExists(folderNamePath)) {
     mkdirSync(folderNamePath);
   }
   return folderNamePath;
@@ -79,8 +81,8 @@ const splitObject = (fullPath, flag = 1, keys = [], callback) => {
   const file = PATH.basename(fullPath);
   let path = PATH.parse(fullPath).dir;
 
-  if (PATH.extname(file) !== '.json') {
-    console.log('Require .json file.');
+  if (PATH.extname(file) !== ".json") {
+    console.log("Require .json file.");
     return;
   }
 
@@ -100,8 +102,8 @@ const splitObject = (fullPath, flag = 1, keys = [], callback) => {
  * fixFileName()
  * @param {string} fileName
  */
-const fixFileName = (fileName) => {
-  fileName = fileName.replace(/ /g, '_'); // Replace space with underscore
+const fixFileName = fileName => {
+  fileName = fileName.replace(/ /g, "_"); // Replace space with underscore
   fileName = fileName.toLowerCase(); // Maintain Uniformity
   return fileName;
 };
@@ -115,7 +117,8 @@ const fixFileName = (fileName) => {
  */
 const getFileName = (file, fileData, flag, index) => {
   let fileName;
-  if (flag === 1) fileName = `${index}-${file}`; // for example: 23-someJsonFile.json
+  if (flag === 1) fileName = `${index}-${file}`;
+  // for example: 23-someJsonFile.json
   else fileName = `${fileData.name}.json`; // for example: someValueOfName.json
   fileName = fixFileName(fileName);
   return fileName;
@@ -140,9 +143,9 @@ const combineObject = (path, keys) => {
  * @param {var} keys
  */
 const updateContent = (content, keys) => {
-  content.forEach((contentElem) => {
-    contentElem.forEach((obj) => {
-      keys.forEach((key) => {
+  content.forEach(contentElem => {
+    contentElem.forEach(obj => {
+      keys.forEach(key => {
         delete obj[key];
       });
     });
@@ -155,5 +158,5 @@ export default {
   splitObject,
   combineObject,
   makeReadable,
-  readData,
+  readData
 };
