@@ -746,10 +746,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@groceristar/static-data-generator@^0.1.10":
-  version "0.1.10"
-  resolved "https://registry.yarnpkg.com/@groceristar/static-data-generator/-/static-data-generator-0.1.10.tgz#35c9639084bd6a1fa5e38d242ee9990262dd51fa"
-  integrity sha512-Etl0Rs/t33QwbX8mxIh8HWo3tE2UlYVKhFLZ6GhbBoc2sHQqZFZ63hkGbsf/NO3I+gnDPolghWDMcQz8PrPEzg==
+"@groceristar/static-data-generator@^0.1.11":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@groceristar/static-data-generator/-/static-data-generator-0.1.11.tgz#fcd1a23b18aacf46730ecabad782b4c49e51b49e"
+  integrity sha512-4HluGb82CN9Ffw/l0861RLxpZsfKRyXIW7sE6JkEfC6svAJRKNmNa/7TnIjy3CSb4qp2LibVRl3WfFvwoRIlVw==
   dependencies:
     "@babel/runtime" "^7.5.5"
     dayjs "^1.8.13"
