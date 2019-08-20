@@ -1,6 +1,7 @@
+// const { parseDirectoryFiles } = require('./index');
 // Here I want to put all methods, related to reading data, etc.
-import { readdir, existsSync } from "fs";
-import csvToJson from "./csvToJson";
+const { readdir, existsSync } = require("fs");
+const { csvToJson } = require("./csvToJson");
 
 // @TODO there was an idea to replace console.log with other ways to log thigns
 // @TODO I don't like the logic of this method.
@@ -15,8 +16,14 @@ const parseDirectoryFiles = (directoryPath, headers) => {
     // listing all files using forEach
     files.forEach(file => {
       // Do whatever you want to do with the file
+      console.log("------------------------------");
       console.log(file, typeof file);
+      console.log("------------------------------");
       if (file.split(".")[1] === "csv") {
+        console.log("------------------------------");
+        console.log(file, typeof file);
+        console.log("------------------------------");
+
         csvToJson(directoryPath, file, headers);
       }
     });
@@ -37,4 +44,8 @@ const isFolderExists = folderNamePath => {
 };
 
 // export default parseDirectoryFiles;
-export { parseDirectoryFiles, isFolderExists };
+// export { parseDirectoryFiles, isFolderExists };
+module.exports = {
+  parseDirectoryFiles,
+  isFolderExists
+};
