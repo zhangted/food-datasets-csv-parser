@@ -1,4 +1,4 @@
-import { joinPath } from './src/utils';
+import { joinPath } from '../src/utils';
 
 describe('test for the function joinPath cases', () => {
   it('checks join path', () => {
@@ -8,11 +8,7 @@ describe('test for the function joinPath cases', () => {
   });
 
   it('checks resolve path', () => {
-    const dirs = [
-      '../examples',
-      '../../sd/tests',
-      '../src/files.js',
-    ];
+    const dirs = ['../examples', '../../sd/tests', '../src/files.js'];
     const test2 = joinPath(dirs, true);
     console.log(test2);
     expect(test2).not.toBeUndefined();
