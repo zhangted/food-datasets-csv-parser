@@ -1,8 +1,8 @@
 // This version will be used, when we totally move into new version of our module.
 
-import csvToJson from "./csvToJson";
+import csvToJson from './csvToJson';
 
-const getHeaders = async path => {
+const getHeaders = async (path) => {
   const dataset = await csvToJson().fromFile(path);
   const headers = Object.keys(dataset[0]);
 
@@ -10,5 +10,5 @@ const getHeaders = async path => {
 };
 
 export default {
-  getHeaders
+  getHeaders,
 };

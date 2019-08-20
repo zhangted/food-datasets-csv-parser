@@ -1,20 +1,22 @@
 // const filePath = require('../files')
-import { readFileSync, mkdirSync } from "fs";
+import { readFileSync, mkdirSync } from 'fs';
 // @TODO replace PATH constant with a normal way...
 // at least we can deconstruct it and only use methods inside of this library.
-import { resolve, basename, extname, parse } from "path";
-import { write, isFolderExists } from "@groceristar/static-data-generator";
-import { readAllFiles } from "./utils";
+import {
+  resolve, basename, extname, parse,
+} from 'path';
+import { write, isFolderExists } from '@groceristar/static-data-generator';
+import { readAllFiles } from './utils';
 // const { promisify } = require('util')
 
 /**
  * For fixPath()
  * @param {String} path
  */
-const fixPath = path => {
-  const newPath = resolve(__dirname, path); // absolute path
-  if (newPath[-1] !== "/") {
-    newPath += "/";
+const fixPath = (path) => {
+  let newPath = resolve(__dirname, path); // absolute path
+  if (newPath[-1] !== '/') {
+    newPath += '/';
   } // path correction
   return newPath;
 };
@@ -38,8 +40,8 @@ const readData = (path, file) => {
  * fixFileName()
  * @param {string} fileName
  */
-const fixFileName = fileName => {
-  const updatedFileName = fileName.replace(/ /g, "_"); // Replace space with underscore
+const fixFileName = (fileName) => {
+  let updatedFileName = fileName.replace(/ /g, '_'); // Replace space with underscore
   updatedFileName = fileName.toLowerCase(); // Maintain Uniformity
   return updatedFileName;
 };
@@ -110,8 +112,8 @@ const splitObject = (fullPath, flag = 1, keys = [], callback) => {
   const file = basename(fullPath);
   const path = parse(fullPath).dir;
 
-  if (extname(file) !== ".json") {
-    console.log("Require .json file.");
+  if (extname(file) !== '.json') {
+    console.log('Require .json file.');
     return;
   }
 
@@ -133,9 +135,10 @@ const splitObject = (fullPath, flag = 1, keys = [], callback) => {
  * @param {var} keys
  */
 const updateContent = (content, keys) => {
-  content.forEach(contentElement => {
-    contentElement.forEach(obj => {
-      keys.forEach(key => {
+  content.forEach((contentElement) => {
+    contentElement.forEach((obj) => {
+      keys.forEach((key) => {
+        // eslint-disable-next-line no-param-reassign
         delete obj[key];
       });
     });
@@ -160,5 +163,5 @@ export default {
   write,
   splitObject,
   combineObject,
-  readData
+  readData,
 };
