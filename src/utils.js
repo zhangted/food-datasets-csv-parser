@@ -1,11 +1,11 @@
 // import pathExists from 'path-exists';
-const { resolve, join } = require("path");
-const {
+import { resolve, join } from "path";
+import {
   // existsSync,
   readdirSync,
   statSync,
   readFileSync
-} = require("fs");
+} from "fs";
 
 // import { fixPath } from 'generator'
 
@@ -93,9 +93,4 @@ const joinPath = (arr, useResolve = false) => {
   return join(...arr);
 };
 
-module.exports = {
-  readAllFiles,
-  joinPath
-};
-
-// export { readAllFiles, joinPath };
+export { readAllFiles, joinPath };
