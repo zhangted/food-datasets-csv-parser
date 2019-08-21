@@ -32,9 +32,8 @@ const fileWriter = (i, fileName, start, stop) => {
 };
 
 // @TODO update this method later, when we'll migrate to `write` from generator
-
 const splitJsonIntoFiles = fileName => {
-  for (let i; i <= numberOfFiles; i = +1) {
+  for (let i; i <= numberOfFiles; i += 1) {
     const start = (i - 1) * maxEntries;
     let stop = i * maxEntries;
 
