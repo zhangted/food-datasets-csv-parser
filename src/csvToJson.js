@@ -24,7 +24,7 @@ const fileWriter = (i, fileName, start, stop) => {
   // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  const jsonPath = `/projects/FAO/${folderName}/${fileName}${i}.json`;
+  const jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   // --> if you reading it - then it's time for updating it :)
 
