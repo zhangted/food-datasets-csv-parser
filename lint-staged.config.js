@@ -27,6 +27,7 @@ module.exports = {
     //   'eslint --fix',
     //   'prettier --write',
     //   'jest --findRelatedTests',
+    'pretty-quick --staged',
     'npm run lint',
     'git add',
   ],
