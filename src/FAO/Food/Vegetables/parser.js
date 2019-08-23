@@ -1,10 +1,10 @@
-const path = require("path");
-const getHeaders = require("../../../getHeaders");
-const { parseDirectoryFiles } = require("../../../fileSystem");
+const path = require('path');
+const getHeaders = require('../../../getHeaders');
+const { parseDirectoryFiles } = require('../../../fileSystem');
 
-const headers = getHeaders("./Vegetables.csv");
+const headers = getHeaders('./Vegetables.csv');
 
-const directory = "./";
+const directory = './';
 
 const directoryPath = path.join(__dirname, directory);
 
