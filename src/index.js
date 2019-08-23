@@ -6,4 +6,8 @@ import { parseDirectoryFiles } from './fileSystem';
 // @TODO i dont think that this version will totally work...
 import csvToJson from './csvToJson';
 
-export { csvToJson, parseFoodComposition, parseDirectoryFiles };
+import getHeaders from './getHeaders';
+
+export {
+  csvToJson, getHeaders, parseFoodComposition, parseDirectoryFiles,
+};
