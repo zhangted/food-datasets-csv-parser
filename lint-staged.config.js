@@ -28,6 +28,6 @@ module.exports = {
     //   'prettier --write',
     //   'jest --findRelatedTests',
     'npm run lint',
-    'git add'
-  ]
-}
+    'git add',
+  ],
+};

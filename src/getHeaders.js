@@ -1,6 +1,6 @@
-const csvToJson = require("./csvToJson");
+const csvToJson = require('./csvToJson');
 
-const getHeaders = async path => {
+const getHeaders = async (path) => {
   const dataset = await csvToJson().fromFile(path);
   const headers = Object.keys(dataset[0]);
 
