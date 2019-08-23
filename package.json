@@ -71,20 +71,7 @@
     "path": "^0.12.7",
     "path-exists": "^4.0.0"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged",
-      "after": "lint-staged",
-      "then": "yarn precommit"
-    }
-  },
   "files": [
     "dist"
-  ],
-  "lint-staged": {
-    "*.js": [
-      "npm run lint",
-      "git add"
-    ]
-  }
+  ]
 }
