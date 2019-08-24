@@ -47,22 +47,6 @@ const readAllFiles = path => {
 };
 
 /**
- * For getListContent()
- * @param {String} path
- * @param {String} fileName
- */
-const getListContent = (path, fileName = 'undefined') => {
-  if (fileName) {
-    // read specified file
-    let data = readFileSync(path + fileName);
-    data = JSON.parse(data);
-    return data;
-  }
-  // read all files
-  return readAllFiles(path);
-};
-
-/**
  * For getList()
  * @param {String} path
  */
@@ -93,4 +77,4 @@ const joinPath = (arr, useResolve = false) => {
   return join(...arr);
 };
 
-export { readAllFiles, joinPath, getList, getListContent };
+export { readAllFiles, joinPath, getList };
