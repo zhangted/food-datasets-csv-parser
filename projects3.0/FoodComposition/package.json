@@ -15,7 +15,7 @@
     "jsonlint": "node jsonlint.config.js",
     "format": "prettier",
     "parse": "node ./debug",
-    "lint": "yarn clean"
+    "lint": "eslint ./src --fix --ignore-pattern \"./package.json\" "
   },
   "description": "xxx",
   "main": "dist/index.cjs",
