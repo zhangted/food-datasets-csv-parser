@@ -13,7 +13,7 @@ const headers = [
 ];
 
 // @TODO changes required
-const directory = '../../../raw/Serving_Size';
+const directory = '@raw/Serving_Size';
 
 // joining path of directory
 const directoryPath = join(__dirname, directory);

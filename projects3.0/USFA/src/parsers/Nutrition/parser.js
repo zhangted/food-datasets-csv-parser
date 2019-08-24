@@ -15,7 +15,7 @@ const headers = [
 
 // @TODO changes required.
 // we can use module resolver for this
-const directory = '../../../raw/Nutrition';
+const directory = '@raw/Nutrition';
 
 // joining path of directory
 const directoryPath = join(__dirname, directory);

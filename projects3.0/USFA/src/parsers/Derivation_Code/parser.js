@@ -8,7 +8,8 @@ const headers = ['derivation_code', 'Derivation_Descript'];
 
 // @TODO changes required.
 // we can use module resolver for this
-const directory = '../../../raw/Derivation_Code_Description';
+const directory = '@raw/Derivation_Code_Description';
+// const directory = '../../../raw/Derivation_Code_Description';
 
 // joining path of directory
 const directoryPath = join(__dirname, directory);
