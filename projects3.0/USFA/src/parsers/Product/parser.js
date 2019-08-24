@@ -16,7 +16,9 @@ const headers = [
 
 // @TODO changes required.
 // we can use module resolver for this
-const directory = '../../../../src/data/Product';
+
+const directory = '../../../raw/Product';
+
 // //joining path of directory
 const directoryPath = path.join(__dirname, directory);
 

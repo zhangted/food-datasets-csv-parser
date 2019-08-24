@@ -12,7 +12,7 @@ const headers = [
 ];
 
 // @TODO changes required
-const directory = '../../../../src/data/Serving_Size';
+const directory = '../../../raw/Serving_Size';
 
 // //joining path of directory
 const directoryPath = path.join(__dirname, directory);

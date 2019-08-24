@@ -26,14 +26,21 @@ const fileWriter = (i, fileName, start, stop) => {
   // really bad line
   const jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`;
   const combinedPath = joinPath([__dirname, jsonPath]);
+  console.log('---file writer started---');
+  console.log(jsonPath);
+  console.log(combinedPath);
+
   // --> if you reading it - then it's time for updating it :)
 
   write(combinedPath, data);
 };
 
 // @TODO update this method later, when we'll migrate to `write` from generator
-
-const splitJsonIntoFiles = (fileName) => {
+// @TODO as this method using "fileWriter" method - it should be updated.
+// or maybe move it into generator file, etc.
+const splitJsonIntoFiles = fileName => {
+  // @TODO add if env.development and use console.log(xxx)
+  console.log('---splitJson started---');
   for (let i; i <= numberOfFiles; i += 1) {
     const start = (i - 1) * maxEntries;
     let stop = i * maxEntries;
@@ -72,10 +79,10 @@ const csvToJson = (directory, file, headers) => {
     .pipe(
       csv({
         skipLines: 1,
-        headers,
-      }),
+        headers
+      })
     )
-    .on('data', (data) => {
+    .on('data', data => {
       results.push(data);
     })
     .on('end', () => {
