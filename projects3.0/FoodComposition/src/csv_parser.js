@@ -1,3 +1,5 @@
+// THIS IS AN actuall old version
+
 import { createReadStream } from 'fs';
 import csv from 'csv-parser';
 import { join } from 'path';
