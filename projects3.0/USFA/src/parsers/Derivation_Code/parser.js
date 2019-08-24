@@ -11,8 +11,9 @@ const headers = ['derivation_code', 'Derivation_Descript'];
 // we can use module resolver for this
 const directory = '../../../raw/Derivation_Code_Description';
 
-// //joining path of directory
+// joining path of directory
 const directoryPath = path.join(__dirname, directory);
 
-// @TODO I don't like that this scripts are called as it is... looks un-cool
+// @TODO I don't like that this scripts are
+// called as it is... looks un-cool
 parseDirectoryFiles(directoryPath, headers);
