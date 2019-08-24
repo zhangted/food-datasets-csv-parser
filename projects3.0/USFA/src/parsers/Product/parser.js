@@ -1,7 +1,8 @@
-import path from 'path';
+import { join } from 'path';
 
-// @TODO // we can use module resolver for this
-import { parseDirectoryFiles } from '../../../csvParser';
+import { parseDirectoryFiles } from '@groceristar/food-dataset-csv-parser';
+// import { parseDirectoryFiles, getHeaders } from '@groceristar/food-dataset-csv-parser'
+// const headers = getHeaders('./Fish_NV_sum (per 100 g EP).csv');
 
 const headers = [
   'NDB_Number',
@@ -19,8 +20,8 @@ const headers = [
 
 const directory = '../../../raw/Product';
 
-// //joining path of directory
-const directoryPath = path.join(__dirname, directory);
+// joining path of directory
+const directoryPath = join(__dirname, directory);
 
 // @TODO I don't like that this scripts are called as it is... looks un-cool
 parseDirectoryFiles(directoryPath, headers);

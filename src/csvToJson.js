@@ -24,7 +24,8 @@ const fileWriter = (i, fileName, start, stop) => {
   // @TODO change that. it will work only for one case.
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  const jsonPath = `/projects/USFA/${folderName}/${fileName}${i}.json`;
+  const jsonFileName = `${folderName}/${fileName}${i}.json`;
+  const jsonPath = `/projects/USFA/${jsonFileName}`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
   console.log(jsonPath);
@@ -75,7 +76,8 @@ const csvToJson = (directory, file, headers) => {
 
   // @TODO I still think that it will be a good task
   // to move out this long `thing` into separated method
-  createReadStream(resolve(__dirname, `${directory}/${file}`))
+  const jsonFilePath = resolve(__dirname, `${directory}/${file}`);
+  createReadStream(jsonFilePath)
     .pipe(
       csv({
         skipLines: 1,
@@ -87,6 +89,7 @@ const csvToJson = (directory, file, headers) => {
     })
     .on('end', () => {
       numberOfFiles = Math.ceil(results.length / maxEntries);
+      // @TODO this is not a cool line. We can change it
       result = results;
       splitJsonIntoFiles(fileName);
     });
