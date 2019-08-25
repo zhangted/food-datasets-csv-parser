@@ -7,6 +7,19 @@
 //
 // export { Nutrient, Derivation_Code, Product, Serving_Size };
 
+// replace with index?
+import parserUSFADerivationCode from './parsers/Derivation_Code/parser';
+import parserUSFANutrition from './parsers/Nutrition/parser';
+import parserUSFAProduct from './parsers/Product/parser';
+import parserUSFAServingSize from './parsers/Serving_Size/parser';
+
+export {
+  parserUSFADerivationCode,
+  parserUSFANutrition,
+  parserUSFAProduct,
+  parserUSFAServingSize
+};
+
 // / @TODO later we should do it recursivelly
 //
 // Nutrient01.json
