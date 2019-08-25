@@ -61,6 +61,7 @@ const splitJsonIntoFiles = fileName => {
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 const csvToJson = (directory, file, headers) => {
+  // @TODO when we'll have getHeaders method working, should we call it inside of this method?
   // @TODO can this be a separated method?
   const fileName = file.split('.')[0];
   const results = [];
