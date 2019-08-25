@@ -1,12 +1,10 @@
-'use strict';
-
 const presets = [
   [
     '@babel/preset-env',
     {
-      modules: false
-    }
-  ]
+      modules: false,
+    },
+  ],
   // {
   //
   // }
@@ -28,11 +26,11 @@ const plugins = [
         '@files': './src/files.js',
         '@utils': './src/utils.js',
         '@generator': './generator',
-        '@raw': '../../../raw'
-      }
-    }
+        '@raw': '../../../raw',
+      },
+    },
   ],
-  ['@babel/plugin-syntax-dynamic-import']
+  ['@babel/plugin-syntax-dynamic-import'],
 ];
 
 module.exports = { presets, plugins };

@@ -4,8 +4,8 @@ import resolve from 'rollup-plugin-node-resolve';
 // import copy from 'rollup-plugin-copy-assets'
 import builtins from 'rollup-plugin-node-builtins';
 import babel from 'rollup-plugin-babel';
-import pkg from './package.json';
 import notify from 'rollup-plugin-notify';
+import pkg from './package.json';
 
 // import cleanup from 'rollup-plugin-cleanup';
 // https://github.com/mjeanroy/rollup-plugin-prettier
@@ -16,23 +16,22 @@ const extensions = ['.js', '.json'];
 const name = 'StaticDataWrapper';
 
 // packages that should be treated as external or global dependencies, not bundled
-const { external, globals } = {
-  globals: {
-    fs: 'fs',
-    uuid: 'uuid',
-    path: 'path'
-  },
-  external: ['fs', 'path', 'uuid']
-};
+const external = [
+  'fs',
+  'uuid',
+  'path',
+  'csv-parser',
+  'lodash',
+];
 
 export default {
   // source file / entrypoint
   input: './src/index.js',
 
-  // Specify here external modules which you don't want to include in your bundle (for instance: 'lodash', 'moment' etc.)
+  // Specify here external modules which you don't want to include in your bundle
+  // (for instance: 'lodash', 'moment' etc.)
   // https://rollupjs.org/guide/en#external-e-external
   external,
-  globals,
 
   // list of plugins used during building process
   plugins: [
@@ -48,9 +47,9 @@ export default {
       include: ['src/*'],
       // include: ['src/**/*'],
       exclude: [
-        'node_modules/**'
+        'node_modules/**',
         // "/src/data/__tests__"
-      ]
+      ],
       // exclude: 'node_modules/**'
       // presets: presets,
       // plugins: plugins
@@ -79,26 +78,26 @@ export default {
     builtins(),
 
     // Displays rollup errors as system notifications
-    notify()
+    notify(),
   ],
 
   // output configuration
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
     },
     {
       file: pkg.module,
-      format: 'es'
+      format: 'es',
     },
     {
       file: pkg.browser,
       format: 'iife',
-      name
+      name,
 
       // https://rollupjs.org/guide/en#output-globals-g-globals
       // globals: {}
-    }
-  ]
+    },
+  ],
 };
