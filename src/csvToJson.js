@@ -39,7 +39,7 @@ const fileWriter = (i, fileName, start, stop) => {
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "fileWriter" method - it should be updated.
 // or maybe move it into generator file, etc.
-const splitJsonIntoFiles = fileName => {
+const splitJsonIntoFiles = (fileName) => {
   // @TODO add if env.development and use console.log(xxx)
   console.log('---splitJson started---');
   for (let i; i <= numberOfFiles; i += 1) {
@@ -81,10 +81,10 @@ const csvToJson = (directory, file, headers) => {
     .pipe(
       csv({
         skipLines: 1,
-        headers
-      })
+        headers,
+      }),
     )
-    .on('data', data => {
+    .on('data', (data) => {
       results.push(data);
     })
     .on('end', () => {
