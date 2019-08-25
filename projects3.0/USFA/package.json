@@ -16,10 +16,10 @@
     "jsonlint": "node jsonlint.config.js",
     "format": "prettier",
     "generate": "xxx",
-    "generate:1": "node ./../xxx",
-    "generate:2": "node ",
-    "generate:3": "node ",
-    "generate:4": "node "
+    "debug:1": "npm run build && node ./debug/script",
+    "debug:2": "npm run build && node ./debug/script",
+    "debug:3": "npm run build && node ./debug/script",
+    "debug:4": "npm run build && node ./debug/script"
   },
   "description": "USFA data parser",
   "main": "dist/index.cjs",

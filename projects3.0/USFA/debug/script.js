@@ -1,3 +1,11 @@
-// const { parseFoodComposition } = require('../dist/index.cjs')
-//
-// parseFoodComposition()
+const {
+  parserUSFADerivationCode,
+  parserUSFANutrition,
+  parserUSFAProduct,
+  parserUSFAServingSize
+} = require('../dist/index.cjs');
+
+parserUSFADerivationCode();
+// parserUSFANutrition();
+// parserUSFAProduct();
+// parserUSFAServingSize();
