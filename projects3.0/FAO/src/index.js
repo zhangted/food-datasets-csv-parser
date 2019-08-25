@@ -1,4 +1,5 @@
+/* eslint-disable no-unused-vars */
 import {
   csvToJson,
-  parseDirectoryFiles
+  parseDirectoryFiles,
 } from '@groceristar/food-dataset-csv-parser';
