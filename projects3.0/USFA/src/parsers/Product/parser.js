@@ -14,7 +14,7 @@ const parserUSFAProduct = () => {
     'manufacturer',
     'date_modified',
     'date_available',
-    'ingredients_english'
+    'ingredients_english',
   ];
 
   // @TODO changes required.

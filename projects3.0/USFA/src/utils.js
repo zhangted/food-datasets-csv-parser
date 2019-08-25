@@ -4,24 +4,6 @@ const dayjs = require('dayjs');
 const fs = require('fs');
 
 /**
- * For readAllFiles()
- * @param {String} path
- */
-function readAllFiles(path) {
-  const content = [];
-  const files = fs.readdirSync(path);
-  files.forEach(file => {
-    const fileStat = fs.statSync(path + file).isDirectory();
-    if (!fileStat) {
-      let data = fs.readFileSync(path + file);
-      data = JSON.parse(data);
-      content.push(data);
-    }
-  });
-  return content;
-}
-
-/**
  * fixPath()
  * @param {String} path
  */
@@ -37,7 +19,7 @@ function fixPath(path) {
 function getList(path) {
   const list = [];
   const files = fs.readdirSync(path);
-  files.forEach(file => {
+  files.forEach((file) => {
     const fileStat = fs.statSync(path + file).isDirectory();
     if (!fileStat) {
       list.push(file);
@@ -52,5 +34,5 @@ const __generateDate = () => dayjs().toDate();
 
 module.exports = {
   __generateId,
-  __generateDate
+  __generateDate,
 };

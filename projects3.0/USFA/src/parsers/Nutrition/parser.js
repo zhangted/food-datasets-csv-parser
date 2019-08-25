@@ -12,7 +12,7 @@ const parserUSFANutrition = () => {
     'Nutrient_name',
     'Derivation_Code',
     'Output_value',
-    'Output_uom'
+    'Output_uom',
   ];
 
   // @TODO changes required.

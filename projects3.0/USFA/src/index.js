@@ -8,7 +8,7 @@ import {
   parserUSFADerivationCode,
   parserUSFANutrition,
   parserUSFAProduct,
-  parserUSFAServingSize
+  parserUSFAServingSize,
 } from '@files';
 
 // import { __generateId, __generateDate } from '@utils';
@@ -19,5 +19,5 @@ export {
   parserUSFADerivationCode,
   parserUSFANutrition,
   parserUSFAProduct,
-  parserUSFAServingSize
+  parserUSFAServingSize,
 };

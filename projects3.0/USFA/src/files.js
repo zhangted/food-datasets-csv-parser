@@ -17,7 +17,7 @@ export {
   parserUSFADerivationCode,
   parserUSFANutrition,
   parserUSFAProduct,
-  parserUSFAServingSize
+  parserUSFAServingSize,
 };
 
 // / @TODO later we should do it recursivelly

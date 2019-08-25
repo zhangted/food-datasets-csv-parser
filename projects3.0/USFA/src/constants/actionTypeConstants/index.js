@@ -5,24 +5,24 @@
 // export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 //
 
-export const selectSubreddit = subreddit => ({
+export const selectSubreddit = (subreddit) => ({
   type: SELECT_SUBREDDIT,
-  subreddit
+  subreddit,
 });
 
-export const invalidateSubreddit = subreddit => ({
+export const invalidateSubreddit = (subreddit) => ({
   type: INVALIDATE_SUBREDDIT,
-  subreddit
+  subreddit,
 });
 
-export const requestPosts = subreddit => ({
+export const requestPosts = (subreddit) => ({
   type: REQUEST_POSTS,
-  subreddit
+  subreddit,
 });
 
 export const receivePosts = (subreddit, json) => ({
   type: RECEIVE_POSTS,
   subreddit,
-  posts: json.data.children.map(child => child.data),
-  receivedAt: Date.now()
+  posts: json.data.children.map((child) => child.data),
+  receivedAt: Date.now(),
 });
