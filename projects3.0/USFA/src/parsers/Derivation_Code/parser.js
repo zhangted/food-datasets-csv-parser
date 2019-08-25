@@ -3,7 +3,7 @@ import { join } from 'path';
 import { parseDirectoryFiles } from '@groceristar/food-dataset-csv-parser';
 // import { parseDirectoryFiles, getHeaders } from '@groceristar/food-dataset-csv-parser'
 
-const parseUSFADerivationCode = () => {
+const parserUSFADerivationCode = () => {
   // const headers = getHeaders('./Fish_NV_sum (per 100 g EP).csv');
 
   const headers = ['derivation_code', 'Derivation_Descript'];
@@ -21,4 +21,4 @@ const parseUSFADerivationCode = () => {
   parseDirectoryFiles(directoryPath, headers);
 };
 
-export default parseUSFADerivationCode;
+export default parserUSFADerivationCode;
