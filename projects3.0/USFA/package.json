@@ -15,7 +15,11 @@
     "test:cover": "jest --coverage",
     "jsonlint": "node jsonlint.config.js",
     "format": "prettier",
-    "generate:1": "node ./../xxx"
+    "generate": "xxx",
+    "generate:1": "node ./../xxx",
+    "generate:2": "node ",
+    "generate:3": "node ",
+    "generate:4": "node "
   },
   "description": "USFA data parser",
   "main": "dist/index.cjs",

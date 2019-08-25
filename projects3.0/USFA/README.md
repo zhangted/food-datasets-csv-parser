@@ -7,3 +7,4 @@ We have a few files, stored at https://github.com/ChickenKyiv/awesome-food-db-st
 - [ ] update structure for data and raw folders
 - [ ] shx module can actually be used for calling different parser scripts. Or we can do it in a better way...
 - [ ] Replace old rollup with new one
+- [ ] Parser Index file for more easy export
