@@ -6,7 +6,6 @@
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 import builtins from "rollup-plugin-node-builtins";
-
 import babel from "rollup-plugin-babel";
 import pkg from "./package.json";
 // import eslint from "rollup-plugin-eslint"
@@ -74,6 +73,7 @@ const plugins = () => [
   // Compile TypeScript/JavaScript files
 
   builtins()
+
   // remove flow annotations from output
   // flow(),
 

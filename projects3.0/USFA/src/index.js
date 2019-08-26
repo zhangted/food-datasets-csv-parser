@@ -9,7 +9,8 @@ import {
   parserUSFANutrition,
   parserUSFAProduct,
   parserUSFAServingSize,
-} from '@files';
+} from './files';
+// } from '@files';
 
 // import { __generateId, __generateDate } from '@utils';
 

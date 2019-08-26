@@ -1,4 +1,3 @@
-// import pathExists from 'path-exists';
 import { resolve, join } from 'path';
 import {
   // existsSync,
@@ -6,7 +5,7 @@ import {
   statSync,
   readFileSync,
 } from 'fs';
-
+// import pathExists from 'path-exists';
 // import { fixPath } from 'generator'
 
 /**
