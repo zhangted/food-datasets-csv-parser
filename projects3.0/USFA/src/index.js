@@ -13,7 +13,7 @@ import {
 
 // import { __generateId, __generateDate } from '@utils';
 
-// @TODO connect with parsers???
+parserUSFADerivationCode();
 
 export {
   parserUSFADerivationCode,
