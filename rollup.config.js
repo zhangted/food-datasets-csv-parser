@@ -2,7 +2,9 @@
 // import copy from 'rollup-plugin-cpy';
 // https://github.com/mjeanroy/rollup-plugin-prettier
 // https://gitlab.com/IvanSanchez/rollup-plugin-file-as-blob
-
+// rollup-plugin-node-globals
+// rollup-plugin-async
+// rollup-plugin-nodent
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "rollup-plugin-node-resolve";
 import builtins from "rollup-plugin-node-builtins";
