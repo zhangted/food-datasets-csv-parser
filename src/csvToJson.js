@@ -91,6 +91,9 @@ const csvToJson = (directory, file, headers) => {
     .on('end', () => {
       numberOfFiles = Math.ceil(results.length / maxEntries);
       // @TODO this is not a cool line. We can change it
+      // it also looks like a very strange turn around.
+      // I mean we create results array from the outside,
+      // then we just push data into it and later move results into another variable...
       result = results;
       splitJsonIntoFiles(fileName);
     });

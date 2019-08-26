@@ -1,10 +1,10 @@
-import { resolve, join } from 'path';
 import {
-  // existsSync,
   readdirSync,
   statSync,
   readFileSync,
 } from 'fs';
+import { resolve, join } from 'path';
+
 // import pathExists from 'path-exists';
 // import { fixPath } from 'generator'
 
@@ -13,7 +13,7 @@ import {
  * @param {String} path
  */
 // @TODO this method is a duplicate at generator.
-// not sure where we should keep it
+// not sure where we should keep it - check writeFile.js#10 line
 // https://github.com/GroceriStar/food-static-files-generator/blob/master/src/utils.js#L33
 const fixPath = (filePath) => {
   let newPath = resolve(__dirname, filePath);
@@ -22,6 +22,7 @@ const fixPath = (filePath) => {
   }
   return newPath;
 };
+
 
 /**
  * For readAllFiles()
@@ -68,12 +69,12 @@ const getList = (path) => {
  * @param {Bool} resolve
  */
 const joinPath = (arr, useResolve = false) => {
+  console.log('joinPath starting');
   if (useResolve) {
     return resolve(...arr);
+  } else {
+    return join(...arr);
   }
-
-  // @TODO i assume this is an else statement? confusing ...
-  return join(...arr);
 };
 
 export { readAllFiles, joinPath, getList };

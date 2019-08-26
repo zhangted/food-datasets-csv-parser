@@ -1,13 +1,9 @@
-// const filePath = require('../files')
 import { readFileSync, mkdirSync } from 'fs';
-// @TODO replace PATH constant with a normal way...
-// at least we can deconstruct it and only use methods inside of this library.
 import {
   resolve, basename, extname, parse,
 } from 'path';
 import { write, isFolderExists } from '@groceristar/static-data-generator';
 import { readAllFiles } from './utils';
-// const { promisify } = require('util')
 
 /**
  * For fixPath()
