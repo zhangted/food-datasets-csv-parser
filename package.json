@@ -70,7 +70,8 @@
     "fs": "^0.0.2",
     "lodash": "^4.17.11",
     "path": "^0.12.7",
-    "path-exists": "^4.0.0"
+    "path-exists": "^4.0.0",
+    "rollup-plugin-node-globals": "^1.4.0"
   },
   "files": [
     "dist"
