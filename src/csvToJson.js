@@ -12,7 +12,6 @@ import { joinPath } from './utils';
 // is there some intersections, etc.
 // I think we can improve it very easy.
 
-const maxEntries = 10000;
 let result = [];
 let folderName;
 let numberOfFiles;
@@ -41,12 +40,12 @@ const generateJsonFiles = (i, fileName, start, stop) => {
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const splitJsonIntoFiles = (fileName) => {
+const splitJsonIntoFiles = (fileName, MAXENTRIES) => {
   // @TODO add if env.development and use console.log(xxx)
   console.log('---splitJson started---');
   for (let i; i <= numberOfFiles; i += 1) {
-    const start = (i - 1) * maxEntries;
-    let stop = i * maxEntries;
+    const start = (i - 1) * MAXENTRIES;
+    let stop = i * MAXENTRIES;
 
     if (i === numberOfFiles) {
       stop = result.length + 1;
@@ -63,6 +62,7 @@ const splitJsonIntoFiles = (fileName) => {
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 const csvToJson = (directory, file, headers) => {
+  const MAXENTRIES = 10000;
   // @TODO when we'll have getHeaders method working, should we call it inside of this method?
   // @TODO can this be a separated method?
   const fileName = file.split('.')[0];
@@ -91,13 +91,13 @@ const csvToJson = (directory, file, headers) => {
       results.push(data);
     })
     .on('end', () => {
-      numberOfFiles = Math.ceil(results.length / maxEntries);
+      numberOfFiles = Math.ceil(results.length / MAXENTRIES);
       // @TODO this is not a cool line. We can change it
       // it also looks like a very strange turn around.
       // I mean we create results array from the outside,
       // then we just push data into it and later move results into another variable...
       result = results;
-      splitJsonIntoFiles(fileName);
+      splitJsonIntoFiles(fileName, MAXENTRIES);
     });
 };
 
