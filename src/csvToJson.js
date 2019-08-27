@@ -17,19 +17,21 @@ let result = [];
 let folderName;
 let numberOfFiles;
 
-// @TODO change the name
-const fileWriter = (i, fileName, start, stop) => {
+const generateJsonFiles = (i, fileName, start, stop) => {
   const data = result.slice(start, stop);
 
-  // @TODO change that. it will work only for one case.
+  // @TODO change that
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
   const jsonFileName = `${folderName}/${fileName}${i}.json`;
-  const jsonPath = `/projects/USFA/${jsonFileName}`;
+  // Why use USFA when jsonFileName already has the folderName in it.
+  const jsonPath = `/projects/${jsonFileName}`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
+  console.log(folderName);
   console.log(jsonPath);
   console.log(combinedPath);
+  console.log('---file writer ended---');
 
   // --> if you reading it - then it's time for updating it :)
 
@@ -37,7 +39,7 @@ const fileWriter = (i, fileName, start, stop) => {
 };
 
 // @TODO update this method later, when we'll migrate to `write` from generator
-// @TODO as this method using "fileWriter" method - it should be updated.
+// @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
 const splitJsonIntoFiles = (fileName) => {
   // @TODO add if env.development and use console.log(xxx)
@@ -48,12 +50,12 @@ const splitJsonIntoFiles = (fileName) => {
 
     if (i === numberOfFiles) {
       stop = result.length + 1;
-      fileWriter(i, fileName, start, stop);
+      generateJsonFiles(i, fileName, start, stop);
       return;
     }
 
-    // @TODO is this related to else statemtn? confusing ...
-    fileWriter(i, fileName, start, stop);
+    // @TODO is this related to else statement, confusing ...
+    generateJsonFiles(i, fileName, start, stop);
   }
 };
 
