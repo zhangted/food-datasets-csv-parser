@@ -15,7 +15,8 @@ import { joinPath } from './utils';
 
 let folderName;
 
-
+// @TODO I don't like that we have 5 attributes at this method. it become complicated
+// we need to figure out the way how to do it
 const generate = (i, fileName, start, stop, dataEntries) => {
   const data = dataEntries.slice(start, stop);
 
@@ -60,7 +61,7 @@ const assign = (fileName, maxEntriesPerFile, numberOfFiles, dataEntries) => {
   }
 };
 
-// @TODO This is our main method here, right?
+// @TODO 
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 const csvToJson = (directory, file, headers) => {
