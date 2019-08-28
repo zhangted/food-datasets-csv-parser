@@ -12,10 +12,9 @@ import { joinPath } from './utils';
 // is there some intersections, etc.
 // I think we can improve it very easy.
 
-const maxEntries = 10000;
-let result = [];
+
 let folderName;
-let numberOfFiles;
+
 
 const generateJsonFiles = (i, fileName, start, stop) => {
   const data = result.slice(start, stop);
@@ -23,9 +22,7 @@ const generateJsonFiles = (i, fileName, start, stop) => {
   // @TODO change that
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  const jsonFileName = `${folderName}/${fileName}${i}.json`;
-  // Why use USFA when jsonFileName already has the folderName in it.
-  const jsonPath = `/projects/${jsonFileName}`;
+  const jsonPath = `/projects/${fileName}${i}.json`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
   console.log(folderName);
@@ -41,20 +38,21 @@ const generateJsonFiles = (i, fileName, start, stop) => {
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const splitJsonIntoFiles = (fileName) => {
+const splitJsonIntoFiles = (fileName, maxEntriesPerFile, numberOfFiles) => {
   // @TODO add if env.development and use console.log(xxx)
   console.log('---splitJson started---');
-  for (let i; i <= numberOfFiles; i += 1) {
-    const start = (i - 1) * maxEntries;
-    let stop = i * maxEntries;
+  for (let i = 0; i < numberOfFiles; i++) { 
+    const start = i * maxEntriesPerFile; 
+    let stop = ((i+1) * maxEntriesPerFile) - 1;
+    //0-9999,10000-19999,20000...etc
 
-    if (i === numberOfFiles) {
+    if (i+1 == numberOfFiles) { //last file
       stop = result.length + 1;
       generateJsonFiles(i, fileName, start, stop);
-      return;
+      return; //end the for loop here
     }
-
-    // @TODO is this related to else statement, confusing ...
+.
+    //seems like this is the statement that is usually run in this for loop
     generateJsonFiles(i, fileName, start, stop);
   }
 };
@@ -65,8 +63,11 @@ const splitJsonIntoFiles = (fileName) => {
 const csvToJson = (directory, file, headers) => {
   // @TODO when we'll have getHeaders method working, should we call it inside of this method?
   // @TODO can this be a separated method?
+  const maxEntriesPerFile = 10000;
+  let result = [];
+  let numberOfFiles;
+  
   const fileName = file.split('.')[0];
-  const results = [];
   const folder = directory.split('/');
 
   folderName = folder[folder.length - 1];
@@ -88,16 +89,11 @@ const csvToJson = (directory, file, headers) => {
       }),
     )
     .on('data', (data) => {
-      results.push(data);
+      result.push(data);
     })
     .on('end', () => {
-      numberOfFiles = Math.ceil(results.length / maxEntries);
-      // @TODO this is not a cool line. We can change it
-      // it also looks like a very strange turn around.
-      // I mean we create results array from the outside,
-      // then we just push data into it and later move results into another variable...
-      result = results;
-      splitJsonIntoFiles(fileName);
+      numberOfFiles = Math.ceil(result.length / maxEntriesPerFile);
+      splitJsonIntoFiles(fileName, maxEntriesPerFile, numberOfFiles);
     });
 };
 
