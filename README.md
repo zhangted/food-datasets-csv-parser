@@ -107,18 +107,30 @@ ParseDirectoryFiles(directoryPath, headers)
 directory but will only pass csv files to `csvToJson(directory, file, headers)`.
 Each csv file is passed into `csvParser()``.
 
-#### `csvToJson` require csv-Parser modules
+csvToJson
+1)fill results array with all csv entries.
+2)total entries in csv file/10,000 entries per json file => get number of json files to be generated
 
-`csvToJson ()` --get the file directory path, filename(file) and headers and generate a Json file for the csv files using the headers as keys.
-The JSON file generated is stored in variable result.
-File Name is passed is to `splitJsonFile(file)`` to keep track of the file being
+assignDataIntoJsonFiles
+3a) for every json file -> assign entries 1-10000, 10001-20001, 30001-40001, etc., to each json file
+(edge case if statement for the last "stop" has to be length of results+1, just because it probably wont end on perfect 10000 multiple).
 
-- variable `numberOfFile` stores the number of JSON files to get from JSON stored in result. So that each JSON file has maximium entry of 10000 stored in variable maxEntries.
-  `Filewriter` function is called inside the `splitJsonFile` function
+generateJsonFile
+3b) pass directory/filename and entries ranges per json file
 
-#### `filewriter()` – requires writeFile from sd/generator to work.
+#### `csvToJson()` require csv-Parser modules`
+1)Fill `result` array with all csv entries.
+2)Total entries in csv file/10,000 entries per json file => get number of json files to be generated => store in `numberOfFiles`
+3)Pass file name, max entries per file, number of files, and csv data array to `assign()`
 
-It takes in the child number of the json file( i ) ,the file name( fileName ),the interval the json stored in result should start and stop slicing. The sliced data will be written into the folder calling `parserFile` function along side file name being parsed and the child number of the file.
+#### `assign( fileName, maxEntriesPerFile, numberOfFiles, dataEntries )` 
+1a)For every file -> calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000)
+ b)Edge case if statement for the last `stop` index has to be length of `dataEntries` - 1 , because it probably wont end on perfect 10000 multiple.
+ c)Pass csv data array, start/stop indexes, file name, and currrent file counter named `i` to `generate()`
+
+#### `generate( i, fileName, start, stop, dataEntries )`– requires writeFile from sd/generator to work.
+1) Creates sliced array called `data` from `dataEntries[start]` to `dataEntries[stop]` 
+2) Writes `data` to json file named `fileName+i`
 
 ### ES5 and ES6 simple differences reference
 
@@ -176,7 +188,7 @@ It takes in the child number of the json file( i ) ,the file name( fileName ),th
 
 ```
 
-#### splitJsonIntoFiles
+#### assign
 
 ```
 
