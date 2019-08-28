@@ -16,8 +16,8 @@ import { joinPath } from './utils';
 let folderName;
 
 
-const generateJsonFiles = (i, fileName, start, stop) => {
-  const data = result.slice(start, stop);
+const generateJsonFiles = (i, fileName, start, stop, dataEntries) => {
+  const data = dataEntries.slice(start, stop);
 
   // @TODO change that
   // we can also create a method for path.join, so it wouldn't complicate our code
@@ -38,7 +38,7 @@ const generateJsonFiles = (i, fileName, start, stop) => {
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const splitJsonIntoFiles = (fileName, maxEntriesPerFile, numberOfFiles) => {
+const splitJsonIntoFiles = (fileName, maxEntriesPerFile, numberOfFiles, dataEntries) => {
   // @TODO add if env.development and use console.log(xxx)
   console.log('---splitJson started---');
   for (let i = 0; i < numberOfFiles; i++) { 
@@ -48,12 +48,12 @@ const splitJsonIntoFiles = (fileName, maxEntriesPerFile, numberOfFiles) => {
 
     if (i+1 == numberOfFiles) { //last file
       stop = result.length - 1;
-      generateJsonFiles(i, fileName, start, stop);
+      generateJsonFiles(i, fileName, start, stop, dataEntries);
       return; //end the for loop here
     }
 .
     //seems like this is the statement that is usually run in this for loop
-    generateJsonFiles(i, fileName, start, stop);
+    generateJsonFiles(i, fileName, start, stop, dataEntries);
   }
 };
 
@@ -93,7 +93,7 @@ const csvToJson = (directory, file, headers) => {
     })
     .on('end', () => {
       numberOfFiles = Math.ceil(result.length / maxEntriesPerFile);
-      splitJsonIntoFiles(fileName, maxEntriesPerFile, numberOfFiles);
+      splitJsonIntoFiles(fileName, maxEntriesPerFile, numberOfFiles, result);
     });
 };
 
