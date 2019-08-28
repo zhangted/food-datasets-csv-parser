@@ -176,7 +176,7 @@ generateJsonFile
 
 ## Methods from this module
 
-#### fileWriter
+#### generate
 
 ```
 
