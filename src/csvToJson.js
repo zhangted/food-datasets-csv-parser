@@ -47,7 +47,7 @@ const splitJsonIntoFiles = (fileName, maxEntriesPerFile, numberOfFiles) => {
     //0-9999,10000-19999,20000...etc
 
     if (i+1 == numberOfFiles) { //last file
-      stop = result.length + 1;
+      stop = result.length - 1;
       generateJsonFiles(i, fileName, start, stop);
       return; //end the for loop here
     }
