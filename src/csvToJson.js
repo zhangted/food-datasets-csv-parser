@@ -22,7 +22,10 @@ const generateJsonFiles = (i, fileName, start, stop, dataEntries) => {
   // @TODO change that
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
-  const jsonPath = `/projects/${fileName}${i}.json`;
+  const jsonFileName = `${folderName}/${fileName}${i}.json`;
+  // Why use USFA when jsonFileName already has the folderName in it.
+  // Can jsonFileName and jsonPath possibly be merged? 
+  const jsonPath = `/projects/${jsonFileName}`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
   console.log(folderName);
@@ -41,19 +44,19 @@ const generateJsonFiles = (i, fileName, start, stop, dataEntries) => {
 const splitJsonIntoFiles = (fileName, maxEntriesPerFile, numberOfFiles, dataEntries) => {
   // @TODO add if env.development and use console.log(xxx)
   console.log('---splitJson started---');
-  for (let i = 0; i < numberOfFiles; i++) { 
+  for (let i = 0; i < numberOfFiles; i += 1) { 
     const start = i * maxEntriesPerFile; 
     let stop = ((i+1) * maxEntriesPerFile) - 1;
     //0-9999,10000-19999,20000...etc
 
-    if (i+1 == numberOfFiles) { //last file
+    if (i+1 == numberOfFiles) { //if last file
       stop = result.length - 1;
       generateJsonFiles(i, fileName, start, stop, dataEntries);
       return; //end the for loop here
     }
-.
-    //seems like this is the statement that is usually run in this for loop
-    generateJsonFiles(i, fileName, start, stop, dataEntries);
+    else {
+      generateJsonFiles(i, fileName, start, stop, dataEntries);
+    }
   }
 };
 
