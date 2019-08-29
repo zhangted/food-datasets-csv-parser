@@ -17,8 +17,7 @@ let folderName;
 
 // @TODO I don't like that we have 5 attributes at this method. it become complicated
 // we need to figure out the way how to do it
-const generate = (i, fileName, start, stop, dataEntries) => {
-  const data = dataEntries.slice(start, stop);
+const generate = (i, fileName, data) => {
 
   // @TODO change that
   // we can also create a method for path.join, so it wouldn't complicate our code
@@ -47,17 +46,14 @@ const assign = (fileName, maxEntriesPerFile, numberOfFiles, dataEntries) => {
   console.log('---assign started---');
   for (let i = 0; i < numberOfFiles; i += 1) { 
     const start = i * maxEntriesPerFile; 
-    let stop = ((i+1) * maxEntriesPerFile) - 1;
-    //0-9999,10000-19999,20000...etc
-
-    if (i+1 == numberOfFiles) { //if last file
-      stop = result.length - 1;
-      generate(i, fileName, start, stop, dataEntries);
-      return; //end the for loop here
+    if(i+1 == numberOfFiles) {
+      let stop = result.length - 1;
     }
     else {
-      generate(i, fileName, start, stop, dataEntries);
+      let stop = ((i+1) * maxEntriesPerFile) - 1;
     }
+    const data = dataEntries.slice(start, stop);
+    generate(i, fileName, data);
   }
 };
 
