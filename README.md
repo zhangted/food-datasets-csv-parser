@@ -99,26 +99,22 @@ and headers (the header of the csv files ) as array of string.
 ```
 ParseDirectoryFiles(directoryPath, headers)
   => csvToJson(directory, file, headers)
-      => splitJsonFile(fileName)
-        => filewriter(i, fileName, start, stop)
+      => assign(fileName, maxEntriesPerFile, numberOfFiles, dataEntries)
+        => generate(i, fileName, start, stop, dataEntries)
 ```
 
 `ParseDirectoryFiles` gets a directory path from call, and reads all files in the
 directory but will only pass csv files to `csvToJson(directory, file, headers)`.
 Each csv file is passed into `csvParser()``.
 
-#### `csvToJson` require csv-Parser modules
+#### `csvToJson()` require csv-Parser modules`
+Fill `result` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `numberOfFiles` => Pass file name, max entries per file, number of files, and csv data array to `assign`
 
-`csvToJson ()` --get the file directory path, filename(file) and headers and generate a Json file for the csv files using the headers as keys.
-The JSON file generated is stored in variable result.
-File Name is passed is to `splitJsonFile(file)`` to keep track of the file being
+#### `assign( fileName, maxEntriesPerFile, numberOfFiles, dataEntries )` 
+For every file => calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). Includes edge case for the last `stop` index to be length of `dataEntries` - 1 , because it probably wont end on a perfect 10000 multiple. Pass csv data array, start/stop indexes, file name, and currrent file counter named `i` to `generate`
 
-- variable `numberOfFile` stores the number of JSON files to get from JSON stored in result. So that each JSON file has maximium entry of 10000 stored in variable maxEntries.
-  `Filewriter` function is called inside the `splitJsonFile` function
-
-#### `filewriter()` – requires writeFile from sd/generator to work.
-
-It takes in the child number of the json file( i ) ,the file name( fileName ),the interval the json stored in result should start and stop slicing. The sliced data will be written into the folder calling `parserFile` function along side file name being parsed and the child number of the file.
+#### `generate( i, fileName, start, stop, dataEntries )`– requires writeFile from sd/generator to work.
+Creates sliced array called `data` from `dataEntries[start]` to `dataEntries[stop]`. Writes `data` to json file named `fileName+i`
 
 ### ES5 and ES6 simple differences reference
 
@@ -164,7 +160,7 @@ It takes in the child number of the json file( i ) ,the file name( fileName ),th
 
 ## Methods from this module
 
-#### fileWriter
+#### generate
 
 ```
 
@@ -176,7 +172,7 @@ It takes in the child number of the json file( i ) ,the file name( fileName ),th
 
 ```
 
-#### splitJsonIntoFiles
+#### assign
 
 ```
 
