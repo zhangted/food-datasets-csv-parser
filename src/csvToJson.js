@@ -40,18 +40,21 @@ const generate = (i, fileName, data) => {
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const assign = (fileName, maxEntriesPerFile, numberOfFiles, dataEntries) => {
+const assign = (fileName, maxEntriesPerFile, fileCount, dataEntries) => {
   // @TODO add if env.development and use console.log(xxx)
   console.log('---assign started---');
-  for (let i = 0; i < numberOfFiles; i += 1) {
-    const start = i * maxEntriesPerFile;
-    if (i + 1 == numberOfFiles) {
-      const stop = result.length - 1;
+  let start; let
+    stop;
+  for (let i = 0; i < fileCount; i += 1) {
+    start = i * maxEntriesPerFile;
+    if (i + 1 === fileCount) {
+      // @TODO should we pass result at this method as well?
+      stop = result.length - 1;
     } else {
-      const stop = ((i + 1) * maxEntriesPerFile) - 1;
+      stop = ((i + 1) * maxEntriesPerFile) - 1;
     }
-    const data = dataEntries.slice(start, stop);
-    generate(i, fileName, data);
+    const jsonObjects = dataEntries.slice(start, stop);
+    generate(i, fileName, jsonObjects);
   }
 };
 
