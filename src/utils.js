@@ -72,9 +72,8 @@ const joinPath = (arr, useResolve = false) => {
   console.log('joinPath starting');
   if (useResolve) {
     return resolve(...arr);
-  } else {
-    return join(...arr);
   }
+  return join(...arr);
 };
 
 export { readAllFiles, joinPath, getList };
