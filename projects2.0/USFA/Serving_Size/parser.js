@@ -9,6 +9,7 @@ const headers = [
   'Household_Serving_Size_UOM',
 ];
 
+// we don't have that folder now
 const directory = '../../../../sd/src/data/Serving_Size';
 
 // //joining path of directory

@@ -12,23 +12,25 @@ import { joinPath } from './utils';
 // is there some intersections, etc.
 // I think we can improve it very easy.
 
-let result = [];
+
 let folderName;
-let numberOfFiles;
 
-// @TODO change the name
-const fileWriter = (i, fileName, start, stop) => {
-  const data = result.slice(start, stop);
-
-  // @TODO change that. it will work only for one case.
+// @TODO I don't like that we have 5 attributes at this method. it become complicated
+// we need to figure out the way how to do it
+const generate = (i, fileName, data) => {
+  // @TODO change that
   // we can also create a method for path.join, so it wouldn't complicate our code
   // really bad line
   const jsonFileName = `${folderName}/${fileName}${i}.json`;
-  const jsonPath = `/projects/USFA/${jsonFileName}`;
+  // Why use USFA when jsonFileName already has the folderName in it.
+  // Can jsonFileName and jsonPath possibly be merged?
+  const jsonPath = `/projects/${jsonFileName}`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
+  console.log(folderName);
   console.log(jsonPath);
   console.log(combinedPath);
+  console.log('---file writer ended---');
 
   // --> if you reading it - then it's time for updating it :)
 
@@ -36,48 +38,54 @@ const fileWriter = (i, fileName, start, stop) => {
 };
 
 // @TODO update this method later, when we'll migrate to `write` from generator
-// @TODO as this method using "fileWriter" method - it should be updated.
+// @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const splitJsonIntoFiles = (fileName, MAXENTRIES) => {
+const assign = (fileName, maxEntriesPerFile, fileCount, dataEntries) => {
   // @TODO add if env.development and use console.log(xxx)
-  console.log('---splitJson started---');
-  for (let i; i <= numberOfFiles; i += 1) {
-    const start = (i - 1) * MAXENTRIES;
-    let stop = i * MAXENTRIES;
-
-    if (i === numberOfFiles) {
-      stop = result.length + 1;
-      fileWriter(i, fileName, start, stop);
-      return;
+  console.log('---assign started---');
+  let start; let
+    stop;
+  for (let i = 0; i < fileCount; i += 1) {
+    start = i * maxEntriesPerFile;
+    if (i + 1 === fileCount) {
+      // @TODO should we pass result at this method as well?
+      stop = result.length - 1;
+    } else {
+      stop = ((i + 1) * maxEntriesPerFile) - 1;
     }
-
-    // @TODO is this related to else statemtn? confusing ...
-    fileWriter(i, fileName, start, stop);
+    const jsonObjects = dataEntries.slice(start, stop);
+    generate(i, fileName, jsonObjects);
   }
 };
 
-// @TODO This is our main method here, right?
+// @TODO
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
+// @TODO when we'll have getHeaders method working, should we call it inside of this method?
 const csvToJson = (directory, file, headers) => {
-  const MAXENTREES = 10000;
-  // @TODO when we'll have getHeaders method working, should we call it inside of this method?
-  // @TODO can this be a separated method?
-  const fileName = file.split('.')[0];
-  const results = [];
-  const folder = directory.split('/');
+  // @TODO should we have this const at this method? maybe just init it at next methods?
+  // it should reduce number of arguments
+  const maxEntriesPerFile = 10000;
+  const result = [];
+  let numberOfFiles;
 
-  folderName = folder[folder.length - 1];
+
   // <--
-  // @TODO it's a very long path. we can use our aliases
-  // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
 
   // @TODO can we also path a variable that combine `${directory}/${file}` together?
   // i mean maybe we can pass into csvToJson one argument instead of two?
 
   // @TODO I still think that it will be a good task
   // to move out this long `thing` into separated method
+
+  // @TODO maybe we should move this 4 lines into a separated method?
+  const fileName = file.split('.')[0];
+  const folder = directory.split('/');
+
+  folderName = folder[folder.length - 1];
   const jsonFilePath = resolve(__dirname, `${directory}/${file}`);
+
+  // -->
   createReadStream(jsonFilePath)
     .pipe(
       csv({
@@ -86,16 +94,11 @@ const csvToJson = (directory, file, headers) => {
       }),
     )
     .on('data', (data) => {
-      results.push(data);
+      result.push(data);
     })
     .on('end', () => {
-      numberOfFiles = Math.ceil(results.length / MAXENTREES);
-      // @TODO this is not a cool line. We can change it
-      // it also looks like a very strange turn around.
-      // I mean we create results array from the outside,
-      // then we just push data into it and later move results into another variable...
-      result = results;
-      splitJsonIntoFiles(fileName,MAXENTRIES);
+      numberOfFiles = Math.ceil(result.length / maxEntriesPerFile);
+      assign(fileName, maxEntriesPerFile, numberOfFiles, result);
     });
 };
 

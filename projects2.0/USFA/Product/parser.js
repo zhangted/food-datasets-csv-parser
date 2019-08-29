@@ -12,6 +12,7 @@ const headers = [
   'ingredients_english',
 ];
 
+// we don't have that folder now
 const directory = '../../../../sd/src/data/Product';
 // //joining path of directory
 const directoryPath = path.join(__dirname, directory);

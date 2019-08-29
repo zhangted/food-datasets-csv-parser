@@ -10,6 +10,7 @@ const headers = [
   'Output_uom',
 ];
 
+// we don't have that folder now
 const directory = '../../../../sd/src/data/Nutrition';
 
 // //joining path of directory
