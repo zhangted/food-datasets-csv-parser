@@ -99,8 +99,8 @@ and headers (the header of the csv files ) as array of string.
 ```
 ParseDirectoryFiles(directoryPath, headers)
   => csvToJson(directory, file, headers)
-      => assign(fileName, maxEntriesPerFile, numberOfFiles, dataEntries)
-        => generate(i, fileName, start, stop, dataEntries)
+      => assign(fileName, dataEntries)
+        => generate(i, fileName, data)
 ```
 
 `ParseDirectoryFiles` gets a directory path from call, and reads all files in the
@@ -108,13 +108,13 @@ directory but will only pass csv files to `csvToJson(directory, file, headers)`.
 Each csv file is passed into `csvParser()``.
 
 #### `csvToJson()` require csv-Parser modules`
-Fill `result` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `numberOfFiles` => Pass file name, max entries per file, number of files, and csv data array to `assign`
+Fill `dataEntries` with all the csv data. Pass `filename` and `dataEntries` to `assign`
 
-#### `assign( fileName, maxEntriesPerFile, numberOfFiles, dataEntries )` 
-For every file => calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). Includes edge case for the last `stop` index to be length of `dataEntries` - 1 , because it probably wont end on a perfect 10000 multiple. Pass csv data array, start/stop indexes, file name, and currrent file counter named `i` to `generate`
+#### `assign( fileName, dataEntries )`
+Set `maxEntriesPerFile`. Calculate how many files we need to make => Length of `dataEntries` divided by `maxEntriesPerFile` => Store in `fileCount` => For each file, we calculate the `start` and `stop` indexes we need to slice from `dataEntries`. For the last file, the `stop` will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Then `dataEntries` is sliced at `start` to `stop` and stored in `jsonObjects`. The current file number, `i`, the `fileName`, and `jsonObjects` is passed to `generate`.
 
-#### `generate( i, fileName, start, stop, dataEntries )`– requires writeFile from sd/generator to work.
-Creates sliced array called `data` from `dataEntries[start]` to `dataEntries[stop]`. Writes `data` to json file named `fileName+i`
+#### `generate( i, fileName, data )`– requires writeFile from sd/generator to work.
+Writes `data` to json file named `fileName+i`
 
 ### ES5 and ES6 simple differences reference
 
