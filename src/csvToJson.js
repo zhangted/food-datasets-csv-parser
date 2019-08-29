@@ -40,12 +40,14 @@ const generate = (i, fileName, data) => {
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const assign = (fileName, maxEntriesPerFile, fileCount, dataEntries) => {
+const assign = (fileName, dataEntries) => {
   // @TODO add if env.development and use console.log(xxx)
+  const maxEntriesPerFile = 10000;
+  const fileCount = Math.ceil(dataEntries.length / maxEntriesPerFile);
   console.log('---assign started---');
-  let start; let
-    stop;
-  for (let i = 0; i < fileCount; i += 1) {
+  let start;
+  let stop;
+  for (let i = 0; i < numberOfFiles; i += 1) {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
       // @TODO should we pass result at this method as well?
@@ -65,11 +67,7 @@ const assign = (fileName, maxEntriesPerFile, fileCount, dataEntries) => {
 const csvToJson = (directory, file, headers) => {
   // @TODO should we have this const at this method? maybe just init it at next methods?
   // it should reduce number of arguments
-  const maxEntriesPerFile = 10000;
-  const result = [];
-  let numberOfFiles;
-
-
+  const dataEntries = [];
   // <--
 
   // @TODO can we also path a variable that combine `${directory}/${file}` together?
@@ -94,11 +92,10 @@ const csvToJson = (directory, file, headers) => {
       }),
     )
     .on('data', (data) => {
-      result.push(data);
+      dataEntries.push(data);
     })
     .on('end', () => {
-      numberOfFiles = Math.ceil(result.length / maxEntriesPerFile);
-      assign(fileName, maxEntriesPerFile, numberOfFiles, result);
+      assign(fileName, dataEntries);
     });
 };
 
