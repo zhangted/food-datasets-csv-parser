@@ -47,7 +47,7 @@ const assign = (fileName, dataEntries) => {
   console.log('---assign started---');
   let start;
   let stop;
-  for (let i = 0; i < numberOfFiles; i += 1) {
+  for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
       // @TODO should we pass result at this method as well?
