@@ -61,27 +61,31 @@ const assign = (fileName, maxEntriesPerFile, fileCount, dataEntries) => {
 // @TODO
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
+// @TODO when we'll have getHeaders method working, should we call it inside of this method?
 const csvToJson = (directory, file, headers) => {
-  // @TODO when we'll have getHeaders method working, should we call it inside of this method?
-  // @TODO can this be a separated method?
+  // @TODO should we have this const at this method? maybe just init it at next methods?
+  // it should reduce number of arguments
   const maxEntriesPerFile = 10000;
   const result = [];
   let numberOfFiles;
 
-  const fileName = file.split('.')[0];
-  const folder = directory.split('/');
 
-  folderName = folder[folder.length - 1];
   // <--
-  // @TODO it's a very long path. we can use our aliases
-  // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
 
   // @TODO can we also path a variable that combine `${directory}/${file}` together?
   // i mean maybe we can pass into csvToJson one argument instead of two?
 
   // @TODO I still think that it will be a good task
   // to move out this long `thing` into separated method
+
+  // @TODO maybe we should move this 4 lines into a separated method?
+  const fileName = file.split('.')[0];
+  const folder = directory.split('/');
+
+  folderName = folder[folder.length - 1];
   const jsonFilePath = resolve(__dirname, `${directory}/${file}`);
+
+  // -->
   createReadStream(jsonFilePath)
     .pipe(
       csv({
