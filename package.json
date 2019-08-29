@@ -5,8 +5,8 @@
   "scripts": {
     "bundle": "rollup -c",
     "dev": "rollup -c -w",
-    "build": "npm run clean && npm run bundle",
-    "build:babel": "yarn clean && babel src -d dist",
+    "build": "npm run clean && yarn lint && npm run bundle",
+    "build:babel": "yarn clean && yarn lint && babel src -d dist",
     "clean": "shx rm -rf ./coverage && shx rm -rf ./dist",
     "test": "jest",
     "test:watch": "jest --watch",
