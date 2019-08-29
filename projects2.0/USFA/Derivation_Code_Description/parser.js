@@ -6,6 +6,7 @@ const headers = [
   'Derivation_Descript',
 ];
 
+// we don't have that folder now
 const directory = '../../../sd/src/data/Derivation_Code_Description';
 
 // //joining path of directory
