@@ -51,7 +51,7 @@ const assign = (fileName, dataEntries) => {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
       // @TODO should we pass result at this method as well?
-      stop = result.length - 1;
+      stop = dataEntries.length - 1;
     } else {
       stop = ((i + 1) * maxEntriesPerFile) - 1;
     }
