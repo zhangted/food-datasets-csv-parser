@@ -108,10 +108,10 @@ directory but will only pass csv files to `csvToJson(directory, file, headers)`.
 Each csv file is passed into `csvParser()``.
 
 #### `csvToJson()` require csv-Parser modules`
-Fill `dataEntries` with all the csv data. Pass `filename` and `dataEntries` to `assign`
+Fill `dataEntries` array with all csv data => Pass file name and csv data array to `assign`
 
 #### `assign( fileName, dataEntries )`
-Set `maxEntriesPerFile`. Calculate how many files we need to make => Length of `dataEntries` divided by `maxEntriesPerFile` => Store in `fileCount` => For each file, we calculate the `start` and `stop` indexes we need to slice from `dataEntries`. For the last file, the `stop` will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Then `dataEntries` is sliced at `start` to `stop` and stored in `jsonObjects`. The current file number, `i`, the `fileName`, and `jsonObjects` is passed to `generate`.
+Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). For the last file, the `stop` index will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generate` to make the file.
 
 #### `generate( i, fileName, data )`– requires writeFile from sd/generator to work.
 Writes `data` to json file named `fileName+i`
