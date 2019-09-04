@@ -58,7 +58,7 @@ const assign = (file, dataEntries) => {
     const jsonObjects = dataEntries.slice(start, stop);
     file[1] += i //add i to file name
     generate(file, jsonObjects);
-    file[1].slice(0,-1) //delete i from file name so nxt file can have proper i
+    file[1] = file[1].slice(0,-1) //delete i from file name so nxt file can have proper i
   }
 };
 
