@@ -5,6 +5,7 @@ import csvToJson from './csvToJson';
 // @TODO there was an idea to replace console.log with other ways to log thigns
 // @TODO I don't like the logic of this method.
 // i think we can rewrite it and make better.
+// logic of method => read the files in the directory => for every file in directory, split filename and type => look for csv type in arr[1] => csvToJson() => generate json files for all data entries
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
   readdir(directoryPath, (err, files) => {
@@ -16,8 +17,10 @@ const parseDirectoryFiles = (directoryPath, headers) => {
     files.forEach((file) => {
       // Do whatever you want to do with the file
       console.log(file, typeof file);
-      if (file.split('.')[1] === 'csv') {
-        csvToJson(directoryPath, file, headers);
+      file = file.split('.'); // => ['filename', 'filetype']
+      file.splice(0, 0, directoryPath) // => [ directoryPath, 'filename', 'filetype']
+      if (file[2] === 'csv') {
+        csvToJson(file, headers);
       }
     });
     return true;
