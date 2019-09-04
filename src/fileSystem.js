@@ -18,10 +18,10 @@ const parseDirectoryFiles = (directoryPath, headers) => {
     files.forEach((file) => {
       // Do whatever you want to do with the file
       console.log(file, typeof file);
-      file = file.split('.'); // => ['filename', 'filetype']
-      file = file.splice(0, 0, directoryPath) // => [ directoryPath, 'filename', 'filetype']
-      if (file[2] === 'csv') {
-        csvToJson(file, headers);
+      let fileInfo = file.split('.'); // => ['filename', 'filetype']
+      fileInfo = fileInfo.splice(0, 0, directoryPath) // => [ directoryPath, 'filename', 'filetype']
+      if (fileInfo[2] === 'csv') {
+        csvToJson(fileInfo, headers);
       }
     });
     return true;

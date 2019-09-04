@@ -21,8 +21,9 @@ const generate = (file, data) => {
   // really bad line
 
   // file => [full directory path, 'filename', 'filetype']
-  const folderName = file[0].split('/').slice(-1)[0] //gets folder name from full directory path
-  const jsonFileName = `${folderName}/${file[1]}.json`;
+  const fileInfo = file;
+  const folderName = fileInfo[0].split('/').slice(-1)[0] //gets folder name from full directory path
+  const jsonFileName = `${folderName}/${fileInfo[1]}.json`;
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
   const jsonPath = `/projects/${jsonFileName}`;
@@ -48,6 +49,8 @@ const assign = (file, dataEntries) => {
   console.log('---assign started---');
   let start;
   let stop;
+  let fileInfo = file;
+  const savedFileName = file[1];
   for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
@@ -56,11 +59,9 @@ const assign = (file, dataEntries) => {
       stop = ((i + 1) * maxEntriesPerFile) - 1;
     }
     const jsonObjects = dataEntries.slice(start, stop);
-
-    const savedFileName = file[1]
-    file[1] += i.toString() //add i to file name
+    fileInfo[1] += i.toString() //add i to file name
     generate(file, jsonObjects);
-    file[1] = savedFileName //delete i from file name so nxt file can have proper i
+    fileInfo[1] = savedFileName //delete i from file name so nxt file can have proper i
   }
 };
 
@@ -68,7 +69,7 @@ const assign = (file, dataEntries) => {
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 // @TODO when we'll have getHeaders method working, should we call it inside of this method?
-const csvToJson = (file, headers) => {
+const csvToJson = (fileInfo, headers) => {
   // @TODO should we have this const at this method? maybe just init it at next methods?
   // it should reduce number of arguments
 
@@ -84,8 +85,9 @@ const csvToJson = (file, headers) => {
   // @TODO maybe we should move this 4 lines into a separated method?
 
   const dataEntries = [];
+  const file = fileInfo;
   // file => [full directory path, 'filename', 'filetype']
-  const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]+'.'+file[2]}`);
+  const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
 
   // -->
   createReadStream(jsonFilePath)
