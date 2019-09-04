@@ -56,9 +56,11 @@ const assign = (file, dataEntries) => {
       stop = ((i + 1) * maxEntriesPerFile) - 1;
     }
     const jsonObjects = dataEntries.slice(start, stop);
-    file[1] += i //add i to file name
+
+    const savedFileName = file[1]
+    file[1] += i.toString() //add i to file name
     generate(file, jsonObjects);
-    file[1] = file[1].slice(0,-1) //delete i from file name so nxt file can have proper i
+    file[1] = savedFileName //delete i from file name so nxt file can have proper i
   }
 };
 
