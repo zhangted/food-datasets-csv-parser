@@ -18,7 +18,7 @@ const parseDirectoryFiles = (directoryPath, headers) => {
       // Do whatever you want to do with the file
       console.log(file, typeof file);
       file = file.split('.'); // => ['filename', 'filetype']
-      file.splice(0, 0, directoryPath) // => [ directoryPath, 'filename', 'filetype']
+      file = file.splice(0, 0, directoryPath) // => [ directoryPath, 'filename', 'filetype']
       if (file[2] === 'csv') {
         csvToJson(file, headers);
       }
