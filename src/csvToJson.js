@@ -13,12 +13,7 @@ import { joinPath } from './utils';
 // I think we can improve it very easy.
 
 
-// @TODO I don't like that we have 5 attributes at this method. it become complicated
-// we need to figure out the way how to do it
 const generate = (file, data) => {
-  // @TODO change that
-  // we can also create a method for path.join, so it wouldn't complicate our code
-  // really bad line
 
   // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
@@ -87,6 +82,9 @@ const csvToJson = (fileInfo, headers) => {
   const dataEntries = [];
   const file = fileInfo;
   // file => [full directory path, 'filename', 'filetype']
+  
+  // @TODO This line looks complicated for me. We need to update that later. 
+  // maybe we can move out this line into a separated method.
   const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
 
   // -->
