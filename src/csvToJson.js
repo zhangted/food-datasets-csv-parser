@@ -15,10 +15,17 @@ import { joinPath } from './utils';
 
 // @TODO I don't like that we have 5 attributes at this method. it become complicated
 // we need to figure out the way how to do it
-const generate = (fileInfo, data) => {
+const generate = (file, data) => {
+  // @TODO change that
+  // we can also create a method for path.join, so it wouldn't complicate our code
+  // really bad line
+
+  // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
-  const folderName = fileInfo[0].split('/').slice(-1)[0]
+  const folderName = fileInfo[0].split('/').slice(-1)[0] //gets folder name from full directory path
   const jsonFileName = `${folderName}/${fileInfo[1]}.json`;
+  // Why use USFA when jsonFileName already has the folderName in it.
+  // Can jsonFileName and jsonPath possibly be merged?
   const jsonPath = `/projects/${jsonFileName}`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
@@ -26,20 +33,24 @@ const generate = (fileInfo, data) => {
   console.log(jsonPath);
   console.log(combinedPath);
   console.log('---file writer ended---');
+
+  // --> if you reading it - then it's time for updating it :)
+
   write(combinedPath, data);
 };
 
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const assign = (fileInfo, dataEntries) => {
+const assign = (file, dataEntries) => {
+  // @TODO add if env.development and use console.log(xxx)
   const maxEntriesPerFile = 10000;
   const fileCount = Math.ceil(dataEntries.length / maxEntriesPerFile);
   console.log('---assign started---');
   let start;
   let stop;
-  let fileInfo = fileInfo;
-  const savedFileName = fileInfo[1];
+  let fileInfo = file;
+  const savedFileName = file[1];
   for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
@@ -74,9 +85,11 @@ const csvToJson = (fileInfo, headers) => {
   // @TODO maybe we should move this 4 lines into a separated method?
 
   const dataEntries = [];
-  const fileInfo = fileInfo;
+  const file = fileInfo;
+  // file => [full directory path, 'filename', 'filetype']
   const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
 
+  // -->
   createReadStream(jsonFilePath)
     .pipe(
       csv({
@@ -88,7 +101,7 @@ const csvToJson = (fileInfo, headers) => {
       dataEntries.push(data);
     })
     .on('end', () => {
-      assign(fileInfo, dataEntries);
+      assign(file, dataEntries);
     });
 };
 
