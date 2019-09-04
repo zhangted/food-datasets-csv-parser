@@ -13,15 +13,12 @@ import { joinPath } from './utils';
 // I think we can improve it very easy.
 
 
-let folderName;
+const generate = (file, data) => {
 
-// @TODO I don't like that we have 5 attributes at this method. it become complicated
-// we need to figure out the way how to do it
-const generate = (i, fileName, data) => {
-  // @TODO change that
-  // we can also create a method for path.join, so it wouldn't complicate our code
-  // really bad line
-  const jsonFileName = `${folderName}/${fileName}${i}.json`;
+  // file => [full directory path, 'filename', 'filetype']
+  const fileInfo = file;
+  const folderName = fileInfo[0].split('/').slice(-1)[0] //gets folder name from full directory path
+  const jsonFileName = `${folderName}/${fileInfo[1]}.json`;
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
   const jsonPath = `/projects/${jsonFileName}`;
@@ -40,23 +37,26 @@ const generate = (i, fileName, data) => {
 // @TODO update this method later, when we'll migrate to `write` from generator
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
-const assign = (fileName, dataEntries) => {
+const assign = (file, dataEntries) => {
   // @TODO add if env.development and use console.log(xxx)
   const maxEntriesPerFile = 10000;
   const fileCount = Math.ceil(dataEntries.length / maxEntriesPerFile);
   console.log('---assign started---');
   let start;
   let stop;
+  let fileInfo = file;
+  const savedFileName = file[1];
   for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
-      // @TODO should we pass result at this method as well?
       stop = dataEntries.length - 1;
     } else {
       stop = ((i + 1) * maxEntriesPerFile) - 1;
     }
     const jsonObjects = dataEntries.slice(start, stop);
-    generate(i, fileName, jsonObjects);
+    fileInfo[1] += i.toString() //add i to file name
+    generate(file, jsonObjects);
+    fileInfo[1] = savedFileName //delete i from file name so nxt file can have proper i
   }
 };
 
@@ -64,10 +64,11 @@ const assign = (fileName, dataEntries) => {
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 // @TODO when we'll have getHeaders method working, should we call it inside of this method?
-const csvToJson = (directory, file, headers) => {
+const csvToJson = (fileInfo, headers) => {
   // @TODO should we have this const at this method? maybe just init it at next methods?
   // it should reduce number of arguments
-  const dataEntries = [];
+
+
   // <--
 
   // @TODO can we also path a variable that combine `${directory}/${file}` together?
@@ -77,11 +78,14 @@ const csvToJson = (directory, file, headers) => {
   // to move out this long `thing` into separated method
 
   // @TODO maybe we should move this 4 lines into a separated method?
-  const fileName = file.split('.')[0];
-  const folder = directory.split('/');
 
-  folderName = folder[folder.length - 1];
-  const jsonFilePath = resolve(__dirname, `${directory}/${file}`);
+  const dataEntries = [];
+  const file = fileInfo;
+  // file => [full directory path, 'filename', 'filetype']
+  
+  // @TODO This line looks complicated for me. We need to update that later. 
+  // maybe we can move out this line into a separated method.
+  const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
 
   // -->
   createReadStream(jsonFilePath)
@@ -95,7 +99,7 @@ const csvToJson = (directory, file, headers) => {
       dataEntries.push(data);
     })
     .on('end', () => {
-      assign(fileName, dataEntries);
+      assign(file, dataEntries);
     });
 };
 
