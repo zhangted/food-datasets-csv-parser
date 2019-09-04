@@ -22,7 +22,7 @@ const generate = (file, data) => {
 
   // file => [full directory path, 'filename', 'filetype']
   const folderName = file[0].split('/').slice(-1)[0] //gets folder name from full directory path
-  const jsonFileName = `${folderName}/${file[1]+'.'+file[2]}${i}.json`;
+  const jsonFileName = `${folderName}/${file[1]}.json`;
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
   const jsonPath = `/projects/${jsonFileName}`;
