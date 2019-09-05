@@ -6,7 +6,7 @@ module.exports = {
   coverageReporters: ['json', 'lcov', 'text-summary', 'html'],
   testURL: 'http://localhost',
   testPathIgnorePatterns: [
-    '/dist/'
+    '/dist/', 'examples', 'projects2.0', 'projects3.0'
   ],
   moduleDirectories: ['node_modules'],
   transformIgnorePatterns: ['<rootDir>/node_modules/']
