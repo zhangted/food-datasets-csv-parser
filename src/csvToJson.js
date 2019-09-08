@@ -14,10 +14,9 @@ import { joinPath } from './utils';
 
 
 const generate = (file, data) => {
-
   // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
-  const folderName = fileInfo[0].split('/').slice(-1)[0] //gets folder name from full directory path
+  const folderName = fileInfo[0].split('/').slice(-1)[0]; // gets folder name from full directory path
   const jsonFileName = `${folderName}/${fileInfo[1]}.json`;
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
@@ -44,7 +43,7 @@ const assign = (file, dataEntries) => {
   console.log('---assign started---');
   let start;
   let stop;
-  let fileInfo = file;
+  const fileInfo = file;
   const savedFileName = file[1];
   for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
@@ -54,9 +53,9 @@ const assign = (file, dataEntries) => {
       stop = ((i + 1) * maxEntriesPerFile) - 1;
     }
     const jsonObjects = dataEntries.slice(start, stop);
-    fileInfo[1] += i.toString() //add i to file name
+    fileInfo[1] += i.toString(); // add i to file name
     generate(file, jsonObjects);
-    fileInfo[1] = savedFileName //delete i from file name so nxt file can have proper i
+    fileInfo[1] = savedFileName; // delete i from file name so nxt file can have proper i
   }
 };
 
@@ -82,8 +81,8 @@ const csvToJson = (fileInfo, headers) => {
   const dataEntries = [];
   const file = fileInfo;
   // file => [full directory path, 'filename', 'filetype']
-  
-  // @TODO This line looks complicated for me. We need to update that later. 
+
+  // @TODO This line looks complicated for me. We need to update that later.
   // maybe we can move out this line into a separated method.
   const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
 
