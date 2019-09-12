@@ -6,8 +6,8 @@
 
 #### Stretch goals
 
-- [ ] Husky
-- [ ] Lint-Staged
+- [x] Husky
+- [x] Lint-Staged
 - [ ] Travis CI
 - [ ] index.js as main point
 - [ ] created great test coverage
