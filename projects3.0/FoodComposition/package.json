@@ -18,7 +18,7 @@
     "parse": "node ./debug"
   },
   "description": "Food Composition database parser",
-  "main": "dist/index.cjs",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "browser": "dist/index.iife.js",
   "repository": "xxx",

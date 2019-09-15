@@ -23,7 +23,7 @@
     "debug:4": "npm run build && node ./debug/script"
   },
   "description": "USFA data parser",
-  "main": "dist/index.cjs",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "browser": "dist/index.iife.js",
   "repository": "xxx",
