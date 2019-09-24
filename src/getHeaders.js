@@ -3,7 +3,7 @@
 import csvToJson from './csvToJson';
 
 const getHeaders = async (path) => {
-  const dataset = await csvToJson().fromFile(path);
+  const dataset = await csvToJson(path);
   const headers = Object.keys(dataset[0]);
 
   return headers;

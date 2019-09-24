@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import { createReadStream } from 'fs';
 import csv from 'csv-parser';
-import { resolve } from 'path';
+import { resolve as resolvePath } from 'path';
 // @TODO soon we'll replace it carefully
 // with similar code from generator that was perfected and clean up
 // https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
@@ -11,7 +12,6 @@ import { joinPath } from './utils';
 // I mean why we have this variables from the outside of our functions,
 // is there some intersections, etc.
 // I think we can improve it very easy.
-
 
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
@@ -50,7 +50,7 @@ const assign = (file, dataEntries) => {
     if (i + 1 === fileCount) {
       stop = dataEntries.length - 1;
     } else {
-      stop = ((i + 1) * maxEntriesPerFile) - 1;
+      stop = (i + 1) * maxEntriesPerFile - 1;
     }
     const jsonObjects = dataEntries.slice(start, stop);
     fileInfo[1] += i.toString(); // add i to file name
@@ -63,10 +63,9 @@ const assign = (file, dataEntries) => {
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 // @TODO when we'll have getHeaders method working, should we call it inside of this method?
-const csvToJson = (fileInfo, headers) => {
+const csvToJson = (path, fileInfo, headers) => {
   // @TODO should we have this const at this method? maybe just init it at next methods?
   // it should reduce number of arguments
-
 
   // <--
 
@@ -79,27 +78,33 @@ const csvToJson = (fileInfo, headers) => {
   // @TODO maybe we should move this 4 lines into a separated method?
 
   const dataEntries = [];
-  const file = fileInfo;
+  // const file = fileInfo;
   // file => [full directory path, 'filename', 'filetype']
 
   // @TODO This line looks complicated for me. We need to update that later.
   // maybe we can move out this line into a separated method.
-  const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
+  // const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
 
   // -->
-  createReadStream(jsonFilePath)
-    .pipe(
-      csv({
-        skipLines: 1,
-        headers,
-      }),
-    )
-    .on('data', (data) => {
-      dataEntries.push(data);
-    })
-    .on('end', () => {
-      assign(file, dataEntries);
-    });
+
+  return new Promise((resolve, reject) => {
+    createReadStream(path)
+      .pipe(
+        csv({
+          skipLines: 1,
+          headers,
+        }),
+      )
+      .on('data', (data) => {
+        dataEntries.push(data);
+      })
+      .on('end', () => {
+        resolve(dataEntries);
+      })
+      .on('error', (err) => {
+        reject(err);
+      });
+  });
 };
 
 export default csvToJson;
