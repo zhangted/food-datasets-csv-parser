@@ -4,8 +4,8 @@ const path = require('path');
 // const getHeaders } = require('../../../../dist/index.cjs');
 const {
   parseDirectoryFiles,
-  getHeaders,
-} = require('../../../../dist/index.cjs');
+  getHeaders
+} = require('../../../../dist/index.cjs.js');
 
 const headers = getHeaders('./Fish_NV_sum (per 100 g EP).csv');
 
