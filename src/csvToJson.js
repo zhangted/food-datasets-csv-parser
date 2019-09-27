@@ -44,7 +44,7 @@ const assign = (file, dataEntries) => {
   let start;
   let stop;
   const fileInfo = file;
-  const savedFileName = file[1];
+  const savedFileName = fileInfo[1];
   for (let i = 0; i < fileCount; i += 1) {
     start = i * maxEntriesPerFile;
     if (i + 1 === fileCount) {
@@ -54,7 +54,7 @@ const assign = (file, dataEntries) => {
     }
     const jsonObjects = dataEntries.slice(start, stop);
     fileInfo[1] += i.toString(); // add i to file name
-    generate(file, jsonObjects);
+    generate(fileInfo, jsonObjects);
     fileInfo[1] = savedFileName; // delete i from file name so nxt file can have proper i
   }
 };
