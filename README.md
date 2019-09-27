@@ -103,9 +103,8 @@ ParseDirectoryFiles(directoryPath, headers)
         => generate(i, fileName, data)
 ```
 
-`ParseDirectoryFiles` gets a directory path from call, then chunks the information into 3 parts: 
-the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
-If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  The splicing that 
+`ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts:  the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
+If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  
 Each csv file is passed into `csvParser()``.
 
 #### `csvToJson()` require csv-Parser modules`
