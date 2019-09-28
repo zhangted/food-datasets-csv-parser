@@ -16,7 +16,7 @@ import { joinPath } from './utils';
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
-  const fullPath = ''.concat(file[0],  file[1], '.json');
+  const fullPath = ''.concat(file[0], file[1], '.json');
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
   console.log('---file writer started---');
@@ -74,7 +74,7 @@ const csvToJson = (path, fileInfo, headers) => {
 
   const dataEntries = [];
   // file => [full directory path, 'filename', 'filetype']
-  var fullPath = ''.concat(fileInfo[0], fileInfo[1], '.', fileInfo[2]);
+  const fullPath = ''.concat(fileInfo[0], fileInfo[1], '.', fileInfo[2]);
   // @TODO This line looks complicated for me. We need to update that later.
   // maybe we can move out this line into a separated method.
   // const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
@@ -101,7 +101,6 @@ const csvToJson = (path, fileInfo, headers) => {
         reject(err);
       });
   });
-
 };
 
 export default csvToJson;

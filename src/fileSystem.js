@@ -23,7 +23,6 @@ const parseDirectoryFiles = (directoryPath, headers) => {
       fileInfo = [directoryPath, ...fileInfo]; // => ['dirPath', 'name', 'type']
       if (fileInfo[2] === 'csv') {
         csvToJson(fileInfo, headers);
-
       }
     });
     return true;
