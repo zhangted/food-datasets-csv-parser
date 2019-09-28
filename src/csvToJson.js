@@ -16,21 +16,16 @@ import { joinPath } from './utils';
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
-  const folderName = fileInfo[0].split('/').slice(-1)[0]; // gets folder name from full directory path
-  const jsonFileName = `${folderName}/${fileInfo[1]}.json`;
+  const fullPath = ''.concat(file[0],  file[1], '.json');
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
-  const jsonPath = `/projects2.0/${jsonFileName}`;
-  const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
-  console.log(folderName);
-  console.log(jsonPath);
-  console.log(combinedPath);
+  console.log(fullPath);
   console.log('---file writer ended---');
 
   // --> if you reading it - then it's time for updating it :)
 
-  write(combinedPath, data);
+  write(fullPath, data);
 };
 
 // @TODO update this method later, when we'll migrate to `write` from generator
@@ -78,9 +73,8 @@ const csvToJson = (path, fileInfo, headers) => {
   // @TODO maybe we should move this 4 lines into a separated method?
 
   const dataEntries = [];
-  // const file = fileInfo;
   // file => [full directory path, 'filename', 'filetype']
-
+  var fullPath = ''.concat(fileInfo[0], fileInfo[1], '.', fileInfo[2]);
   // @TODO This line looks complicated for me. We need to update that later.
   // maybe we can move out this line into a separated method.
   // const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
@@ -88,6 +82,8 @@ const csvToJson = (path, fileInfo, headers) => {
   // -->
 
   return new Promise((resolve, reject) => {
+    // @TODO can we have a separated method that will contain all this createReadStream long code?
+    // we have a method that does it, please find it and make something similar
     createReadStream(path)
       .pipe(
         csv({
@@ -105,6 +101,7 @@ const csvToJson = (path, fileInfo, headers) => {
         reject(err);
       });
   });
+
 };
 
 export default csvToJson;
