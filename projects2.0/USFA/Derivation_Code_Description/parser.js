@@ -7,6 +7,7 @@ const {
   getHeaders
 } = require('../../../../dist/index.cjs.js');
 
+async function Main() {}
 
 const headers = [
   'derivation_code',
