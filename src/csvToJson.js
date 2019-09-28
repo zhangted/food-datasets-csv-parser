@@ -20,7 +20,7 @@ const generate = (file, data) => {
   const jsonFileName = `${folderName}/${fileInfo[1]}.json`;
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
-  const jsonPath = `/projects/${jsonFileName}`;
+  const jsonPath = `/projects2.0/${jsonFileName}`;
   const combinedPath = joinPath([__dirname, jsonPath]);
   console.log('---file writer started---');
   console.log(folderName);
