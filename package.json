@@ -20,6 +20,7 @@
     "csv:usfa2": "node ./projects2.0/USFA/Nutrition/parser",
     "csv:usfa3": "node ./projects2.0/USFA/Product/parser",
     "csv:usfa4": "node ./projects2.0/USFA/Serving_Size/parser",
+    "csv:fish_reftbl": "node ./projects2.0/FAO/Fish/Fish_Reftbl_RefDatasets/parser",
     "csv:fao1": "node ./projects2.0/FAO/Fish/Fish_NV_Sum/parser"
   },
   "description": "module to use static JSON files with groceristar projects",
