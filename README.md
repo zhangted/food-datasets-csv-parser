@@ -15,6 +15,7 @@
 
 - [ ] check if we can use checkFilePath from generator
 - [ ] find out, what methods should be removed from utils.js, because they are duplicates from
+- [ ] ESLint for projects2.0, projects3.0 folder. now it's disabled
 
 #### scripts for testing few of our parsers - old, very old and new one
 

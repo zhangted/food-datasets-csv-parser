@@ -5,6 +5,8 @@ const {
   getHeaders,
 } = require('../../../../dist/index.cjs');
 
+async function Main() {}
+
 const headers = getHeaders('./Fish_Shellfish_fatty acids.csv');
 
 // I might have to include lines 5-14 insinde of an async function and await it.
