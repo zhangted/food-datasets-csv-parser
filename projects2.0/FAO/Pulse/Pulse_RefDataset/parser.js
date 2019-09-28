@@ -5,6 +5,8 @@ const {
   getHeaders,
 } = require('../../../../dist/index.cjs');
 
+async function Main() {}
+
 const headers = getHeaders('./Pulse_RefDatasetscsv');
 
 const directory = './';
