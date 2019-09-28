@@ -13,7 +13,7 @@ const headers = [
   'Nutrient_name',
   'Derivation_Code',
   'Output_value',
-  'Output_uom',
+  'Output_uom'
 ];
 
 // we don't have that folder now

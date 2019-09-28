@@ -15,7 +15,7 @@ const headers = [
   'manufacturer',
   'date_modified',
   'date_available',
-  'ingredients_english',
+  'ingredients_english'
 ];
 
 // we don't have that folder now

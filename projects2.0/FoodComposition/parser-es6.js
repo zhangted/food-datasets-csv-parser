@@ -3,7 +3,6 @@ import csv from 'csv-parser';
 import { join } from 'path';
 import { write } from '@groceristar/static-data-generator';
 
-
 let results = [];
 const data = [];
 const writedCountries = [];
@@ -15,12 +14,12 @@ const countries = [
   'Italy',
   'Netherlands',
   'Sweden',
-  'United Kingdom',
+  'United Kingdom'
 ];
 
 // @TODO here don't have methods as we have at USFA
 const parseFoodComposition = () => {
-  countries.forEach((country) => {
+  countries.forEach(country => {
     // @TODO it's a very long path. we can use our aliases
     // in order to make it shorter. check readme https://github.com/GroceriStar/sd/tree/master/docs#babel-alias
 
@@ -28,22 +27,23 @@ const parseFoodComposition = () => {
     createReadStream(
       join(
         __dirname,
-        `./raw/Food_Composition - ${country}.csv`,
+        `./raw/Food_Composition - ${country}.csv`
         // `../../../src/data/FoodComposition/Food_Composition - ${country}.csv`,
-      ),
+      )
     )
       .pipe(
         csv({
           skipLines: 3,
-          headers: [ // @TODO move headers out
+          headers: [
+            // @TODO move headers out
             'Food class',
             'Food (FoodEx2 description)',
             'Microgram/100 gram',
-            'Milligram/100 gram',
-          ],
-        }),
+            'Milligram/100 gram'
+          ]
+        })
       )
-      .on('data', (data) => {
+      .on('data', data => {
         results.push(data);
         // try {
         //   ;
@@ -57,7 +57,8 @@ const parseFoodComposition = () => {
 
         // @TODO I don't  like this loops. Wahaj should solve it
         for (i = 0; i < 12; i++) {
-          results[i]['Food class'] = 'Additives, flavours, baking and processing aids';
+          results[i]['Food class'] =
+            'Additives, flavours, baking and processing aids';
         }
         for (i = 12; i < 51; i++) {
           results[i]['Food class'] = 'Alcoholic beverages';
@@ -75,7 +76,8 @@ const parseFoodComposition = () => {
           results[i]['Food class'] = 'Eggs and egg products';
         }
         for (i = 313; i < 692; i++) {
-          results[i]['Food class'] = 'Fish, seafood, amphibians, reptiles and invertebrates';
+          results[i]['Food class'] =
+            'Fish, seafood, amphibians, reptiles and invertebrates';
         }
         for (i = 692; i < 708; i++) {
           results[i]['Food class'] = 'Food products for young population';
@@ -102,16 +104,19 @@ const parseFoodComposition = () => {
           results[i]['Food class'] = 'Milk and dairy products';
         }
         for (i = 1930; i < 1949; i++) {
-          results[i]['Food class'] = 'Products for non-standard diets, food imitates and food supplements or fortifying agents';
+          results[i]['Food class'] =
+            'Products for non-standard diets, food imitates and food supplements or fortifying agents';
         }
         for (i = 1949; i < 2019; i++) {
           results[i]['Food class'] = 'Seasoning, sauces and condiments';
         }
         for (i = 2019; i < 2064; i++) {
-          results[i]['Food class'] = 'Starchy roots or tubers and products thereof, sugar plants';
+          results[i]['Food class'] =
+            'Starchy roots or tubers and products thereof, sugar plants';
         }
         for (i = 2064; i < 2126; i++) {
-          results[i]['Food class'] = 'Sugar, confectionery and water-based sweet desserts';
+          results[i]['Food class'] =
+            'Sugar, confectionery and water-based sweet desserts';
         }
         for (i = 2126; i < 2463; i++) {
           results[i]['Food class'] = 'Vegetables and vegetable products';
@@ -128,21 +133,13 @@ const parseFoodComposition = () => {
 
         writedCountries.push(country);
 
-        write(
-          join(__dirname, `/FoodComposition - ${country}.json`),
-          results,
-        );
+        write(join(__dirname, `/FoodComposition - ${country}.json`), results);
 
         if (writedCountries.length === countries.length) {
-          write(
-            join(__dirname, '/FoodComposition.json'),
-            data,
-          );
+          write(join(__dirname, '/FoodComposition.json'), data);
         }
       });
   });
 };
 
-export {
-  parseFoodComposition,
-};
+export { parseFoodComposition };
