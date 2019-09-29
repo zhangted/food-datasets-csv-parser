@@ -1,5 +1,5 @@
 // Here I want to put all methods, related to reading data, etc.
-import { readdir, existsSync } from 'fs';
+import { readdir } from 'fs';
 import csvToJson from './csvToJson';
 
 // @TODO there was an idea to replace console.log with other ways to log thigns
@@ -32,5 +32,4 @@ const parseDirectoryFiles = (directoryPath, headers) => {
   });
 };
 
-// export default parseDirectoryFiles;
-export { parseDirectoryFiles };
+export default parseDirectoryFiles;
