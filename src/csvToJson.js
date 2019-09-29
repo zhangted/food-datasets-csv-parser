@@ -2,16 +2,10 @@
 import { createReadStream } from 'fs';
 import csv from 'csv-parser';
 import { resolve as resolvePath } from 'path';
-// @TODO soon we'll replace it carefully
-// with similar code from generator that was perfected and clean up
-// https://github.com/GroceriStar/food-datasets-csv-parser/issues/23
 import { write } from '@groceristar/static-data-generator';
 import { joinPath } from './utils';
 
-// @TODO I don't like how this file was previously created.
-// I mean why we have this variables from the outside of our functions,
-// is there some intersections, etc.
-// I think we can improve it very easy.
+
 
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
@@ -19,16 +13,22 @@ const generate = (file, data) => {
   const fullPath = ''.concat(file[0], file[1], '.json');
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
+  
+  // @TODO I don't know who asked that question. should be solved by someone later.
+  // if you reading this - please take an action. I think we can make our code more simple now, 
+  // because we removed a lot of unnecessary functionality before.
+  // - arthur
   console.log('---file writer started---');
   console.log(fullPath);
   console.log('---file writer ended---');
-
-  // --> if you reading it - then it's time for updating it :)
+ 
 
   write(fullPath, data);
 };
 
+
 // @TODO update this method later, when we'll migrate to `write` from generator
+
 // @TODO as this method using "generateJsonFiles" method - it should be updated.
 // or maybe move it into generator file, etc.
 const assign = (file, dataEntries) => {
