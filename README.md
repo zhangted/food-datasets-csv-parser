@@ -106,10 +106,19 @@ ParseDirectoryFiles(directoryPath, headers)
 
 `ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts:  the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
 If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  
-Each csv file is passed into `csvParser()``.
+Each csv file is passed into `csvParser()`.
 
-#### `parseCsv()` require csv-Parser modules`
+#### `parseCsv()` require csv-Parser modules
 asynchronous function that can parse csv files 
+```
+/**
+ * parse csv files
+ * @async
+ * @param {string} path - The path of the csv file
+ * @param {opts} opts - optional options object for csv-parser package
+ * @returns {Promise<string[]>} Promise
+ */
+```
 
 #### `csvToJson()` require csv-Parser modules`
 Fill `dataEntries` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated
