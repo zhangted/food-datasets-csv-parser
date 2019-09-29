@@ -108,6 +108,9 @@ ParseDirectoryFiles(directoryPath, headers)
 If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  
 Each csv file is passed into `csvParser()``.
 
+#### `parseCsv()` require csv-Parser modules`
+asynchronous function that can parse csv files 
+
 #### `csvToJson()` require csv-Parser modules`
 Fill `dataEntries` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated
 
