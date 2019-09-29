@@ -9,11 +9,13 @@ import csvToJson from './csvToJson';
 // add directoryPath to the array[0] => pass as one array to csvToJson
 const parseDirectoryFiles = (directoryPath, headers) => {
   // passing directoryPath and callback function
+  console.log('-- 1. starting of the method --');
   readdir(directoryPath, (err, files) => {
     // handling error
     if (err) {
       return console.log(`Unable to scan directory: ${err}`);
     }
+    console.log('-- 2. before forEach --');
     // listing all files using forEach
     files.forEach((file) => {
       // Do whatever you want to do with the file
@@ -22,6 +24,7 @@ const parseDirectoryFiles = (directoryPath, headers) => {
       let fileInfo = file.split('.'); // => ['name', 'type']
       fileInfo = [directoryPath, ...fileInfo]; // => ['dirPath', 'name', 'type']
       if (fileInfo[2] === 'csv') {
+        console.log('-- before csvToJson --');
         csvToJson(fileInfo, headers);
       }
     });
@@ -29,17 +32,5 @@ const parseDirectoryFiles = (directoryPath, headers) => {
   });
 };
 
-/**
- * isFolderExists prev. isDirectory()
- * @param {string} folderNamePath
- *
- */
-const isFolderExists = (folderNamePath) => {
-  if (existsSync(folderNamePath)) {
-    return false;
-  }
-  return true;
-};
-
 // export default parseDirectoryFiles;
-export { parseDirectoryFiles, isFolderExists };
+export { parseDirectoryFiles };

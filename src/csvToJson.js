@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import { createReadStream } from 'fs';
-import csv from 'csv-parser';
-import { resolve as resolvePath } from 'path';
+// import { createReadStream } from 'fs';
+// import csv from 'csv-parser';
+// import { resolve as resolvePath } from 'path';
 import { write } from '@groceristar/static-data-generator';
-import { joinPath } from './utils';
-
+// import { joinPath } from './utils';
+import parseCsv from './parseCsv';
 
 
 const generate = (file, data) => {
@@ -13,15 +13,15 @@ const generate = (file, data) => {
   const fullPath = ''.concat(file[0], file[1], '.json');
   // Why use USFA when jsonFileName already has the folderName in it.
   // Can jsonFileName and jsonPath possibly be merged?
-  
+
   // @TODO I don't know who asked that question. should be solved by someone later.
-  // if you reading this - please take an action. I think we can make our code more simple now, 
+  // if you reading this - please take an action. I think we can make our code more simple now,
   // because we removed a lot of unnecessary functionality before.
   // - arthur
   console.log('---file writer started---');
   console.log(fullPath);
   console.log('---file writer ended---');
- 
+
 
   write(fullPath, data);
 };
@@ -58,49 +58,9 @@ const assign = (file, dataEntries) => {
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 // @TODO when we'll have getHeaders method working, should we call it inside of this method?
-const csvToJson = (path, fileInfo, headers) => {
-  // @TODO should we have this const at this method? maybe just init it at next methods?
-  // it should reduce number of arguments
-
-  // <--
-
-  // @TODO can we also path a variable that combine `${directory}/${file}` together?
-  // i mean maybe we can pass into csvToJson one argument instead of two?
-
-  // @TODO I still think that it will be a good task
-  // to move out this long `thing` into separated method
-
-  // @TODO maybe we should move this 4 lines into a separated method?
-
-  const dataEntries = [];
-  // file => [full directory path, 'filename', 'filetype']
-  const fullPath = ''.concat(fileInfo[0], fileInfo[1], '.', fileInfo[2]);
-  // @TODO This line looks complicated for me. We need to update that later.
-  // maybe we can move out this line into a separated method.
-  // const jsonFilePath = resolve(__dirname, `${file[0]}/${file[1]}.${file[2]}`);
-
-  // -->
-
-  return new Promise((resolve, reject) => {
-    // @TODO can we have a separated method that will contain all this createReadStream long code?
-    // we have a method that does it, please find it and make something similar
-    createReadStream(path)
-      .pipe(
-        csv({
-          skipLines: 1,
-          headers,
-        }),
-      )
-      .on('data', (data) => {
-        dataEntries.push(data);
-      })
-      .on('end', () => {
-        resolve(dataEntries);
-      })
-      .on('error', (err) => {
-        reject(err);
-      });
-  });
+// @TODO can we make it better? should we have all of those attributes?
+const csvToJson = async (path, fileInfo, headers) => {
+  const data = await parseCsv(path);
 };
 
 export default csvToJson;
