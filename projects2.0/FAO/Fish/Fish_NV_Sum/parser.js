@@ -17,5 +17,10 @@ async function Main() {
   // projects we have a separated folder with files + parser inside.
   // we can make a root directory as default inside of `parserDirectoryFiles`
   // and change it if passed another variable
+  const directory = './';
+
+  const directoryPath = path.join(__dirname, directory);
+
+  parseDirectoryFiles(directoryPath, headers);
 }
 Main();
