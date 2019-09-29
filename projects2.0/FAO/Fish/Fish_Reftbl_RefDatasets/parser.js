@@ -1,12 +1,9 @@
 const path = require('path');
 // @TODO update require. when we export this method - we can connect it from index.js
-const {
-  parseDirectoryFiles,
-  getHeaders
-} = require('../../../../dist/index.cjs');
+const { parseDirectoryFiles, parseCsv } = require('../../../../dist/index.cjs');
 
 async function Main() {
-  const headers = await getHeaders('Fish_Reftbl_RefDatasets.csv');
+  const headers = await parseCsv(`${__dirname}/Fish_Reftbl_RefDatasets.csv`);
   // I might have to include lines 5-14 insinde of an async function and await it.
   // This will become clearer once parseDrectoryFiles is functional.
 
