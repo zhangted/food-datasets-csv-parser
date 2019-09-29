@@ -3,7 +3,7 @@
 // import csv from 'csv-parser';
 // import { resolve as resolvePath } from 'path';
 import { write } from '@groceristar/static-data-generator';
-import { joinPath } from './utils';
+// import { joinPath } from './utils';
 import parseCsv from './parseCsv';
 
 

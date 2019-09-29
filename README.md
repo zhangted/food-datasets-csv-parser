@@ -66,26 +66,6 @@ Call the function **splitObject()** with parameters `path`(as string),`filename`
 `Flag=0` means splitted elements are to be name after the `name` attribute and if `flag=1` then elements will be give named by a number with removed whitespaces and in lowercase to maintain uniformity.
 The splitted elements will be stored at the given `path`/`filename_elements`.
 
-**splitObject('path_of_directory','fileName',0)** - split files by their name attribute.
-
-**splitObject('path_of_directory','fileName',1)** - split files by indexing them from 0.
-
-Checkout the folder `fileName_elements` in the `path_of_directory` to see files or you can use function `getFileInfo()`.
-
-To call the function `getFileInfo(path,flag,fileName)` you will require `sd/src/utils.js`. It can be invoked with 3 parameteres and 2 of them are optional depending on task. First parameter is `path` and it is required for functionality. The second and third parameters are `flag` and `fileName`.
-
-If `flag=1` it will return the content of all files present in the path else if `fileName` is given then it will return the content of the specified file.
-
-If there is only one parameter that is `path` or with `flag=0` it will return list of all files present in the directory.
-
-You can combine objects by calling function **combineObjects()** from writeFile.js. It takes 2 parameters `path` and list of `keys_to_be_removed`.
-
-**combineObject(path, keys_to_be_removed)** - This will read all files in the given path and remove the keys given the list of keys_to_be_removed and saves it into a new file in the given `path` as name `<dirName>_combined.json`.
-
-Example:- `combineObject('/abc/pqr/', ['id', 'img'])`
-
-If you want to modify the json structure of splitted files and combine them
-again to a single file then you can call splitObject with a call back function.
 
 ### How to parse csv File(s) from a folder to to json file(s)
 
@@ -109,7 +89,7 @@ If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, hea
 Each csv file is passed into `csvParser()`.
 
 #### `parseCsv()` require csv-Parser modules
-asynchronous function that can parse csv files 
+asynchronous function that can parse csv files
 ```
 /**
  * parse csv files
