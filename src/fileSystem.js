@@ -14,7 +14,6 @@ const parseDirectoryFiles = (directoryPath, headers) => {
     // handling error
     if (err) {
       return console.log(`Unable to scan directory: ${err}`);
-
     }
     console.log('-- 2. before forEach --');
     // listing all files using forEach
