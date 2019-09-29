@@ -6,9 +6,12 @@ import { parseDirectoryFiles } from './fileSystem';
 import csvToJson from './csvToJson';
 
 import getHeaders from './getHeaders';
+import parseCsv from './parseCsv';
 
 export {
-  csvToJson, getHeaders,
+  csvToJson,
+  getHeaders,
+  parseCsv,
   // parseFoodComposition,
   parseDirectoryFiles,
 };
