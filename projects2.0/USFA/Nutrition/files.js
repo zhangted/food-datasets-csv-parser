@@ -12,8 +12,7 @@
 // Serving_Size
 // }
 
-export {
-};
+export {};
 // / @TODO later we should do it recursivelly
 //
 // Nutrient01.json

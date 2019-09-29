@@ -1,5 +1,5 @@
-const { parseFoodComposition } = require('../src/index')
+// const { parseFoodComposition } = require('../src/index')
 
 // console.log(parserFoodComposition);
 
-parseFoodComposition()
+// parseFoodComposition()
