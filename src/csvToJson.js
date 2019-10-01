@@ -10,13 +10,7 @@ const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
   const fullPath = ''.concat(file[0], file[1], '.json');
-  // Why use USFA when jsonFileName already has the folderName in it.
-  // Can jsonFileName and jsonPath possibly be merged?
 
-  // @TODO I don't know who asked that question. should be solved by someone later.
-  // if you reading this - please take an action. I think we can make our code more simple now,
-  // because we removed a lot of unnecessary functionality before.
-  // - arthur
   console.log('---file writer started---');
   console.log(fullPath);
   console.log('---file writer ended---');
@@ -56,8 +50,10 @@ const assign = (file, dataEntries) => {
 // if it's main - then let's put it into index.js
 // @TODO when we'll have getHeaders method working, should we call it inside of this method?
 // @TODO can we make it better? should we have all of those attributes?
-const csvToJson = async (path, fileInfo, headers) => {
-  const data = await parseCsv(path);
+const csvToJson = async (path, headers) => {
+  const fullPath = ''.concat(path[0], path[1], '.csv');
+  const data = await parseCsv(fullPath);
+  assign(path, data);
 };
 
 export default csvToJson;
