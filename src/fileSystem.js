@@ -1,5 +1,5 @@
 // Here I want to put all methods, related to reading data, etc.
-import { readdir, existsSync } from 'fs';
+import { readdir } from 'fs';
 import csvToJson from './csvToJson';
 
 // @TODO there was an idea to replace console.log with other ways to log thigns
@@ -32,17 +32,4 @@ const parseDirectoryFiles = (directoryPath, headers) => {
   });
 };
 
-/**
- * isFolderExists prev. isDirectory()
- * @param {string} folderNamePath
- *
- */
-const isFolderExists = (folderNamePath) => {
-  if (existsSync(folderNamePath)) {
-    return false;
-  }
-  return true;
-};
-
-// export default parseDirectoryFiles;
-export { parseDirectoryFiles, isFolderExists };
+export default parseDirectoryFiles;

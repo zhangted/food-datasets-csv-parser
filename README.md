@@ -66,27 +66,6 @@ Call the function **splitObject()** with parameters `path`(as string),`filename`
 `Flag=0` means splitted elements are to be name after the `name` attribute and if `flag=1` then elements will be give named by a number with removed whitespaces and in lowercase to maintain uniformity.
 The splitted elements will be stored at the given `path`/`filename_elements`.
 
-**splitObject('path_of_directory','fileName',0)** - split files by their name attribute.
-
-**splitObject('path_of_directory','fileName',1)** - split files by indexing them from 0.
-
-Checkout the folder `fileName_elements` in the `path_of_directory` to see files or you can use function `getFileInfo()`.
-
-To call the function `getFileInfo(path,flag,fileName)` you will require `sd/src/utils.js`. It can be invoked with 3 parameteres and 2 of them are optional depending on task. First parameter is `path` and it is required for functionality. The second and third parameters are `flag` and `fileName`.
-
-If `flag=1` it will return the content of all files present in the path else if `fileName` is given then it will return the content of the specified file.
-
-If there is only one parameter that is `path` or with `flag=0` it will return list of all files present in the directory.
-
-You can combine objects by calling function **combineObjects()** from writeFile.js. It takes 2 parameters `path` and list of `keys_to_be_removed`.
-
-**combineObject(path, keys_to_be_removed)** - This will read all files in the given path and remove the keys given the list of keys_to_be_removed and saves it into a new file in the given `path` as name `<dirName>_combined.json`.
-
-Example:- `combineObject('/abc/pqr/', ['id', 'img'])`
-
-If you want to modify the json structure of splitted files and combine them
-again to a single file then you can call splitObject with a call back function.
-
 ### How to parse csv File(s) from a folder to to json file(s)
 
 Create a folder you want the generated json file(s) to be.
@@ -104,12 +83,14 @@ ParseDirectoryFiles(directoryPath, headers)
         => generate(i, fileName, data)
 ```
 
-`ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts:  the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
+`ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts: the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
 If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  
 Each csv file is passed into `csvParser()`.
 
 #### `parseCsv()` require csv-Parser modules
-asynchronous function that can parse csv files 
+
+asynchronous function that can parse csv files
+
 ```
 /**
  * parse csv files
@@ -121,12 +102,15 @@ asynchronous function that can parse csv files
 ```
 
 #### `csvToJson()` require csv-Parser modules`
+
 Fill `dataEntries` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated
 
 #### `assign( fileName, dataEntries )`
+
 Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). For the last file, the `stop` index will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generate` to make the file.
 
 #### `generate( i, fileName, data )`– requires writeFile from sd/generator to work.
+
 Writes sliced array `data` to json file named `fileName+i`
 
 ### ES5 and ES6 simple differences reference
