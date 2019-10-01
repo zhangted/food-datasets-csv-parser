@@ -6,7 +6,6 @@ import { write } from '@groceristar/static-data-generator';
 // import { joinPath } from './utils';
 import parseCsv from './parseCsv';
 
-
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
@@ -22,10 +21,8 @@ const generate = (file, data) => {
   console.log(fullPath);
   console.log('---file writer ended---');
 
-
   write(fullPath, data);
 };
-
 
 // @TODO update this method later, when we'll migrate to `write` from generator
 

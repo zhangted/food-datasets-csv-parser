@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "lts/*"
-  - "node"
+  - 'lts/*'
+  - 'node'
   - 12
 
 install:
@@ -17,7 +17,6 @@ script:
 
 # we need to move coveralls from fetch and run it here as well
 #after_success: npm run coveralls
-
 
 branches:
   only:
