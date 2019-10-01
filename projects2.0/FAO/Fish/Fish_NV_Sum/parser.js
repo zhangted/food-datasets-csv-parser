@@ -4,7 +4,7 @@ const path = require('path');
 const {
   parseDirectoryFiles,
   getHeaders
-} = require('../../../../dist/index.cjs.js');
+} = require('../../../../dist/index.cjs');
 
 async function Main() {
   const headers = await getHeaders(

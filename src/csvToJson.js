@@ -52,7 +52,7 @@ const assign = (file, dataEntries) => {
 // @TODO can we make it better? should we have all of those attributes?
 const csvToJson = async (path, headers) => {
   const fullPath = ''.concat(path[0], path[1], '.csv');
-  const data = await parseCsv(fullPath);
+  const data = await parseCsv(fullPath, headers);
   assign(path, data);
 };
 
