@@ -66,7 +66,6 @@ Call the function **splitObject()** with parameters `path`(as string),`filename`
 `Flag=0` means splitted elements are to be name after the `name` attribute and if `flag=1` then elements will be give named by a number with removed whitespaces and in lowercase to maintain uniformity.
 The splitted elements will be stored at the given `path`/`filename_elements`.
 
-
 ### How to parse csv File(s) from a folder to to json file(s)
 
 Create a folder you want the generated json file(s) to be.
@@ -84,12 +83,14 @@ ParseDirectoryFiles(directoryPath, headers)
         => generate(i, fileName, data)
 ```
 
-`ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts:  the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
+`ParseDirectoryFiles` gets a directory path from call, then chunks the information for each file into 3 parts: the directory path, file name, and file type. They are stored in `fileInfo` at index 0, 1, and 2.
 If `fileInfo[2]` is `csv`, then `fileInfo` is passed in `csvToJson(fileInfo, headers)`.  
 Each csv file is passed into `csvParser()`.
 
 #### `parseCsv()` require csv-Parser modules
+
 asynchronous function that can parse csv files
+
 ```
 /**
  * parse csv files
@@ -101,12 +102,15 @@ asynchronous function that can parse csv files
 ```
 
 #### `csvToJson()` require csv-Parser modules`
+
 Fill `dataEntries` array with all csv entries => Total entries in csv file/10,000 entries per json file => gets number of json files to be generated
 
 #### `assign( fileName, dataEntries )`
+
 Total entries in csv file/10,000 entries per json file => gets number of json files to be generated => store in `fileCount`. For each file, calculate start/stop indexes (0-9999,10000-19999, 20000-29999..) based on max entries per file (10000). For the last file, the `stop` index will be the length of `dataEntries` - 1, because it is unlikely it will end on a perfect multiple of `maxEntriesPerFile`. Creates sliced array called `jsonObjects` from `dataEntries[start]` to `dataEntries[stop]`. The current file number (`i`), the `fileName`, and `jsonObjects` are passed to `generate` to make the file.
 
 #### `generate( i, fileName, data )`– requires writeFile from sd/generator to work.
+
 Writes sliced array `data` to json file named `fileName+i`
 
 ### ES5 and ES6 simple differences reference

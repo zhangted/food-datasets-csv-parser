@@ -1,6 +1,5 @@
-import {
-  resolve,
-} from 'path';
+/* eslint-disable no-unused-vars */
+import { resolve } from 'path';
 
 /**
  * For fixPath()
@@ -13,7 +12,6 @@ const fixPath = (path) => {
   } // path correction
   return newPath;
 };
-
 
 /**
  * fixFileName()
@@ -45,5 +43,4 @@ const getFileName = (file, fileData, flag, index) => {
   return fileName;
 };
 
-export default {
-};
+export default {};
