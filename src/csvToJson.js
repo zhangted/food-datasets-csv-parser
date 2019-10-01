@@ -1,7 +1,4 @@
 /* eslint-disable no-unused-vars */
-// import { createReadStream } from 'fs';
-// import csv from 'csv-parser';
-// import { resolve as resolvePath } from 'path';
 import { write } from '@groceristar/static-data-generator';
 // import { joinPath } from './utils';
 import parseCsv from './parseCsv';
@@ -9,6 +6,7 @@ import parseCsv from './parseCsv';
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
   const fileInfo = file;
+  // @TODO duplicate, right? can we make it better?
   const fullPath = ''.concat(file[0], file[1], '.json');
 
   console.log('---file writer started---');
@@ -48,9 +46,8 @@ const assign = (file, dataEntries) => {
 // @TODO
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
-// @TODO when we'll have getHeaders method working, should we call it inside of this method?
-// @TODO can we make it better? should we have all of those attributes?
 const csvToJson = async (path, headers) => {
+  // @TODO duplicate, right? can we make it better?
   const fullPath = ''.concat(path[0], path[1], '.csv');
   const data = await parseCsv(fullPath, headers);
   assign(path, data);
