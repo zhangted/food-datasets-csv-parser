@@ -1,6 +1,6 @@
 {
   "name": "@groceristar/food-dataset-csv-parser",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "scripts": {
     "bundle": "rollup -c",
@@ -68,7 +68,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@groceristar/static-data-generator": "^1.0.8",
+    "@groceristar/static-data-generator": "^1.1.0",
     "csv-parser": "^2.3.0",
     "fs": "^0.0.2",
     "lodash": "^4.17.11",
