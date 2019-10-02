@@ -6,8 +6,8 @@ const {
 } = require('../../../../dist/index.cjs');
 
 async function Main() {}
-const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
-const headers = getHeaders('Pulse_NV_sum (per 100 g EP on FW).csv');
+const rawFilePath = `${__dirname}/Pulse_NV_sum (per 100 g EP on FW).csv`;
+const headers = getHeaders(rawFilePath);
 
 const directory = './';
 

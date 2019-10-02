@@ -7,8 +7,12 @@ const {
   getHeaders
 } = require('../../../../dist/index.cjs.js');
 
-async function Main() {}
-const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
+async function Main() {
+  
+}
+const rawFilePath = `${__dirname}/Derivation_Code_Description.csv`;
+const headers = await getHeaders(rawFilePath);
+
 
 const headers = ['derivation_code', 'Derivation_Descript'];
 

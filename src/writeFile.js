@@ -43,4 +43,7 @@ const getFileName = (file, fileData, flag, index) => {
   return fileName;
 };
 
-export default {};
+export default {
+  getFileName,
+  fixPath,
+};

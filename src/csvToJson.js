@@ -1,22 +1,16 @@
 /* eslint-disable no-unused-vars */
-// import { createReadStream } from 'fs';
-// import csv from 'csv-parser';
-// import { resolve as resolvePath } from 'path';
 import { write } from '@groceristar/static-data-generator';
 // import { joinPath } from './utils';
 import parseCsv from './parseCsv';
 
+function makeFullPath(pathData, filetype) {
+  return ''.concat(pathData[0], pathData[1], filetype); // put pathData + filetype into 1 valid file name string
+}
+
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
-  const fileInfo = file;
-  const fullPath = ''.concat(file[0], file[1], '.json');
-  // Why use USFA when jsonFileName already has the folderName in it.
-  // Can jsonFileName and jsonPath possibly be merged?
+  const fullPath = makeFullPath(file, '.json');
 
-  // @TODO I don't know who asked that question. should be solved by someone later.
-  // if you reading this - please take an action. I think we can make our code more simple now,
-  // because we removed a lot of unnecessary functionality before.
-  // - arthur
   console.log('---file writer started---');
   console.log(fullPath);
   console.log('---file writer ended---');
@@ -54,10 +48,10 @@ const assign = (file, dataEntries) => {
 // @TODO
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
-// @TODO when we'll have getHeaders method working, should we call it inside of this method?
-// @TODO can we make it better? should we have all of those attributes?
-const csvToJson = async (path, fileInfo, headers) => {
-  const data = await parseCsv(path);
+const csvToJson = async (path, headers) => {
+  const fullPath = makeFullPath(path, '.csv');
+  const data = await parseCsv(fullPath, headers);
+  assign(path, data);
 };
 
 export default csvToJson;
