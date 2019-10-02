@@ -3,11 +3,13 @@ import { write } from '@groceristar/static-data-generator';
 // import { joinPath } from './utils';
 import parseCsv from './parseCsv';
 
+function makeFullPath(pathData, filetype) {
+  return ''.concat(pathData[0], pathData[1], filetype); // put pathData + filetype into 1 valid file name string
+}
+
 const generate = (file, data) => {
   // file => [full directory path, 'filename', 'filetype']
-  const fileInfo = file;
-  // @TODO duplicate, right? can we make it better?
-  const fullPath = ''.concat(file[0], file[1], '.json');
+  const fullPath = makeFullPath(file, '.json');
 
   console.log('---file writer started---');
   console.log(fullPath);
@@ -47,8 +49,7 @@ const assign = (file, dataEntries) => {
 // I don't like the name for this method and for the whole file
 // if it's main - then let's put it into index.js
 const csvToJson = async (path, headers) => {
-  // @TODO duplicate, right? can we make it better?
-  const fullPath = ''.concat(path[0], path[1], '.csv');
+  const fullPath = makeFullPath(path, '.csv');
   const data = await parseCsv(fullPath, headers);
   assign(path, data);
 };
