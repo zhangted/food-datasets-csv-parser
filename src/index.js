@@ -1,5 +1,5 @@
 // import { parseFoodComposition } from '../projects2.0/FoodComposition/parser';
-import path from 'path';
+// import path from 'path';
 
 import csvToJson from './csvToJson';
 // https://github.com/GroceriStar/food-datasets-csv-parser/issues/180
