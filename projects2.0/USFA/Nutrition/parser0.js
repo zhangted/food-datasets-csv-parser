@@ -15,16 +15,16 @@ Main();
 
 const headers = [
   'NDB_No',
-  'Serving_Size',
-  'Serving_Size_UOM',
-  'Household_Serving_Size',
-  'Household_Serving_Size_UOM'
+  'Nutrient_Code',
+  'Nutrient_name',
+  'Derivation_Code',
+  'Output_value',
+  'Output_uom'
 ];
-
+// const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
 // we don't have that folder now
-const directory = '../../../../sd/src/data/Serving_Size';
+const directory = '../../../../sd/src/data/Nutrition';
 
 // //joining path of directory
 const directoryPath = path.join(__dirname, directory);
-
 parseDirectoryFiles(directoryPath, headers);

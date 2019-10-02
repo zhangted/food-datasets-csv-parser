@@ -11,19 +11,21 @@ async function Main() {
 
 }
 
-Main();
 
+Main();
 const headers = [
-  'NDB_No',
-  'Serving_Size',
-  'Serving_Size_UOM',
-  'Household_Serving_Size',
-  'Household_Serving_Size_UOM'
+  'NDB_Number',
+  'long_name',
+  'data_source',
+  'gtin_upc',
+  'manufacturer',
+  'date_modified',
+  'date_available',
+  'ingredients_english'
 ];
 
 // we don't have that folder now
-const directory = '../../../../sd/src/data/Serving_Size';
-
+const directory = '../../../../sd/src/data/Product';
 // //joining path of directory
 const directoryPath = path.join(__dirname, directory);
 

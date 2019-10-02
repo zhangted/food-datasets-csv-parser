@@ -8,9 +8,10 @@ const {
 async function Main() {
   const rawFilePath = `${__dirname}/Pulse_RefDatasets.csv`;
   const headers = getHeaders(rawFilePath);
-  
+
 }
 
+Main();
 
 
 

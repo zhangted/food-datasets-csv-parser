@@ -8,6 +8,7 @@ const {
 async function Main() {
   const rawFilePath = `${__dirname}/Starchy_Roots_Tubers.csv`;
   const headers = getHeaders(rawFilePath);
+  
 }
 
 Main();
