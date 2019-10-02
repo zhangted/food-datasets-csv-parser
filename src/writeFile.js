@@ -5,7 +5,7 @@ import { resolve } from 'path';
  * For fixPath()
  * @param {String} path
  */
-const fixPath = (path) => {
+const fixPath = path => {
   let newPath = resolve(__dirname, path); // absolute path
   if (newPath[-1] !== '/') {
     newPath += '/';
@@ -17,7 +17,7 @@ const fixPath = (path) => {
  * fixFileName()
  * @param {string} fileName
  */
-const fixFileName = (fileName) => {
+const fixFileName = fileName => {
   let updatedFileName = fileName.replace(/ /g, '_'); // Replace space with underscore
   updatedFileName = fileName.toLowerCase(); // Maintain Uniformity
   return updatedFileName;
@@ -45,5 +45,5 @@ const getFileName = (file, fileData, flag, index) => {
 
 export default {
   getFileName,
-  fixPath,
+  fixPath
 };

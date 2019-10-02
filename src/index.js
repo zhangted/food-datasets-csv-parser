@@ -1,11 +1,10 @@
 // import { parseFoodComposition } from '../projects2.0/FoodComposition/parser';
-import path from 'path'
+import path from 'path';
 
 import csvToJson from './csvToJson';
 
 import getHeaders from './getHeaders';
 import parseCsv from './parseCsv';
-
 
 // @TODO i don't like this name,
 // because if we use it outside - it's very long
@@ -13,11 +12,8 @@ import parseCsv from './parseCsv';
 // some many copy-pasting it in projects.2.0
 import parseDirectoryFiles from './fileSystem';
 
-
-const mainWrapper = async (path) => {
-  const headers = await getHeaders(
-    path
-  );
+const mainWrapper = async filePath => {
+  const headers = await getHeaders(filePath);
   // I might have to include lines 5-14 insinde of an async function and await it.
   // This will become clearer once parseDrectoryFiles is functional.
 
@@ -30,7 +26,7 @@ const mainWrapper = async (path) => {
   const directoryPath = path.join(__dirname, directory);
 
   parseDirectoryFiles(directoryPath, headers);
-}
+};
 
 export {
   csvToJson,
@@ -40,5 +36,5 @@ export {
   parseCsv,
   // parseFoodComposition,
   parseDirectoryFiles,
-  mainWrapper,
+  mainWrapper
 };
