@@ -6,6 +6,7 @@ const {
 } = require('../../../../dist/index.cjs.js');
 
 async function Main() {}
+const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
 
 const headers = [
   'NDB_No',
@@ -15,7 +16,7 @@ const headers = [
   'Output_value',
   'Output_uom'
 ];
-
+// const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
 // we don't have that folder now
 const directory = '../../../../sd/src/data/Nutrition';
 

@@ -7,6 +7,7 @@ const {
 
 
 async function Main() {
+  const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
   const headers = await getHeaders('./raw/Food_Composition.csv');
   // const headers = await getHeaders('./raw/Food_Composition-Italy.csv');
   const directory = './';
