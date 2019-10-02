@@ -2,8 +2,6 @@
 
 // @TODO update require. when we export this method - we can connect it from index.js
 const {
-  parseDirectoryFiles,
-  getHeaders,
   mainWrapper
 } = require('../../../../dist/index.cjs');
 
