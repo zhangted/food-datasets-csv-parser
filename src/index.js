@@ -15,8 +15,11 @@ import parseDirectoryFiles from './fileSystem';
 // i adding utils here only because it's my guess
 import { readAllFiles, joinPath, getList } from './utils';
 
-const mainWrapper = async (filePath) => {
+const mainWrapper = async (filename) => {
+  const filePath = `${__dirname}/${filename}`;
   const headers = await getHeaders(filePath);
+
+  console.log(headers);
   // I might have to include lines 5-14 insinde of an async function and await it.
   // This will become clearer once parseDrectoryFiles is functional.
 
@@ -24,12 +27,12 @@ const mainWrapper = async (filePath) => {
   // projects we have a separated folder with files + parser inside.
   // we can make a root directory as default inside of `parserDirectoryFiles`
   // and change it if passed another variable
-  const directory = './';
+  // const directory = './';
 
-  const directoryPath = path.join(__dirname, directory + filePath);
-  console.log(filePath);
-  console.log(directoryPath);
-  parseDirectoryFiles(directoryPath, headers);
+  // const directoryPath = path.join(__dirname, directory + filename);
+  // console.log(filename);
+  // console.log(directoryPath);
+  // parseDirectoryFiles(directoryPath, headers);
 };
 
 export {
