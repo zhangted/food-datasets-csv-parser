@@ -2,9 +2,9 @@
 const {
   parseDirectoryFiles,
   getHeaders,
-  mainWrapper,
+  mainWrapper
 } = require('../../dist/index.cjs');
-// } = require('../../../../dist/index.cjs.js');
+
 
 
 async function Main() {

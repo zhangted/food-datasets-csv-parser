@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 // @TODO update require. when we export this method - we can connect it from index.js
 const { parseDirectoryFiles, parseCsv } = require('../../../../dist/index.cjs');
 

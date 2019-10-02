@@ -1,10 +1,11 @@
-const path = require('path');
+// const path = require('path');
 // const { parseDirectoryFiles } = require('../../fileSystem');
 
 // @TODO update require. when we export this method - we can connect it from index.js
 const {
   parseDirectoryFiles,
-  getHeaders
+  getHeaders,
+  mainWrapper
 } = require('../../../../dist/index.cjs.js');
 
 async function Main() {
