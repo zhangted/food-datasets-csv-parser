@@ -12,6 +12,9 @@ import parseCsv from './parseCsv';
 // some many copy-pasting it in projects.2.0
 import parseDirectoryFiles from './fileSystem';
 
+// i adding utils here only because it's my guess
+import { readAllFiles, joinPath, getList } from './utils';
+
 const mainWrapper = async (filePath) => {
   const headers = await getHeaders(filePath);
   // I might have to include lines 5-14 insinde of an async function and await it.
@@ -37,4 +40,7 @@ export {
   // parseFoodComposition,
   parseDirectoryFiles,
   mainWrapper,
+
+  // can be removed later
+  readAllFiles, joinPath, getList,
 };
