@@ -10,7 +10,7 @@ import parseCsv from './parseCsv';
 // ----
 // maybe, just maybe we should keep
 // `getHeaders` as clean method but have another method that will reduce duplicates
-const getHeaders = async path => {
+const getHeaders = async (path) => {
   const dataset = await parseCsv(path);
   const headers = Object.keys(dataset[0]);
 

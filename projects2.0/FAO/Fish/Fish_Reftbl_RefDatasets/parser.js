@@ -4,7 +4,7 @@ const { mainWrapper } = require('../../../../dist/index.cjs');
 
 async function Main() {
   const rawFilePath = `${__dirname}/Fish_Reftbl_RefDatasets.csv`;
-  mainWrapper(rawFilePath)
-
+  mainWrapper(rawFilePath);
+  // const result = await mainWrapper(rawFilePath);
 }
 Main();

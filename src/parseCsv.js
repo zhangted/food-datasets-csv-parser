@@ -15,13 +15,13 @@ function parseCsv(path, options) {
   return new Promise((resolve, reject) => {
     createReadStream(path)
       .pipe(csv(options))
-      .on('data', data => {
+      .on('data', (data) => {
         dataEntries.push(data);
       })
       .on('end', () => {
         resolve(dataEntries);
       })
-      .on('error', err => {
+      .on('error', (err) => {
         reject(err);
       });
   });
