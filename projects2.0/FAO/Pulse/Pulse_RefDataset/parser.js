@@ -6,11 +6,12 @@ const {
 } = require('../../../../dist/index.cjs');
 
 async function Main() {
+  const rawFilePath = `${__dirname}/Pulse_RefDatasets.csv`;
+  const headers = getHeaders(rawFilePath);
   
 }
 
-const rawFilePath = `${__dirname}/Pulse_RefDatasets.csv`;
-const headers = getHeaders(rawFilePath);
+
 
 
 const directory = './';

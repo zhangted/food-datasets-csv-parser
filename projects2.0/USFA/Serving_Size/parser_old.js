@@ -7,24 +7,21 @@ const {
 
 async function Main() {
   const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
-  const headers = await getHeaders(rawFilePath);
-   
+  const headers = await getHeaders(rawFilePath);  
 }
 
 
 const headers = [
-  'NDB_Number',
-  'long_name',
-  'data_source',
-  'gtin_upc',
-  'manufacturer',
-  'date_modified',
-  'date_available',
-  'ingredients_english'
+  'NDB_No',
+  'Serving_Size',
+  'Serving_Size_UOM',
+  'Household_Serving_Size',
+  'Household_Serving_Size_UOM'
 ];
 
 // we don't have that folder now
-const directory = '../../../../sd/src/data/Product';
+const directory = '../../../../sd/src/data/Serving_Size';
+
 // //joining path of directory
 const directoryPath = path.join(__dirname, directory);
 
