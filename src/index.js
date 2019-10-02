@@ -2,7 +2,7 @@
 import path from 'path';
 
 import csvToJson from './csvToJson';
-
+// https://github.com/GroceriStar/food-datasets-csv-parser/issues/180
 import getHeaders from './getHeaders';
 import parseCsv from './parseCsv';
 
@@ -26,8 +26,9 @@ const mainWrapper = async (filePath) => {
   // and change it if passed another variable
   const directory = './';
 
-  const directoryPath = path.join(__dirname, directory);
-
+  const directoryPath = path.join(__dirname, directory + filePath);
+  console.log(filePath);
+  console.log(directoryPath);
   parseDirectoryFiles(directoryPath, headers);
 };
 
