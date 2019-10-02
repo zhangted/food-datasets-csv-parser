@@ -7,6 +7,8 @@ const {
 
 async function Main() {
   const rawFilePath = `${__dirname}/Pulse_NV_sum (per 100 g EP on FW).csv`;
+  mainWrapper(rawFilePath)
+
   const headers = getHeaders(rawFilePath);
 
   // I might have to include lines 5-14 insinde of an async function and await it.
@@ -24,9 +26,3 @@ async function Main() {
 }
 
 Main();
-
-const directory = './';
-
-const directoryPath = path.join(__dirname, directory);
-
-parseDirectoryFiles(directoryPath, headers);

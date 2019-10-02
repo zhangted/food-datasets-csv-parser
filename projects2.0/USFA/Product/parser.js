@@ -7,6 +7,7 @@ const {
 
 async function Main() {
   const rawFilePath = `${__dirname}/Products0.csv`;
+  mainWrapper(rawFilePath)
   const headers = await getHeaders(rawFilePath);
 
   // I might have to include lines 5-14 insinde of an async function and await it.

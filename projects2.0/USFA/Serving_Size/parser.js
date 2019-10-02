@@ -7,6 +7,8 @@ const {
 
 async function Main() {
   const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
+  mainWrapper(rawFilePath)
+
   const headers = await getHeaders(rawFilePath);
 
   // I might have to include lines 5-14 insinde of an async function and await it.
@@ -24,19 +26,3 @@ async function Main() {
 }
 
 Main();
-
-const headers = [
-  'NDB_No',
-  'Serving_Size',
-  'Serving_Size_UOM',
-  'Household_Serving_Size',
-  'Household_Serving_Size_UOM'
-];
-
-// we don't have that folder now
-const directory = '../../../../sd/src/data/Serving_Size';
-
-// //joining path of directory
-const directoryPath = path.join(__dirname, directory);
-
-parseDirectoryFiles(directoryPath, headers);

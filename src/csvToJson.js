@@ -4,7 +4,7 @@ import { write } from '@groceristar/static-data-generator';
 import parseCsv from './parseCsv';
 
 function makeFullPath(pathData, filetype) {
-  return ''.concat(pathData[0], pathData[1], filetype); // put pathData + filetype into 1 valid file name string
+  return '' . concat(pathData[0], pathData[1], filetype); // put pathData + filetype into 1 valid file name string
 }
 
 const generate = (file, data) => {
