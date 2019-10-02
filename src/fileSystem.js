@@ -5,7 +5,7 @@ import csvToJson from './csvToJson';
 // for now, this method is just making parseDirectoryFiles less boring
 const loop = (directoryPath, files, headers) => {
   // listing all files using forEach
-  files.forEach((file) => {
+  files.forEach(file => {
     // Do whatever you want to do with the file
     console.log(file, typeof file);
 

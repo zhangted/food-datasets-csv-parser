@@ -1,4 +1,5 @@
 // import { parseFoodComposition } from '../projects2.0/FoodComposition/parser';
+import path from 'path';
 
 import csvToJson from './csvToJson';
 
@@ -11,6 +12,22 @@ import parseCsv from './parseCsv';
 // some many copy-pasting it in projects.2.0
 import parseDirectoryFiles from './fileSystem';
 
+const mainWrapper = async filePath => {
+  const headers = await getHeaders(filePath);
+  // I might have to include lines 5-14 insinde of an async function and await it.
+  // This will become clearer once parseDrectoryFiles is functional.
+
+  // @TODO this line is a good idea. For all of our csv parsers
+  // projects we have a separated folder with files + parser inside.
+  // we can make a root directory as default inside of `parserDirectoryFiles`
+  // and change it if passed another variable
+  const directory = './';
+
+  const directoryPath = path.join(__dirname, directory);
+
+  parseDirectoryFiles(directoryPath, headers);
+};
+
 export {
   csvToJson,
   getHeaders,
@@ -19,4 +36,5 @@ export {
   parseCsv,
   // parseFoodComposition,
   parseDirectoryFiles,
+  mainWrapper
 };

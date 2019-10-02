@@ -13,6 +13,7 @@
     "test:cover": "jest --coverage",
     "lint": "eslint ./src --fix --ignore-pattern \"./package.json\" ",
     "format": "prettier",
+    "format:fix": "prettier ./src/**.js --write",
     "parse:FoodComposition": "node ./runner/parseFoodComposition",
     "debug:FoodComposition": "npm run build && node ./debug/parseFoodComposition",
     "csv:fc": "node ./projects2.0/FoodComposition/parser",
