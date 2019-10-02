@@ -3,7 +3,7 @@ import { readdir } from 'fs';
 import csvToJson from './csvToJson';
 
 // for now, this method is just making parseDirectoryFiles less boring
-const loop = (files) => {
+const loop = (directoryPath, files, headers) => {
   // listing all files using forEach
   files.forEach((file) => {
     // Do whatever you want to do with the file
@@ -20,9 +20,8 @@ const loop = (files) => {
     } else {
       // @TODO cover else statement as well
     }
-
   });
-}
+};
 
 // @TODO there was an idea to replace console.log with other ways to log thigns
 // @TODO I don't like the logic of this method.
@@ -40,7 +39,7 @@ const parseDirectoryFiles = (directoryPath, headers) => {
 
     console.log('-- 2. before forEach --');
 
-    loop(files);
+    loop(directoryPath, files, headers);
 
     return true;
   });
