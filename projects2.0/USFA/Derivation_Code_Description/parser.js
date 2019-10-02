@@ -8,6 +8,7 @@ const {
 } = require('../../../../dist/index.cjs.js');
 
 async function Main() {}
+const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
 
 const headers = ['derivation_code', 'Derivation_Descript'];
 
