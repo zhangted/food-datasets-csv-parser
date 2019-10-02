@@ -11,15 +11,6 @@ async function Main() {
   const rawFilePath = `${__dirname}/raw/Food_Composition.csv`;
   // const rawFilePath = `${__dirname}/raw/Food_Composition-Italy.csv`;
   mainWrapper(rawFilePath)
-  
-  const headers = await getHeaders(rawFilePath);
-
-  const directory = './';
-
-  const directoryPath = path.join(__dirname, directory);
-
-  parseDirectoryFiles(directoryPath, headers);
-
 
 }
 Main();

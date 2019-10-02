@@ -1,4 +1,5 @@
 // import { parseFoodComposition } from '../projects2.0/FoodComposition/parser';
+import path from 'path'
 
 import csvToJson from './csvToJson';
 
