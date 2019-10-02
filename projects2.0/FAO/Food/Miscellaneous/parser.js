@@ -6,8 +6,8 @@ const {
 } = require('../../../../dist/index.cjs');
 
 async function Main() {}
-const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
-const headers = getHeaders('./Miscellaneous.csv');
+const rawFilePath = `${__dirname}/Miscellaneous.csv`;
+const headers = getHeaders(rawFilePath);
 
 // I might have to include lines 5-14 insinde of an async function and await it.
 // This will become clearer once parseDrectoryFiles is functional.

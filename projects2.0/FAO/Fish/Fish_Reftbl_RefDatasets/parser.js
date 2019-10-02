@@ -3,8 +3,8 @@ const path = require('path');
 const { parseDirectoryFiles, parseCsv } = require('../../../../dist/index.cjs');
 
 async function Main() {
-  const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
-  const headers = await parseCsv(`${__dirname}/Fish_Reftbl_RefDatasets.csv`);
+  const rawFilePath = `${__dirname}/Fish_Reftbl_RefDatasets.csv`;
+  const headers = await parseCsv(rawFilePath);
   // I might have to include lines 5-14 insinde of an async function and await it.
   // This will become clearer once parseDrectoryFiles is functional.
 
