@@ -14,7 +14,7 @@ import parseCsv from './parseCsv';
 import parseDirectoryFiles from './fileSystem';
 
 
-const mainWrapper = (path) => {
+const mainWrapper = async (path) => {
   const headers = await getHeaders(
     path
   );
