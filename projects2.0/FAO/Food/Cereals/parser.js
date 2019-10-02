@@ -5,7 +5,9 @@ const {
   getHeaders
 } = require('../../../../dist/index.cjs');
 
-async function Main() {}
+async function Main() {
+  
+}
 const rawFilePath = `${__dirname}/Cereals.csv`;
 const headers = getHeaders(rawFilePath);
 

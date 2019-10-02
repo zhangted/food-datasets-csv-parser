@@ -5,8 +5,12 @@ const {
   getHeaders
 } = require('../../../../dist/index.cjs.js');
 
-async function Main() {}
+async function Main() {
+  
+}
 const rawFilePath = `${__dirname}/Fish_NV_sum (per 100 g EP).csv`;
+const headers = await getHeaders(rawFilePath);
+
 const headers = [
   'NDB_No',
   'Serving_Size',
