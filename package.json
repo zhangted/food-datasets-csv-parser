@@ -8,6 +8,7 @@
     "build": "npm run clean && yarn lint && npm run bundle",
     "build:babel": "yarn clean && yarn lint && babel src -d dist",
     "clean": "shx rm -rf ./coverage && shx rm -rf ./dist",
+    "clean:n": "shx rm -rf ./node_modules",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cover": "jest --coverage",
