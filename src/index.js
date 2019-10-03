@@ -16,8 +16,7 @@ import parseDirectoryFiles from './fileSystem';
 import { readAllFiles, joinPath, getList } from './utils';
 
 const mainWrapper = async (filename) => {
-  const filePath = `${__dirname}/${filename}`;
-  const headers = await getHeaders(filePath);
+  const headers = await getHeaders(filename);
 
   console.log(headers);
   // I might have to include lines 5-14 insinde of an async function and await it.
@@ -44,7 +43,8 @@ export {
   // parseFoodComposition,
   parseDirectoryFiles,
   mainWrapper,
-
   // can be removed later
-  readAllFiles, joinPath, getList,
+  readAllFiles,
+  joinPath,
+  getList,
 };
