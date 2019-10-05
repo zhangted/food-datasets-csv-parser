@@ -6,16 +6,14 @@
 
 #### Stretch goals
 
-- [x] Husky
-- [x] Lint-Staged
 - [ ] Travis CI
-- [ ] index.js as main point
-- [ ] created great test coverage
+- [ ] finished great test coverage
 - [ ] Extend Travis CI script: when new module released, it should work well with our projects3.0 automatically
 
 - [ ] check if we can use checkFilePath from generator
-- [ ] find out, what methods should be removed from utils.js, because they are duplicates from
+- [ ] find out, what methods should be removed from utils.js, because they are duplicates from generator (partially done)
 - [ ] ESLint for projects2.0, projects3.0 folder. now it's disabled
+- [ ] Try Lerna or move out projects from this repository
 
 #### scripts for testing few of our parsers - old, very old and new one
 

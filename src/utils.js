@@ -1,8 +1,4 @@
-import {
-  readdirSync,
-  statSync,
-  readFileSync,
-} from 'fs';
+import { readdirSync, statSync, readFileSync } from 'fs';
 import { resolve, join } from 'path';
 
 // import pathExists from 'path-exists';
@@ -22,7 +18,6 @@ const fixPath = (filePath) => {
   }
   return newPath;
 };
-
 
 /**
  * For readAllFiles()
